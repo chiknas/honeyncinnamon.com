@@ -1,1 +1,1 @@
-# afroditipapadaki.com
+# afroblog.com
