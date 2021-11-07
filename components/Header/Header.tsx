@@ -29,7 +29,7 @@ export const Header: React.FunctionComponent = () => {
   const { palette } = useTheme();
 
   return (
-    <HeaderContainer color={palette.background.paper}>
+    <HeaderContainer color={palette.background.default}>
       <LogoContainer>
         <Logo />
       </LogoContainer>
