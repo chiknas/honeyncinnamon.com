@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { BsFacebook, BsInstagram, BsTwitter, BsGithub } from 'react-icons/bs';
 
 const FooterContainer = styled.div`
+  margin-top: 1em;
   overflow: hidden;
   bottom: 0;
   display: flex;

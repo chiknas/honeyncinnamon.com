@@ -23,8 +23,9 @@ const AdContainer = styled.div`
   background-color: ${(props) => props.color};
 `;
 
-const ContentContainer = styled.div`
+const ContentContainer = styled.div<{ maxWidth?: string }>`
   flex: 2 1 auto;
+  ${(props) => props.maxWidth && `max-width: ${props.maxWidth};`}
 `;
 
 const MainLayout: React.FunctionComponent = ({ children }) => {
@@ -34,7 +35,7 @@ const MainLayout: React.FunctionComponent = ({ children }) => {
       <AdContainer color={palette.background.paper}>
         <AdSense />
       </AdContainer>
-      <ContentContainer>{children}</ContentContainer>
+      <ContentContainer maxWidth="66%">{children}</ContentContainer>
       <AdContainer color={palette.background.paper}>
         <AdSense />
       </AdContainer>

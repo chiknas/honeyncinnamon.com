@@ -18,6 +18,7 @@ export const AdSense: React.FunctionComponent = () => {
       data-ad-layout="in-article"
       data-ad-client="ca-pub-9199532486898731"
       data-ad-slot="9876543210"
+      data-adtest="on"
     ></ins>
   );
 };
