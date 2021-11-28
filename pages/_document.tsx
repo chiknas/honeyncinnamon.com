@@ -35,7 +35,7 @@ class MyDocument extends Document {
 
   render() {
     return (
-      <Html lang="en" dir="ltr">
+      <Html dir="ltr">
         <Head>
           <script
             async

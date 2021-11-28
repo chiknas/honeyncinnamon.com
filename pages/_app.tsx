@@ -4,6 +4,7 @@ import React, { useEffect } from 'react';
 import Layout from '../components/Layout/Layout';
 import { ThemeProvider } from '@material-ui/core';
 import { Theme } from '../styles/Theme';
+import { appWithTranslation } from 'next-i18next';
 
 function MyApp({ Component, pageProps }: AppProps) {
   useEffect(() => {
@@ -22,4 +23,4 @@ function MyApp({ Component, pageProps }: AppProps) {
   );
 }
 
-export default MyApp;
+export default appWithTranslation(MyApp);

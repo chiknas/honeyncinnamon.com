@@ -4,6 +4,7 @@ import { marked } from 'marked';
 import fs from 'fs';
 import path from 'path';
 import { ParsedUrlQuery } from 'querystring';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 interface Params extends ParsedUrlQuery {
   id: string;
@@ -11,18 +12,31 @@ interface Params extends ParsedUrlQuery {
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const { id } = context.params as Params;
-  const data = fs.readFileSync(path.join('posts', `${id}.md`), 'utf-8');
+  const data = fs.readFileSync(
+    path.join('posts', `${id}-${context.locale}.md`),
+    'utf-8'
+  );
 
   return {
-    props: { data },
+    props: {
+      ...(context?.locale &&
+        (await serverSideTranslations(context.locale, ['common']))),
+      data,
+    },
   };
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const posts = fs.readdirSync(path.join('posts'));
-  const paths = posts.map((post) => ({
-    params: { id: post.replace('.md', '') },
-  }));
+  const paths = posts.flatMap((post) => {
+    const [id, locale] = post.replace('.md', '').split('-');
+    return {
+      params: {
+        id,
+      },
+      locale,
+    };
+  });
 
   return {
     paths,
