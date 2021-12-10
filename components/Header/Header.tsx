@@ -1,4 +1,5 @@
 import { useTheme } from '@material-ui/core';
+import { DonateButton } from 'components/DonateButton/DonateButton';
 import React from 'react';
 import styled from 'styled-components';
 import { routes } from '../../services/routes';
@@ -12,6 +13,7 @@ const HeaderContainer = styled.div`
   background-color: ${(props) => props.color};
   display: flex;
   align-items: stretch;
+  margin: 1em;
 `;
 
 const LogoContainer = styled.div`
@@ -35,8 +37,8 @@ export const Header: React.FunctionComponent = () => {
       </LogoContainer>
 
       <HeaderMenu>
-        <HeaderButton route={routes.diy}>DIY</HeaderButton>
         <HeaderButton route={routes.recipes}>Recipes</HeaderButton>
+        <DonateButton />
       </HeaderMenu>
     </HeaderContainer>
   );

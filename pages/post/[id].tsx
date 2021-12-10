@@ -1,10 +1,10 @@
-import React, { useLayoutEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next';
 import { marked } from 'marked';
 import fs from 'fs';
 import path from 'path';
 import { ParsedUrlQuery } from 'querystring';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import { withTranslateProps } from 'services/StaticPropsHelpers';
 
 interface Params extends ParsedUrlQuery {
   id: string;
@@ -18,11 +18,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   );
 
   return {
-    props: {
-      ...(context?.locale &&
-        (await serverSideTranslations(context.locale, ['common']))),
-      data,
-    },
+    props: await withTranslateProps(context, { data }),
   };
 };
 
@@ -48,7 +44,7 @@ const Post: React.FunctionComponent = ({
   data,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const [renderPost, setRenderPost] = useState<string | undefined>(undefined);
-  useLayoutEffect(() => {
+  useEffect(() => {
     const markedPost = marked(data);
     setRenderPost(markedPost);
   }, [data]);

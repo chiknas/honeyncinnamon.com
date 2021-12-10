@@ -5,6 +5,7 @@ import Layout from '../components/Layout/Layout';
 import { ThemeProvider } from '@material-ui/core';
 import { Theme } from '../styles/Theme';
 import { appWithTranslation } from 'next-i18next';
+import { StylesProvider } from '@material-ui/core/styles';
 
 function MyApp({ Component, pageProps }: AppProps) {
   useEffect(() => {
@@ -16,9 +17,11 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <ThemeProvider theme={Theme}>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
+      <StylesProvider injectFirst>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </StylesProvider>
     </ThemeProvider>
   );
 }
