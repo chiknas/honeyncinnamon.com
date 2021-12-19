@@ -4,6 +4,7 @@ import { routes } from '../../services/routes';
 import { HeaderButton } from './HeaderButton';
 import { BsInstagram } from 'react-icons/bs';
 import { useTranslation } from 'next-i18next';
+import { LanguageButton } from './LanguageButton';
 
 const HeaderContainer = styled.div`
   overflow: hidden;
@@ -29,6 +30,7 @@ export const Header: React.FunctionComponent = () => {
       <HeaderButton route={routes.home}>{t('header.shop')}</HeaderButton>
       <HeaderButton route={routes.home}>{t('header.subscribe')}</HeaderButton>
       <HeaderButton route={routes.home}>{t('header.contact')}</HeaderButton>
+      <LanguageButton />
       <BsInstagram color="purple" />
     </HeaderContainer>
   );
