@@ -1,5 +1,12 @@
 {
   "error-with-status": "A {{statusCode}} provlima occurred on server",
-  "title": "Spiti",
-  "donate": "Dwrea"
+  "donate": "Dwrea",
+  "header": {
+    "home": "KENTRIKI",
+    "about": "SXETIKA",
+    "recipes": "RECIPES",
+    "shop": "MAGAZI",
+    "subscribe": "EGGRAFI",
+    "contact": "EPIKINONIA"
+  }
 }

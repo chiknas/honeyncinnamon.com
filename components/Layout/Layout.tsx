@@ -1,10 +1,10 @@
-import { useTheme } from '@material-ui/core';
 import React from 'react';
 import styled from 'styled-components';
 import useWindowDimensions from '../../hooks/useWindowDimensions';
-import { AdSense } from '../AdSense/AdSense';
 import { Footer } from '../Footer/Footer';
 import { Header } from '../Header/Header';
+import { MainLayout } from './MainLayout';
+import { MobileLayout } from './MobileLayout';
 
 const MainContainer = styled.div`
   min-height: 100vh;
@@ -18,42 +18,15 @@ const BodyContainer = styled.div<{ isMobile?: boolean }>`
   flex-direction: ${(props) => (props.isMobile ? 'column' : 'row')};
 `;
 
-const AdContainer = styled.div`
+export const AdContainer = styled.div`
   flex: 1 2 auto;
   background-color: ${(props) => props.color};
 `;
 
-const ContentContainer = styled.div<{ maxWidth?: string }>`
+export const ContentContainer = styled.div<{ maxWidth?: string }>`
   flex: 2 1 auto;
   ${(props) => props.maxWidth && `max-width: ${props.maxWidth};`}
 `;
-
-const MainLayout: React.FunctionComponent = ({ children }) => {
-  const { palette } = useTheme();
-  return (
-    <>
-      <AdContainer color={palette.background.paper}>
-        <AdSense />
-      </AdContainer>
-      <ContentContainer maxWidth="66%">{children}</ContentContainer>
-      <AdContainer color={palette.background.paper}>
-        <AdSense />
-      </AdContainer>
-    </>
-  );
-};
-
-const MobileLayout: React.FunctionComponent = ({ children }) => {
-  const { palette } = useTheme();
-  return (
-    <>
-      <ContentContainer>{children}</ContentContainer>
-      <AdContainer color={palette.background.paper}>
-        <AdSense />
-      </AdContainer>
-    </>
-  );
-};
 
 const Layout: React.FunctionComponent = ({ children }) => {
   const { width } = useWindowDimensions();

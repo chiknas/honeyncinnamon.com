@@ -1,5 +1,12 @@
 {
   "error-with-status": "A {{statusCode}} error occurred on server",
-  "title": "Home",
-  "donate": "Donate"
+  "donate": "Donate",
+  "header": {
+    "home": "HOME",
+    "about": "ABOUT",
+    "recipes": "RECIPES",
+    "shop": "SHOP",
+    "subscribe": "SUBSCRIBE",
+    "contact": "CONTACT"
+  }
 }

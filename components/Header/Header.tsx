@@ -3,13 +3,14 @@ import styled from 'styled-components';
 import { routes } from '../../services/routes';
 import { HeaderButton } from './HeaderButton';
 import { BsInstagram } from 'react-icons/bs';
+import { useTranslation } from 'next-i18next';
 
 const HeaderContainer = styled.div`
   overflow: hidden;
   position: sticky;
   top: 0;
   display: flex;
-  margin: 0.5em;
+  padding: 1em;
   text-align: center;
   justify-content: center;
   * + * {
@@ -18,14 +19,16 @@ const HeaderContainer = styled.div`
 `;
 
 export const Header: React.FunctionComponent = () => {
+  const { t } = useTranslation();
+
   return (
     <HeaderContainer>
-      <HeaderButton route={routes.home}>HOME</HeaderButton>
-      <HeaderButton route={routes.home}>ABOUT</HeaderButton>
-      <HeaderButton route={routes.recipes}>RECIPES</HeaderButton>
-      <HeaderButton route={routes.home}>SHOP</HeaderButton>
-      <HeaderButton route={routes.home}>SUBSCRIBE</HeaderButton>
-      <HeaderButton route={routes.home}>CONTACT</HeaderButton>
+      <HeaderButton route={routes.home}>{t('header.home')}</HeaderButton>
+      <HeaderButton route={routes.home}>{t('header.about')}</HeaderButton>
+      <HeaderButton route={routes.recipes}>{t('header.recipes')}</HeaderButton>
+      <HeaderButton route={routes.home}>{t('header.shop')}</HeaderButton>
+      <HeaderButton route={routes.home}>{t('header.subscribe')}</HeaderButton>
+      <HeaderButton route={routes.home}>{t('header.contact')}</HeaderButton>
       <BsInstagram color="purple" />
     </HeaderContainer>
   );
