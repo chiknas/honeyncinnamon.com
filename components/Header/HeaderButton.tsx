@@ -1,6 +1,6 @@
-import { Button } from '@material-ui/core';
+import { Box, Typography } from '@material-ui/core';
+import Link from 'next/link';
 import React from 'react';
-import { useRouter } from 'next/dist/client/router';
 
 type HeaderButtonProps = {
   route?: string;
@@ -9,11 +9,13 @@ type HeaderButtonProps = {
 export const HeaderButton: React.FunctionComponent<
   React.PropsWithChildren<HeaderButtonProps>
 > = ({ children, route }) => {
-  const router = useRouter();
-
-  const onClick = () => {
-    router.push(route ?? '');
-  };
-
-  return <Button onClick={onClick}>{children}</Button>;
+  return (
+    <Link href={route ?? '/'}>
+      <a>
+        <Typography>
+          <Box sx={{ letterSpacing: 4 }}>{children}</Box>
+        </Typography>
+      </a>
+    </Link>
+  );
 };
