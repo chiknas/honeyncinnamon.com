@@ -7,7 +7,7 @@ import { useTranslation } from 'next-i18next';
 import styled from 'styled-components';
 
 const ImageContainer = styled.div`
-  margin: 3em;
+  margin: 7em;
 `;
 
 export const MainLayout: React.FunctionComponent = ({ children }) => {
@@ -22,12 +22,11 @@ export const MainLayout: React.FunctionComponent = ({ children }) => {
       <ContentContainer maxWidth="960px">
         <ImageContainer>
           <Image
-            src={`/logo-${i18n.language?.toLowerCase() ?? 'en'}.png`}
+            src={`/logo-${i18n.language?.toLowerCase() ?? 'en'}.jpg`}
             alt="logo"
             width={'4000px'}
             height={'867px'}
             layout="responsive"
-            loading="eager"
             priority={true}
           />
         </ImageContainer>
