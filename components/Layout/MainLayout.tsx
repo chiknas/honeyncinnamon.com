@@ -2,7 +2,6 @@ import { AdSense } from 'components/AdSense/AdSense';
 import React from 'react';
 import { useTheme } from '@material-ui/core';
 import { AdContainer, ContentContainer } from './Layout';
-import Image from 'next/Image';
 import { useTranslation } from 'next-i18next';
 import styled from 'styled-components';
 
@@ -21,13 +20,10 @@ export const MainLayout: React.FunctionComponent = ({ children }) => {
       </AdContainer>
       <ContentContainer maxWidth="960px">
         <ImageContainer>
-          <Image
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
             src={`/logo-${i18n.language?.toLowerCase() ?? 'en'}.jpg`}
             alt="logo"
-            width={'4000px'}
-            height={'867px'}
-            layout="responsive"
-            priority={true}
           />
         </ImageContainer>
         {children}

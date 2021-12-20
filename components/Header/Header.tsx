@@ -5,11 +5,15 @@ import { HeaderButton } from './HeaderButton';
 import { BsInstagram } from 'react-icons/bs';
 import { useTranslation } from 'next-i18next';
 import { LanguageButton } from './LanguageButton';
+import Link from 'next/link';
+import { Theme } from 'styles/Theme';
 
 const HeaderContainer = styled.div`
   overflow: hidden;
-  position: sticky;
+  position: fixed;
+  background-color: ${Theme.palette.background.default};
   top: 0;
+  width: 100vw;
   display: flex;
   padding: 1em;
   text-align: center;
@@ -31,7 +35,11 @@ export const Header: React.FunctionComponent = () => {
       <HeaderButton route={routes.home}>{t('header.subscribe')}</HeaderButton>
       <HeaderButton route={routes.home}>{t('header.contact')}</HeaderButton>
       <LanguageButton />
-      <BsInstagram color="purple" />
+      <Link href="https://www.instagram.com" passHref={true}>
+        <a>
+          <BsInstagram color="purple" />
+        </a>
+      </Link>
     </HeaderContainer>
   );
 };

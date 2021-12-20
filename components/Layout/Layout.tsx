@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Theme } from 'styles/Theme';
 import useWindowDimensions from '../../hooks/useWindowDimensions';
 import { Footer } from '../Footer/Footer';
 import { Header } from '../Header/Header';
@@ -25,6 +26,8 @@ export const AdContainer = styled.div`
 
 export const ContentContainer = styled.div<{ maxWidth?: string }>`
   flex: 2 1 auto;
+  height: 100%;
+  background-color: ${Theme.palette.background.default};
   ${(props) => props.maxWidth && `max-width: ${props.maxWidth};`}
 `;
 
