@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next';
-import { marked } from 'marked';
+import { GetStaticPaths, GetStaticProps } from 'next';
 import fs from 'fs';
 import path from 'path';
 import { ParsedUrlQuery } from 'querystring';
 import { withTranslateProps } from 'services/StaticPropsHelpers';
+import { Post } from 'components/pages/Post/Post';
 
 interface Params extends ParsedUrlQuery {
   id: string;
@@ -38,21 +37,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
     paths,
     fallback: false,
   };
-};
-
-const Post: React.FunctionComponent = ({
-  data,
-}: InferGetStaticPropsType<typeof getStaticProps>) => {
-  const [renderPost, setRenderPost] = useState<string | undefined>(undefined);
-  useEffect(() => {
-    const markedPost = marked(data);
-    setRenderPost(markedPost);
-  }, [data]);
-  return (
-    <>
-      {renderPost && <div dangerouslySetInnerHTML={{ __html: renderPost }} />}
-    </>
-  );
 };
 
 export default Post;
