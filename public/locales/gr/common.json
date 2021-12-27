@@ -16,5 +16,8 @@
     "password": "Mustikos kwdikos",
     "login": "Eisodos",
     "signout": "Eksodos"
+  },
+  "post": {
+    "show-comments": "Sxolia ({{count}})"
   }
 }

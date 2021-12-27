@@ -16,5 +16,8 @@
     "password": "Password",
     "login": "Log In",
     "signout": "Sign Out"
+  },
+  "post": {
+    "show-comments": "Show Comments ({{count}})"
   }
 }
