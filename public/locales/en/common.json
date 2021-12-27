@@ -8,5 +8,13 @@
     "shop": "SHOP",
     "subscribe": "SUBSCRIBE",
     "contact": "CONTACT"
+  },
+  "profile": {
+    "title": "Log In",
+    "error": "These credentials do not match our records.",
+    "email": "Email",
+    "password": "Password",
+    "login": "Log In",
+    "signout": "Sign Out"
   }
 }

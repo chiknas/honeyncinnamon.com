@@ -1,25 +1,17 @@
-import {
-  Button,
-  Popper,
-  MenuList,
-  MenuItem,
-  Typography,
-  ClickAwayListener,
-} from '@material-ui/core';
+import { Button, MenuList, MenuItem, Typography } from '@material-ui/core';
 import { useRouter } from 'next/dist/client/router';
 import styled from 'styled-components';
 import Link from 'next/link';
 import React from 'react';
 import { Theme } from 'styles/Theme';
+import { withPoperPanel } from 'components/PoperPanel/PoperPanel';
 
 type LanguageItemProps = {
   language: string;
-  onClick: () => void;
 };
 
 const LanguageItem: React.FunctionComponent<LanguageItemProps> = ({
   language,
-  onClick,
 }) => {
   const { pathname, query } = useRouter();
 
@@ -31,7 +23,7 @@ const LanguageItem: React.FunctionComponent<LanguageItemProps> = ({
   `;
 
   return (
-    <StyledMenuItem onClick={onClick} key={language}>
+    <StyledMenuItem key={language}>
       <Link
         href={{
           pathname,
@@ -57,36 +49,23 @@ const StyledLanguageButton = styled(Button)`
 
 export const LanguageButton: React.FunctionComponent = () => {
   const { locale } = useRouter();
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const open = Boolean(anchorEl);
 
-  const handleClick = (event: any) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
+  const LanguagePoperPanel = withPoperPanel(
+    <StyledLanguageButton
+      id="basic-button"
+      aria-controls="basic-menu"
+      aria-haspopup="true"
+    >
+      <Typography>{locale}</Typography>
+    </StyledLanguageButton>
+  );
 
   return (
-    <>
-      <StyledLanguageButton
-        id="basic-button"
-        aria-controls="basic-menu"
-        aria-haspopup="true"
-        aria-expanded={open ? 'true' : undefined}
-        onClick={handleClick}
-      >
-        <Typography>{locale}</Typography>
-      </StyledLanguageButton>
-      <Popper id="basic-menu" anchorEl={anchorEl} open={open} transition>
-        <ClickAwayListener onClickAway={handleClose}>
-          <MenuList autoFocusItem={false} id="menu-list">
-            <LanguageItem onClick={handleClose} language="en" />
-            <LanguageItem onClick={handleClose} language="gr" />
-          </MenuList>
-        </ClickAwayListener>
-      </Popper>
-    </>
+    <LanguagePoperPanel>
+      <MenuList autoFocusItem={false} id="menu-list">
+        <LanguageItem language="en" />
+        <LanguageItem language="gr" />
+      </MenuList>
+    </LanguagePoperPanel>
   );
 };

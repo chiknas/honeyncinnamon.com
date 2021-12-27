@@ -8,5 +8,13 @@
     "shop": "MAGAZI",
     "subscribe": "EGGRAFI",
     "contact": "EPIKINONIA"
+  },
+  "profile": {
+    "title": "Eisodos",
+    "error": "Re lathos kwdiko evales",
+    "email": "Hlektroniko Taxudromio",
+    "password": "Mustikos kwdikos",
+    "login": "Eisodos",
+    "signout": "Eksodos"
   }
 }

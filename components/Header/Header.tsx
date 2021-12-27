@@ -7,6 +7,7 @@ import { useTranslation } from 'next-i18next';
 import { LanguageButton } from './LanguageButton';
 import Link from 'next/link';
 import { Theme } from 'styles/Theme';
+import { ProfileButton } from './ProfileButton/ProfileButton';
 
 const HeaderContainer = styled.div`
   overflow: hidden;
@@ -18,9 +19,12 @@ const HeaderContainer = styled.div`
   padding: 1em;
   text-align: center;
   justify-content: center;
-  * + * {
-    margin: 0 1em 0 1em;
-  }
+  gap: 1.5em;
+`;
+
+const HeaderSettingsSection = styled.div`
+  display: flex;
+  gap: 1em;
 `;
 
 export const Header: React.FunctionComponent = () => {
@@ -34,12 +38,15 @@ export const Header: React.FunctionComponent = () => {
       <HeaderButton route={routes.home}>{t('header.shop')}</HeaderButton>
       <HeaderButton route={routes.home}>{t('header.subscribe')}</HeaderButton>
       <HeaderButton route={routes.home}>{t('header.contact')}</HeaderButton>
-      <LanguageButton />
-      <Link href="https://www.instagram.com" passHref={true}>
-        <a>
-          <BsInstagram color="purple" />
-        </a>
-      </Link>
+      <HeaderSettingsSection>
+        <LanguageButton />
+        <Link href="https://www.instagram.com" passHref={true}>
+          <a>
+            <BsInstagram color="purple" />
+          </a>
+        </Link>
+        <ProfileButton />
+      </HeaderSettingsSection>
     </HeaderContainer>
   );
 };
