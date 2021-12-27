@@ -1,20 +1,19 @@
-import React, { useEffect, useState } from 'react';
-import { marked } from 'marked';
+import React from 'react';
 import { CommentBox } from 'components/CommentBox/CommentBox';
+import styled from 'styled-components';
 
 type PostProps = {
   data: string;
 };
 
+const PostContainer = styled.div`
+  padding: 3em;
+`;
+
 export const Post: React.FunctionComponent<PostProps> = ({ data }) => {
-  const [renderPost, setRenderPost] = useState<string | undefined>(undefined);
-  useEffect(() => {
-    const markedPost = marked(data);
-    setRenderPost(markedPost);
-  }, [data]);
   return (
     <>
-      {renderPost && <div dangerouslySetInnerHTML={{ __html: renderPost }} />}
+      <PostContainer dangerouslySetInnerHTML={{ __html: data }} />
       <CommentBox
         comment={{
           user: { firstName: 'FirstName', lastName: 'LastName' },

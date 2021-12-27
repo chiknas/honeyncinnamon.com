@@ -8,6 +8,13 @@ const WrappedComponentContainer = styled.div`
   }
 `;
 
+/**
+ * It wraps the passed in component to a poper component. The new component will look
+ * exactly the same but it will be clickable and all its children will be rendered underneath
+ * when clicked.
+ * @param wrappedComponent the component to make a poper
+ * @returns the specified comp wrapped in a poper
+ */
 export const withPoperPanel = (
   wrappedComponent: JSX.Element
 ): React.FunctionComponent<any> => {
