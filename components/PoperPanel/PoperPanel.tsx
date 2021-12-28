@@ -9,6 +9,7 @@ const WrappedComponentContainer = styled.div`
 `;
 
 /**
+ * IMPORTANT: Memoize the result to avoid unwanted re-renders.
  * It wraps the passed in component to a poper component. The new component will look
  * exactly the same but it will be clickable and all its children will be rendered underneath
  * when clicked.

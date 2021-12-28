@@ -1,6 +1,6 @@
 import { UserProfilePic } from 'components/UserProfilePic/UserProfilePic';
 import { withPoperPanel } from 'components/PoperPanel/PoperPanel';
-import React from 'react';
+import React, { useMemo } from 'react';
 import { useUserService } from 'services/UserService/UserService';
 import { MenuList, Button } from '@material-ui/core';
 import { useTranslation } from 'next-i18next';
@@ -13,7 +13,10 @@ export const ProfileUserSettings: React.FunctionComponent<ProfileUserSettingsPro
   ({ size }) => {
     const { t } = useTranslation();
     const { signOut } = useUserService();
-    const UserProfilePicPoper = withPoperPanel(<UserProfilePic size={size} />);
+    const UserProfilePicPoper = useMemo(
+      () => withPoperPanel(<UserProfilePic size={size} />),
+      [size]
+    );
     return (
       <UserProfilePicPoper>
         <MenuList autoFocusItem={false} id="user-menu-list">

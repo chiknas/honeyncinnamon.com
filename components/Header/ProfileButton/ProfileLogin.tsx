@@ -1,6 +1,6 @@
 import { LoginForm } from 'components/LoginForm/LoginForm';
 import { withPoperPanel } from 'components/PoperPanel/PoperPanel';
-import React from 'react';
+import React, { useMemo } from 'react';
 import { CgProfile } from 'react-icons/cg';
 import styled from 'styled-components';
 
@@ -15,7 +15,10 @@ type ProfileLoginProps = {
 export const ProfileLogin: React.FunctionComponent<ProfileLoginProps> = ({
   size,
 }) => {
-  const ProfileIconPoper = withPoperPanel(<ProfileIcon size={size} />);
+  const ProfileIconPoper = useMemo(
+    () => withPoperPanel(<ProfileIcon size={size} />),
+    [size]
+  );
 
   return (
     <>

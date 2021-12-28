@@ -50,14 +50,18 @@ const StyledLanguageButton = styled(Button)`
 export const LanguageButton: React.FunctionComponent = () => {
   const { locale } = useRouter();
 
-  const LanguagePoperPanel = withPoperPanel(
-    <StyledLanguageButton
-      id="basic-button"
-      aria-controls="basic-menu"
-      aria-haspopup="true"
-    >
-      <Typography>{locale}</Typography>
-    </StyledLanguageButton>
+  const LanguagePoperPanel = React.useMemo(
+    () =>
+      withPoperPanel(
+        <StyledLanguageButton
+          id="basic-button"
+          aria-controls="basic-menu"
+          aria-haspopup="true"
+        >
+          <Typography>{locale}</Typography>
+        </StyledLanguageButton>
+      ),
+    [locale]
   );
 
   return (

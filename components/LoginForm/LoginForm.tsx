@@ -32,6 +32,7 @@ const Error = styled(Typography)`
 `;
 
 export const LoginForm: React.FunctionComponent = () => {
+  const [logginIn, setLogginIn] = useState(false);
   const [error, setError] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -42,7 +43,10 @@ export const LoginForm: React.FunctionComponent = () => {
     <FormContainer
       onSubmit={(event) => {
         event.preventDefault();
-        emailLogin(email, password).catch(() => setError(true));
+        setLogginIn(true);
+        emailLogin(email, password)
+          .catch(() => setError(true))
+          .finally(() => setLogginIn(false));
       }}
     >
       <h1>{t('profile.title')}</h1>
@@ -62,7 +66,9 @@ export const LoginForm: React.FunctionComponent = () => {
         onChange={(state) => setPassword(state.currentTarget.value)}
       />
       {error && <Error>{t('profile.error')}</Error>}
-      <StyledLogin type="submit">{t('profile.login')}</StyledLogin>
+      <StyledLogin type="submit" disabled={logginIn}>
+        {t('profile.login')}
+      </StyledLogin>
     </FormContainer>
   );
 };
