@@ -12,9 +12,9 @@ export const HeaderButton: React.FunctionComponent<
   return (
     <Link href={route ?? '/'}>
       <a>
-        <Typography>
-          <Box sx={{ letterSpacing: 4 }}>{children}</Box>
-        </Typography>
+        <Box sx={{ letterSpacing: 4 }}>
+          <Typography>{children}</Typography>
+        </Box>
       </a>
     </Link>
   );

@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 
+const mobileViewportWidthThreashold = 768;
+
 type WindowDimensions = { width: number; height: number };
 
 function getWindowDimensions(): WindowDimensions {
@@ -10,7 +12,12 @@ function getWindowDimensions(): WindowDimensions {
   };
 }
 
-export default function useWindowDimensions() {
+type Viewport = {
+  windowDimensions: WindowDimensions;
+  isMobile: boolean;
+};
+
+export default function useViewport(): Viewport {
   const [windowDimensions, setWindowDimensions] = useState<WindowDimensions>({
     width: 0,
     height: 0,
@@ -26,5 +33,8 @@ export default function useWindowDimensions() {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  return windowDimensions;
+  return {
+    windowDimensions,
+    ...{ isMobile: windowDimensions.width <= mobileViewportWidthThreashold },
+  };
 }

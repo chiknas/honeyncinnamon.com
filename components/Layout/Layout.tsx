@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Theme } from 'styles/Theme';
-import useWindowDimensions from '../../hooks/useWindowDimensions';
+import useViewport from '../../hooks/useViewport';
 import { Footer } from '../Footer/Footer';
 import { Header } from '../Header/Header';
 import { MainLayout } from './MainLayout';
@@ -32,8 +32,7 @@ export const ContentContainer = styled.div<{ maxWidth?: string }>`
 `;
 
 const Layout: React.FunctionComponent = ({ children }) => {
-  const { width } = useWindowDimensions();
-  const isMobile = width <= 768;
+  const { isMobile } = useViewport();
   const Content = isMobile ? (
     <MobileLayout>{children}</MobileLayout>
   ) : (

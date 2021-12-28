@@ -1,15 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
-import { routes } from '../../services/routes';
-import { HeaderButton } from './HeaderButton';
 import { BsInstagram } from 'react-icons/bs';
-import { useTranslation } from 'next-i18next';
 import { LanguageButton } from './LanguageButton';
 import Link from 'next/link';
 import { Theme } from 'styles/Theme';
 import { ProfileButton } from './ProfileButton/ProfileButton';
+import useViewport from 'hooks/useViewport';
+import { MainMenu } from './MainMenu/MainMenu';
+import { BurgerMenu } from './BurgerMenu/BurgerMenu';
 
-const HeaderContainer = styled.div`
+const HeaderContainer = styled.div<{ isMobile: boolean }>`
   overflow: hidden;
   position: fixed;
   background-color: ${Theme.palette.background.default};
@@ -18,7 +18,7 @@ const HeaderContainer = styled.div`
   display: flex;
   padding: 1em;
   text-align: center;
-  justify-content: center;
+  justify-content: ${(props) => (props.isMobile ? 'space-between' : 'center')};
   gap: 1.5em;
 `;
 
@@ -28,16 +28,13 @@ const HeaderSettingsSection = styled.div`
 `;
 
 export const Header: React.FunctionComponent = () => {
-  const { t } = useTranslation();
+  const { isMobile } = useViewport();
+
+  const menu = isMobile ? <BurgerMenu /> : <MainMenu />;
 
   return (
-    <HeaderContainer>
-      <HeaderButton route={routes.home}>{t('header.home')}</HeaderButton>
-      <HeaderButton route={routes.home}>{t('header.about')}</HeaderButton>
-      <HeaderButton route={routes.recipes}>{t('header.recipes')}</HeaderButton>
-      <HeaderButton route={routes.home}>{t('header.shop')}</HeaderButton>
-      <HeaderButton route={routes.home}>{t('header.subscribe')}</HeaderButton>
-      <HeaderButton route={routes.home}>{t('header.contact')}</HeaderButton>
+    <HeaderContainer isMobile={isMobile}>
+      {menu}
       <HeaderSettingsSection>
         <LanguageButton />
         <Link href="https://www.instagram.com" passHref={true}>

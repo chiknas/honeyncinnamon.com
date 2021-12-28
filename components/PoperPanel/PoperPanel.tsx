@@ -1,5 +1,5 @@
-import { Popper, ClickAwayListener } from '@material-ui/core';
-import React from 'react';
+import { Popper } from '@material-ui/core';
+import React, { useCallback, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 
 const WrappedComponentContainer = styled.div`
@@ -19,6 +19,7 @@ export const withPoperPanel = (
   wrappedComponent: JSX.Element
 ): React.FunctionComponent<any> => {
   const PoperPanel: React.FunctionComponent<any> = ({ children }) => {
+    const ref = useRef(null);
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
 
@@ -30,15 +31,28 @@ export const withPoperPanel = (
       setAnchorEl(null);
     };
 
+    const handleClickOutside = useCallback((event: MouseEvent) => {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      if (ref.current && !ref.current.contains(event.target)) {
+        handleClose();
+      }
+    }, []);
+
+    useEffect(() => {
+      document.addEventListener('click', handleClickOutside, true);
+      return () => {
+        document.removeEventListener('click', handleClickOutside, true);
+      };
+    }, [handleClickOutside]);
+
     return (
       <>
         <WrappedComponentContainer onClick={handleClick}>
           {wrappedComponent}
         </WrappedComponentContainer>
-        <Popper anchorEl={anchorEl} open={open} transition>
-          <ClickAwayListener onClickAway={handleClose}>
-            <div>{children}</div>
-          </ClickAwayListener>
+        <Popper ref={ref} anchorEl={anchorEl} open={open} transition>
+          <React.Fragment>{children}</React.Fragment>
         </Popper>
       </>
     );
