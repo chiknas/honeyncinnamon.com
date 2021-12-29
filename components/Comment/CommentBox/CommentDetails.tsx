@@ -2,7 +2,7 @@ import { Typography } from '@material-ui/core';
 import React from 'react';
 import styled from 'styled-components';
 import { Theme } from 'styles/Theme';
-import { Comment } from './CommentBox';
+import { Comment } from 'services/CommentService/types';
 
 const CommentContainer = styled.div`
   display: flex;
@@ -10,7 +10,7 @@ const CommentContainer = styled.div`
 `;
 
 const CommentTitle = styled(Typography)`
-  font-size: 1.3em;
+  font-size: 0.9rem;
   font-weight: 390;
   padding: 0.5rem 0 0.5rem 0;
 `;
@@ -32,11 +32,10 @@ export const CommentDetails: React.FunctionComponent<CommentDetailsProps> = ({
   comment,
 }) => {
   const user = comment.user;
-  const title = `${user.firstName} ${user.lastName}`;
 
   return (
     <CommentContainer>
-      <CommentTitle>{title}</CommentTitle>
+      <CommentTitle>{user.displayName}</CommentTitle>
       <CommentTextBox>{comment.body}</CommentTextBox>
     </CommentContainer>
   );

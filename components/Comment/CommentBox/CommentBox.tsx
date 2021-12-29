@@ -2,16 +2,7 @@ import { UserProfilePic } from 'components/UserProfilePic/UserProfilePic';
 import React from 'react';
 import styled from 'styled-components';
 import { CommentDetails } from './CommentDetails';
-
-interface User {
-  firstName: string;
-  lastName: string;
-}
-
-export interface Comment {
-  user: User;
-  body: string;
-}
+import { Comment } from 'services/CommentService/types';
 
 type CommentBoxProps = {
   comment: Comment;
@@ -21,7 +12,7 @@ const CommentBoxContainer = styled.div`
   display: flex;
   flex-direction: row;
   * > * {
-    margin: 0 2rem 0 2rem;
+    margin: 0 0.5rem 0 0.5rem;
   }
 `;
 
