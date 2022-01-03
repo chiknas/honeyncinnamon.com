@@ -13,17 +13,17 @@ const ProfileImage = styled.img<{ size: string }>`
 `;
 
 type UserProfilePicProps = {
+  src?: string;
   size?: string;
 };
 
 export const UserProfilePic: React.FunctionComponent<UserProfilePicProps> = ({
+  src,
   size,
 }) => {
   return (
     // TODO - check is we are running on phone and change to sizes to 40px
-    <ProfileImage
-      size={size ?? '80px;'}
-      src="https://i0.wp.com/escxtra.com/wp-content/uploads/elena-paparizou.jpg?w=700"
-    />
+    // TODO - set default src in case something goes wrong and we dont have a user foto
+    <ProfileImage size={size ?? '30px;'} src={src ?? ''} />
   );
 };

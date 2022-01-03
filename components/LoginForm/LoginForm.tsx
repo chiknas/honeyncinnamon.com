@@ -1,7 +1,7 @@
 import { Button, TextField, Typography } from '@material-ui/core';
 import { useTranslation } from 'next-i18next';
 import React, { useState } from 'react';
-import { useUserService } from 'services/UserService/UserService';
+import { useUserService } from 'services/EntityServices/UserService/UserService';
 import styled from 'styled-components';
 import { Theme } from 'styles/Theme';
 

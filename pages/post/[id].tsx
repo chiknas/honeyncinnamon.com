@@ -19,7 +19,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   );
 
   return {
-    props: await withTranslateProps(context, { data }),
+    props: await withTranslateProps(context, { id, data }),
   };
 };
 

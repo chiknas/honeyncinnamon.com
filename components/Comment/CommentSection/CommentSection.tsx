@@ -1,8 +1,8 @@
 import React, { useMemo } from 'react';
-import { useCommentService } from 'services/CommentService/CommentService';
+import { useCommentService } from 'services/EntityServices/CommentService/CommentService';
 import styled from 'styled-components';
 import { CommentBox } from '../CommentBox/CommentBox';
-import { Comment } from 'services/CommentService/types';
+import { Comment } from 'services/EntityServices/CommentService/types';
 
 const CommentSectionContainer = styled.div`
   display: flex;
@@ -38,7 +38,7 @@ type CommentGroup = {
 const groupComments = (allComments: Comment[]): CommentGroup[] => {
   // all the comments made directly under the post/recipe
   const entityComments = allComments.filter(
-    (comment) => comment.commentId === undefined
+    (comment) => comment.commentId === ''
   );
   // comments made on other comments
   const subComments = allComments.filter(
@@ -58,10 +58,9 @@ export const CommentSection: React.FunctionComponent<CommentSectionProps> = ({
   id,
 }) => {
   const { getComments } = useCommentService();
+  const { result: allComments } = getComments(id);
 
   const Comments = useMemo(() => {
-    const allComments = getComments(id);
-    console.log(allComments);
     return groupComments(allComments).map((group, index) => (
       <CommentGroupContainer key={`comment-group-${index}`}>
         <CommentBox comment={group.entityComment} />
@@ -72,7 +71,7 @@ export const CommentSection: React.FunctionComponent<CommentSectionProps> = ({
         ))}
       </CommentGroupContainer>
     ));
-  }, [getComments, id]);
+  }, [allComments]);
 
   return <CommentSectionContainer>{Comments}</CommentSectionContainer>;
 };

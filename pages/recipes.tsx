@@ -2,7 +2,7 @@ import React from 'react';
 import { Button } from '@material-ui/core';
 import { GetStaticProps } from 'next';
 import { withTranslateProps } from 'services/StaticPropsHelpers';
-import { useUserService } from 'services/UserService/UserService';
+import { useUserService } from 'services/EntityServices/UserService/UserService';
 
 export const getStaticProps: GetStaticProps = async (context) => {
   return {
@@ -11,7 +11,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
 };
 
 const Recipes: React.FunctionComponent = () => {
-  const { currentUser, emailLogin, signOut } = useUserService();
+  const { getCurrentUser, emailLogin, signOut } = useUserService();
+  const { result: currentUser } = getCurrentUser();
 
   return (
     <>

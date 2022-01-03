@@ -2,7 +2,7 @@ import { UserProfilePic } from 'components/UserProfilePic/UserProfilePic';
 import React from 'react';
 import styled from 'styled-components';
 import { CommentDetails } from './CommentDetails';
-import { Comment } from 'services/CommentService/types';
+import { Comment } from 'services/EntityServices/CommentService/types';
 
 type CommentBoxProps = {
   comment: Comment;
@@ -21,7 +21,7 @@ export const CommentBox: React.FunctionComponent<CommentBoxProps> = ({
 }) => {
   return (
     <CommentBoxContainer>
-      <UserProfilePic />
+      <UserProfilePic src={comment.userPhotoUrl} />
       <CommentDetails comment={comment} />
     </CommentBoxContainer>
   );

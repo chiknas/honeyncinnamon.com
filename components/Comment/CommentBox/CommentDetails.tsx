@@ -2,7 +2,7 @@ import { Typography } from '@material-ui/core';
 import React from 'react';
 import styled from 'styled-components';
 import { Theme } from 'styles/Theme';
-import { Comment } from 'services/CommentService/types';
+import { Comment } from 'services/EntityServices/CommentService/types';
 
 const CommentContainer = styled.div`
   display: flex;
@@ -31,11 +31,9 @@ type CommentDetailsProps = {
 export const CommentDetails: React.FunctionComponent<CommentDetailsProps> = ({
   comment,
 }) => {
-  const user = comment.user;
-
   return (
     <CommentContainer>
-      <CommentTitle>{user.displayName}</CommentTitle>
+      <CommentTitle>{comment.userDisplayName}</CommentTitle>
       <CommentTextBox>{comment.body}</CommentTextBox>
     </CommentContainer>
   );

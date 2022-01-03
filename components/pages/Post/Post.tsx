@@ -6,6 +6,7 @@ import { Theme } from 'styles/Theme';
 import { useTranslation } from 'next-i18next';
 
 type PostProps = {
+  id: string;
   data: string;
 };
 
@@ -30,7 +31,7 @@ const ShowCommentsButton = styled(Button)`
   }
 `;
 
-export const Post: React.FunctionComponent<PostProps> = ({ data }) => {
+export const Post: React.FunctionComponent<PostProps> = ({ id, data }) => {
   const [isCommentSectionOpen, setCommentSectionOpen] = useState(false);
   const { t } = useTranslation();
 
@@ -44,7 +45,7 @@ export const Post: React.FunctionComponent<PostProps> = ({ data }) => {
             <Typography>{t('post.show-comments', { count: 1 })}</Typography>
           </ShowCommentsButton>
         )}
-        {isCommentSectionOpen && <CommentSection id={'sdfg'} />}
+        {isCommentSectionOpen && <CommentSection id={id} />}
       </CommentSectionContainer>
     </PostContainer>
   );

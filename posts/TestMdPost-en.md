@@ -421,24 +421,6 @@ on Size Limit output.
 1. Install and configure Size Limit as shown above.
 2. Add the following action inside `.github/workflows/size-limit.yml`
 
-```yaml
-name: 'size'
-on:
-  pull_request:
-    branches:
-      - master
-jobs:
-  size:
-    runs-on: ubuntu-latest
-    env:
-      CI_JOB_NUMBER: 1
-    steps:
-      - uses: actions/checkout@v1
-      - uses: andresz1/size-limit-action@v1.0.0
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-```
-
 ## Config
 
 Size Limits supports three ways to define config.
@@ -541,15 +523,3 @@ Plugin presets:
 - `@size-limit/preset-small-lib` contains `esbuild` and `file` plugins.
 
 [`dual-publish`]: https://github.com/ai/dual-publish
-
-## JS API
-
-```js
-const sizeLimit = require('size-limit');
-const filePlugin = require('@size-limit/file');
-const webpackPlugin = require('@size-limit/webpack');
-
-sizeLimit([filePlugin, webpackPlugin], [filePath]).then((result) => {
-  result; //=> { size: 12480 }
-});
-```
