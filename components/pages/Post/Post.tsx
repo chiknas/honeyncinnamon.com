@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { Button, Divider, Typography } from '@material-ui/core';
 import { Theme } from 'styles/Theme';
 import { useTranslation } from 'next-i18next';
+import { usePostService } from 'services/EntityServices/PostService/PostService';
 
 type PostProps = {
   id: string;
@@ -34,15 +35,23 @@ const ShowCommentsButton = styled(Button)`
 export const Post: React.FunctionComponent<PostProps> = ({ id, data }) => {
   const [isCommentSectionOpen, setCommentSectionOpen] = useState(false);
   const { t } = useTranslation();
+  const { getPostDetails } = usePostService();
+  const { result: postDetails, loading: postDetailsLoading } =
+    getPostDetails(id);
 
   return (
     <PostContainer>
       <div dangerouslySetInnerHTML={{ __html: data }} />
       <Divider />
       <CommentSectionContainer>
-        {!isCommentSectionOpen && (
-          <ShowCommentsButton onClick={() => setCommentSectionOpen(true)}>
-            <Typography>{t('post.show-comments', { count: 1 })}</Typography>
+        {!postDetailsLoading && !isCommentSectionOpen && (
+          <ShowCommentsButton
+            onClick={() => setCommentSectionOpen(true)}
+            disabled={postDetails?.commentCount === 0}
+          >
+            <Typography>
+              {t('post.show-comments', { count: postDetails?.commentCount })}
+            </Typography>
           </ShowCommentsButton>
         )}
         {isCommentSectionOpen && <CommentSection id={id} />}
