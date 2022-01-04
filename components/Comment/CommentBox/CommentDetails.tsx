@@ -6,6 +6,7 @@ import { Comment } from 'services/EntityServices/CommentService/types';
 import { CommentField } from '../CommentField/CommentField';
 import { useTranslation } from 'next-i18next';
 import { useUserService } from 'services/EntityServices/UserService/UserService';
+import useViewport from 'hooks/useViewport';
 
 const CommentContainer = styled.div`
   display: flex;
@@ -14,7 +15,7 @@ const CommentContainer = styled.div`
 `;
 
 const CommentTitle = styled(Typography)`
-  font-size: 0.9rem;
+  font-size: 1em;
   font-weight: 390;
   padding-top: 0.5rem;
 `;
@@ -39,6 +40,8 @@ const CommentBoxActionContainer = styled.div<{ visible?: boolean }>`
   flex-direction: row;
   justify-content: flex-end;
   visibility: ${(props) => (props.visible ? 'visible' : 'hidden')};
+  opacity: ${(props) => (props.visible ? '1' : '0')};
+  transition: opacity 0.3s linear;
 `;
 
 type CommentDetailsProps = {
@@ -48,6 +51,8 @@ type CommentDetailsProps = {
 export const CommentDetails: React.FunctionComponent<CommentDetailsProps> = ({
   comment,
 }) => {
+  const { isMobile } = useViewport();
+  const [hover, setIsHover] = useState(false);
   const { getCurrentUser } = useUserService();
   const { result: currentUser } = getCurrentUser();
   const [isResponding, setIsResponding] = useState(false);
@@ -67,11 +72,16 @@ export const CommentDetails: React.FunctionComponent<CommentDetailsProps> = ({
   );
 
   return (
-    <CommentContainer>
+    <CommentContainer
+      onMouseEnter={() => !isMobile && setIsHover(true)}
+      onMouseLeave={() => !isMobile && setIsHover(false)}
+    >
       <CommentTitle>{comment.userDisplayName}</CommentTitle>
       <CommentBox>
         <CommentTextBox>{comment.body}</CommentTextBox>
-        <CommentBoxActionContainer visible={isUserSignedIn}>
+        <CommentBoxActionContainer
+          visible={isUserSignedIn && (isMobile || hover)}
+        >
           <Button
             onClick={() => setIsResponding((currentState) => !currentState)}
           >

@@ -15,13 +15,14 @@ const CommentBoxContainer = styled.div`
   border-radius: 8px;
   display: flex;
   flex-direction: column;
+  gap: 1rem;
   * > * {
     margin: 0 0.5rem 0 0.5rem;
   }
 `;
 
 const StyledTextField = styled(InputBase)`
-  flex: 1 1 auto;
+  font-size: 1rem;
   height: 100px;
   border-bottom: 0;
   overflow: auto;
@@ -108,7 +109,6 @@ export const CommentField: React.FunctionComponent<CommentFieldProps> = ({
           <InputRowContainer>
             <UserProfilePic src={currentUser?.photoUrl} />
             <StyledTextField
-              minRows={5}
               multiline={true}
               value={comment}
               onChange={(e) => setComment(e.target.value)}
