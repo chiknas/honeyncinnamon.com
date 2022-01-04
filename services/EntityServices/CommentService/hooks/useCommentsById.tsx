@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Comment } from 'services/EntityServices/CommentService/types';
-import { useCollectionOnce } from 'react-firebase-hooks/firestore';
+import { useCollection } from 'react-firebase-hooks/firestore';
 import {
   getFirestore,
   collection,
   where,
   query,
   Query,
+  orderBy,
 } from 'firebase/firestore';
 import { DataLoad } from 'services/EntityServices/types';
 
@@ -17,11 +18,12 @@ export const useCommentsByEntityId = (
     () =>
       query(
         collection(getFirestore(), 'comments'),
-        where('entityId', '==', entityId)
+        where('entityId', '==', entityId),
+        orderBy('timestamp', 'desc')
       ) as Query<Comment>,
     [entityId]
   );
-  const [response, loading] = useCollectionOnce<Comment>(commentsRef);
+  const [response, loading, error] = useCollection<Comment>(commentsRef);
 
   const comments = React.useMemo(
     () =>
@@ -31,6 +33,8 @@ export const useCommentsByEntityId = (
       })),
     [response?.docs]
   );
+
+  useEffect(() => console.error(error), [error]);
 
   return { result: comments ?? [], loading };
 };

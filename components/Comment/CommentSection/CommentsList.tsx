@@ -28,9 +28,10 @@ const groupComments = (allComments: Comment[]): CommentGroup[] => {
     (comment) => comment.commentId === ''
   );
   // comments made on other comments
-  const subComments = allComments.filter(
-    (comment) => comment.entityId !== undefined
-  );
+  const subComments = allComments
+    .filter((comment) => comment.entityId !== undefined)
+    // all comments are coming back in desc order. so reverse to show oldest first on conversation
+    .reverse();
 
   // group subcomments with their respective comments to apply different styling to them
   return entityComments.map((comment) => ({

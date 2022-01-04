@@ -2,20 +2,22 @@ import React from 'react';
 import { getAuth } from 'firebase/auth';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { User } from '../types';
-import { getFirestore, doc, DocumentReference } from 'firebase/firestore';
-import { useDocument } from 'react-firebase-hooks/firestore';
 import { DataLoad } from 'services/EntityServices/types';
 
 export const useCurrentUser = (): DataLoad<User | undefined> => {
-  const [user] = useAuthState(getAuth());
-  const currentUserReference = React.useMemo(
-    () => (user ? doc(getFirestore(), 'users', user.uid) : undefined),
-    [user]
-  ) as DocumentReference<User> | undefined;
-  const [response, loading] = useDocument<User>(currentUserReference);
+  const [user, loading] = useAuthState(getAuth());
+
   const result = React.useMemo(() => {
-    return response && { ...response.data(), id: response.id ?? '' };
-  }, [response]);
+    return user
+      ? {
+          id: user?.uid ?? '',
+          email: user?.email !== null ? user?.email : undefined,
+          displayName:
+            user?.displayName !== null ? user?.displayName : undefined,
+          photoUrl: user?.photoURL !== null ? user?.photoURL : undefined,
+        }
+      : undefined;
+  }, [user]);
 
   return { result, loading };
 };

@@ -1,6 +1,7 @@
+import { postComment } from './functions/CommentPost';
 import { useCommentsByEntityId } from './hooks/useCommentsById';
 import { CommentService } from './types';
 
 export const useCommentService = (): CommentService => {
-  return { getComments: useCommentsByEntityId };
+  return { getComments: useCommentsByEntityId, postComment };
 };

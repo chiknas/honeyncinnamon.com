@@ -2,10 +2,8 @@ import { DataLoad } from '../types';
 
 export interface User {
   id: string;
-  firstName?: string;
-  lastName?: string;
   photoUrl?: string;
-  displayName?: string;
+  displayName?: string | null;
   email?: string;
 }
 

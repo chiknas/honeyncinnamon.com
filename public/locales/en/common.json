@@ -21,6 +21,7 @@
     "show-comments": "Show Comments ({{count}})",
     "login-action": "Log in to add a comment",
     "comment-placeholder": "Add your comment",
-    "submit": "Submit"
+    "submit": "Submit",
+    "respond": "Respond"
   }
 }

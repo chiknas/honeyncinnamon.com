@@ -6,6 +6,7 @@ import { usePostService } from 'services/EntityServices/PostService/PostService'
 import { Button, Typography } from '@material-ui/core';
 import { Theme } from 'styles/Theme';
 import { CommentField } from '../CommentField/CommentField';
+import { EntityType } from 'services/EntityServices/CommentService/types';
 
 const CommentSectionContainer = styled.div`
   display: flex;
@@ -28,10 +29,12 @@ const ShowCommentsButton = styled(Button)`
 
 type CommentSectionProps = {
   id: string;
+  entityType: EntityType;
 };
 
 export const CommentSection: React.FunctionComponent<CommentSectionProps> = ({
   id,
+  entityType,
 }) => {
   const [isCommentSectionOpen, setCommentSectionOpen] = useState(false);
   const { t } = useTranslation();
@@ -41,7 +44,11 @@ export const CommentSection: React.FunctionComponent<CommentSectionProps> = ({
 
   return (
     <CommentSectionContainer>
-      <CommentField />
+      <CommentField
+        entityId={id}
+        entityType={entityType}
+        onSubmit={() => setCommentSectionOpen(true)}
+      />
       {!postDetailsLoading && !isCommentSectionOpen && (
         <ShowCommentsButton
           onClick={() => setCommentSectionOpen(true)}

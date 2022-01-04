@@ -3,9 +3,11 @@ import { LoginForm } from 'components/LoginForm/LoginForm';
 import { withPoperPanel } from 'components/PoperPanel/PoperPanel';
 import { UserProfilePic } from 'components/UserProfilePic/UserProfilePic';
 import { useTranslation } from 'next-i18next';
-import React, { useMemo } from 'react';
+import React, { useCallback, useMemo, useState } from 'react';
+import { useCommentService } from 'services/EntityServices/CommentService/CommentService';
 import { useUserService } from 'services/EntityServices/UserService/UserService';
 import styled from 'styled-components';
+import { EntityType } from 'services/EntityServices/CommentService/types';
 
 const CommentBoxContainer = styled.div`
   padding: 1rem;
@@ -40,10 +42,27 @@ const StyledTypography = styled(Typography)`
   font-size: 1rem;
 `;
 
-export const CommentField: React.FunctionComponent = () => {
+type CommentFieldProps = {
+  // the entity (post/recipes) that we are commenting on
+  entityId: string;
+  entityType: EntityType;
+  // if its a response to an existing comment on the entity
+  commentId?: string;
+  // optional function to run when the comment is submitted
+  onSubmit?: () => void;
+};
+
+export const CommentField: React.FunctionComponent<CommentFieldProps> = ({
+  entityId,
+  entityType,
+  commentId = '',
+  onSubmit,
+}) => {
   const { t } = useTranslation();
   const { getCurrentUser } = useUserService();
   const { result: currentUser, loading } = getCurrentUser();
+  const { postComment } = useCommentService();
+  const [comment, setComment] = useState<string>('');
 
   const LoginActionText = useMemo(() => {
     const LoginTextWithPoper = withPoperPanel(
@@ -56,6 +75,32 @@ export const CommentField: React.FunctionComponent = () => {
     );
   }, [t]);
 
+  const submitComment = useCallback(() => {
+    const commentNew = {
+      entityId,
+      commentId,
+      entityType,
+      body: comment,
+      userPhotoUrl: currentUser?.photoUrl ?? '',
+      userDisplayName: currentUser?.displayName ?? '',
+    };
+    postComment(commentNew)
+      .catch((e) => console.error(e))
+      .finally(() => {
+        setComment('');
+        onSubmit?.();
+      });
+  }, [
+    comment,
+    commentId,
+    currentUser?.displayName,
+    currentUser?.photoUrl,
+    entityId,
+    entityType,
+    onSubmit,
+    postComment,
+  ]);
+
   return (
     <>
       {!loading && currentUser ? (
@@ -65,11 +110,15 @@ export const CommentField: React.FunctionComponent = () => {
             <StyledTextField
               minRows={5}
               multiline={true}
+              value={comment}
+              onChange={(e) => setComment(e.target.value)}
               placeholder={t('comment-section.comment-placeholder')}
             />
           </InputRowContainer>
           <ActionsContainer>
-            <Button>{t('comment-section.submit')}</Button>
+            <Button onClick={submitComment}>
+              {t('comment-section.submit')}
+            </Button>
           </ActionsContainer>
         </CommentBoxContainer>
       ) : (
