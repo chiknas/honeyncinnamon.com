@@ -11,9 +11,7 @@ type CommentBoxProps = {
 const CommentBoxContainer = styled.div`
   display: flex;
   flex-direction: row;
-  * > * {
-    margin: 0 0.5rem 0 0.5rem;
-  }
+  gap: 0.5rem;
 `;
 
 export const CommentBox: React.FunctionComponent<CommentBoxProps> = ({

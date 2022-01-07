@@ -1,7 +1,7 @@
-import { postComment } from './functions/CommentPost';
+import { postComment, deleteComment } from './functions/CommentPost';
 import { useCommentsByEntityId } from './hooks/useCommentsById';
 import { CommentService } from './types';
 
 export const useCommentService = (): CommentService => {
-  return { getComments: useCommentsByEntityId, postComment };
+  return { getComments: useCommentsByEntityId, postComment, deleteComment };
 };

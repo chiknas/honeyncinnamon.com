@@ -11,6 +11,7 @@ export enum EntityType {
 export interface Comment {
   id?: string;
   entityId: string;
+  userId: string;
   userDisplayName: string;
   userPhotoUrl: string;
   body: string;
@@ -24,6 +25,7 @@ export interface Comment {
  */
 export interface CommentNew {
   entityId: string;
+  userId: string;
   userDisplayName: string;
   userPhotoUrl: string;
   body: string;
@@ -35,4 +37,5 @@ export interface CommentNew {
 export interface CommentService {
   getComments: (entityId: string) => DataLoad<Comment[]>;
   postComment: (comment: CommentNew) => Promise<Comment | undefined>;
+  deleteComment: (comment: Comment) => Promise<void>;
 }

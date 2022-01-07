@@ -7,6 +7,7 @@ import {
   doc,
   increment,
   updateDoc,
+  deleteDoc,
 } from 'firebase/firestore';
 import {
   Comment,
@@ -34,4 +35,19 @@ export const postComment = async (
 
     return e as unknown as Comment;
   });
+};
+
+export const deleteComment = async (comment: Comment): Promise<void> => {
+  return comment.id
+    ? deleteDoc(doc(getFirestore(), 'comments', comment.id)).then(() => {
+        const entityRef = doc(
+          getFirestore(),
+          comment.entityType,
+          comment.entityId
+        );
+        updateDoc(entityRef, { commentCount: increment(-1) }).catch((e) =>
+          console.error(e)
+        );
+      })
+    : new Promise((resolve) => resolve());
 };
