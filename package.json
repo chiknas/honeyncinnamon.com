@@ -4,10 +4,12 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "fullBuild": "yarn validateRecipes && yarn lint && yarn build",
     "start": "next start",
     "lint": "next lint --fix",
     "validateRecipes": "node recipes/RecipeJsonValidator.js",
-    "pre-push": "yarn validateRecipes && yarn lint && yarn build"
+    "pre-push": "yarn fullBuild",
+    "postinstall": "husky install"
   },
   "dependencies": {
     "@material-ui/core": "^4.12.3",
@@ -39,6 +41,7 @@
     "eslint-config-next": "12.0.3",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
+    "husky": "^7.0.4",
     "prettier": "^2.4.1",
     "typescript": "4.4.4"
   }
