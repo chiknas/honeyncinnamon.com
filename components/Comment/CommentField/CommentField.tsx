@@ -7,7 +7,7 @@ import React, { useCallback, useMemo, useState } from 'react';
 import { useCommentService } from 'services/EntityServices/CommentService/CommentService';
 import { useUserService } from 'services/EntityServices/UserService/UserService';
 import styled from 'styled-components';
-import { EntityType } from 'services/EntityServices/CommentService/types';
+import { CommentEntityType } from 'services/EntityServices/CommentService/types';
 
 const CommentBoxContainer = styled.div`
   padding: 1rem;
@@ -46,7 +46,7 @@ const StyledTypography = styled(Typography)`
 type CommentFieldProps = {
   // the entity (post/recipes) that we are commenting on
   entityId: string;
-  entityType: EntityType;
+  entityType: CommentEntityType;
   // if its a response to an existing comment on the entity
   commentId?: string;
   // optional function to run when the comment is submitted

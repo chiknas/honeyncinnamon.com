@@ -5,17 +5,15 @@ import {
   serverTimestamp,
   CollectionReference,
   doc,
+  setDoc,
   increment,
   updateDoc,
   deleteDoc,
 } from 'firebase/firestore';
-import {
-  Comment,
-  CommentNew,
-} from 'services/EntityServices/CommentService/types';
+import { Comment } from 'services/EntityServices/CommentService/types';
 
 export const postComment = async (
-  comment: CommentNew
+  comment: Comment
 ): Promise<Comment | undefined> => {
   if (!comment.body || comment.body === '') {
     return new Promise<undefined>(() => undefined);
@@ -35,6 +33,15 @@ export const postComment = async (
 
     return e as unknown as Comment;
   });
+};
+
+export const updateComment = async (comment: Comment): Promise<void> => {
+  if (!comment.body || comment.body === '' || comment.id === undefined) {
+    return new Promise<undefined>(() => undefined);
+  }
+
+  const commentRef = doc(getFirestore(), 'comments', comment.id);
+  return setDoc(commentRef, comment);
 };
 
 export const deleteComment = async (comment: Comment): Promise<void> => {

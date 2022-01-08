@@ -22,6 +22,8 @@
     "login-action": "Log in to add a comment",
     "comment-placeholder": "Add your comment",
     "submit": "Submit",
-    "respond": "Respond"
+    "respond": "Respond",
+    "edit": "Edit",
+    "cancel": "Cancel"
   }
 }

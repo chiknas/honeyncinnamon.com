@@ -1,13 +1,11 @@
 import { DataLoad } from 'services/EntityServices/types';
 
-export enum EntityType {
+// what entities in the system can have comments
+export enum CommentEntityType {
   POSTS = 'posts',
   RECIPES = 'recipes',
 }
 
-/**
- * Comments as returned from the server
- */
 export interface Comment {
   id?: string;
   entityId: string;
@@ -15,27 +13,14 @@ export interface Comment {
   userDisplayName: string;
   userPhotoUrl: string;
   body: string;
-  timestamp: string;
-  entityType: EntityType;
-  commentId?: string;
-}
-
-/**
- * Mutation object to give to the BE to create a new comment
- */
-export interface CommentNew {
-  entityId: string;
-  userId: string;
-  userDisplayName: string;
-  userPhotoUrl: string;
-  body: string;
-  // is it a post or a recipe?
-  entityType: EntityType;
+  timestamp?: string;
+  entityType: CommentEntityType;
   commentId?: string;
 }
 
 export interface CommentService {
   getComments: (entityId: string) => DataLoad<Comment[]>;
-  postComment: (comment: CommentNew) => Promise<Comment | undefined>;
+  postComment: (comment: Comment) => Promise<Comment | undefined>;
+  updateComment: (comment: Comment) => Promise<void>;
   deleteComment: (comment: Comment) => Promise<void>;
 }

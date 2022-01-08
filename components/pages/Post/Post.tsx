@@ -2,7 +2,7 @@ import React from 'react';
 import { CommentSection } from 'components/Comment/CommentSection/CommentSection';
 import styled from 'styled-components';
 import { Divider } from '@material-ui/core';
-import { EntityType } from 'services/EntityServices/CommentService/types';
+import { CommentEntityType } from 'services/EntityServices/CommentService/types';
 
 type PostProps = {
   id: string;
@@ -21,7 +21,7 @@ export const Post: React.FunctionComponent<PostProps> = ({ id, data }) => {
     <PostContainer>
       <div dangerouslySetInnerHTML={{ __html: data }} />
       <Divider />
-      <CommentSection id={id} entityType={EntityType.POSTS} />
+      <CommentSection id={id} entityType={CommentEntityType.POSTS} />
     </PostContainer>
   );
 };

@@ -6,7 +6,7 @@ import { usePostService } from 'services/EntityServices/PostService/PostService'
 import { Button, Typography } from '@material-ui/core';
 import { Theme } from 'styles/Theme';
 import { CommentField } from '../CommentField/CommentField';
-import { EntityType } from 'services/EntityServices/CommentService/types';
+import { CommentEntityType } from 'services/EntityServices/CommentService/types';
 
 const CommentSectionContainer = styled.div`
   display: flex;
@@ -29,7 +29,7 @@ const ShowCommentsButton = styled(Button)`
 
 type CommentSectionProps = {
   id: string;
-  entityType: EntityType;
+  entityType: CommentEntityType;
 };
 
 export const CommentSection: React.FunctionComponent<CommentSectionProps> = ({
