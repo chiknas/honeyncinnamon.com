@@ -5,7 +5,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint --fix"
+    "lint": "next lint --fix",
+    "validateRecipes": "node recipes/RecipeJsonValidator.js",
+    "pre-push": "yarn validateRecipes && yarn lint && yarn build"
   },
   "dependencies": {
     "@material-ui/core": "^4.12.3",
@@ -31,6 +33,7 @@
     "@types/styled-components": "^5.1.15",
     "@typescript-eslint/eslint-plugin": "^5.3.0",
     "@typescript-eslint/parser": "^5.3.0",
+    "ajv": "^8.8.2",
     "babel-plugin-styled-components": "^1.13.3",
     "eslint": "7.32.0",
     "eslint-config-next": "12.0.3",

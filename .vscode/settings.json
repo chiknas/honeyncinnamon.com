@@ -1,5 +1,11 @@
 {
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true,
-  "prettier.endOfLine": "auto"
+  "prettier.endOfLine": "auto",
+  "json.schemas": [
+    {
+      "fileMatch": ["/recipes/*/*.json"],
+      "url": "/recipes/recipe-schema.json"
+    }
+  ]
 }

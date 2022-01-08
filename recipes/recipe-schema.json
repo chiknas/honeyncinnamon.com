@@ -1,0 +1,21 @@
+{
+  "title": "Recipe Schema",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Here the description where I expected to set it"
+    },
+    "photoTitlePath": {
+      "type": "string",
+      "defaultSnippets": [
+        {
+          "label": "/images/recipes/",
+          "description": "The relative path where you added the image in the public folder.",
+          "body": "/images/recipes/"
+        }
+      ]
+    }
+  },
+  "required": ["photoTitlePath"]
+}
