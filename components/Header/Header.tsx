@@ -11,7 +11,7 @@ import { BurgerMenu } from './BurgerMenu/BurgerMenu';
 
 const HeaderContainer = styled.div<{ isMobile: boolean }>`
   overflow: hidden;
-  position: fixed;
+  position: sticky;
   background-color: ${Theme.palette.background.default};
   top: 0;
   width: 100vw;
