@@ -3,7 +3,7 @@ import fs from 'fs';
 import path from 'path';
 import { ParsedUrlQuery } from 'querystring';
 import { withTranslateProps } from 'services/StaticPropsHelpers';
-import { Post } from 'components/pages/Post/Post';
+import { PostPage } from 'components/pages/Post/PostPage';
 import { Converter } from 'showdown';
 
 const mdConverter = new Converter();
@@ -41,4 +41,4 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-export default Post;
+export default PostPage;
