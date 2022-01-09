@@ -5,7 +5,7 @@ import { ProfileUserSettings } from './ProfileUserSettings';
 
 const ProfileButtonSize = '1.1em';
 
-export const ProfileButton: React.FunctionComponent = () => {
+const ProfileButton: React.FunctionComponent = () => {
   const { getCurrentUser } = useUserService();
   const { result: currentUser } = getCurrentUser();
   const profile = currentUser ? (
@@ -16,3 +16,5 @@ export const ProfileButton: React.FunctionComponent = () => {
 
   return <>{profile}</>;
 };
+
+export default ProfileButton;

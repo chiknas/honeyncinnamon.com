@@ -47,7 +47,7 @@ const StyledLanguageButton = styled(Button)`
   }
 `;
 
-export const LanguageButton: React.FunctionComponent = () => {
+const LanguageButton: React.FunctionComponent = () => {
   const { locale } = useRouter();
 
   const LanguagePoperPanel = React.useMemo(
@@ -73,3 +73,5 @@ export const LanguageButton: React.FunctionComponent = () => {
     </LanguagePoperPanel>
   );
 };
+
+export default LanguageButton;

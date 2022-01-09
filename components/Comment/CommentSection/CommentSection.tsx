@@ -32,7 +32,7 @@ type CommentSectionProps = {
   entityType: CommentEntityType;
 };
 
-export const CommentSection: React.FunctionComponent<CommentSectionProps> = ({
+const CommentSection: React.FunctionComponent<CommentSectionProps> = ({
   id,
   entityType,
 }) => {
@@ -65,3 +65,5 @@ export const CommentSection: React.FunctionComponent<CommentSectionProps> = ({
     </CommentSectionContainer>
   );
 };
+
+export default CommentSection;

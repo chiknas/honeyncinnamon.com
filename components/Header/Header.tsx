@@ -1,13 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 import { BsInstagram } from 'react-icons/bs';
-import { LanguageButton } from './LanguageButton';
 import Link from 'next/link';
 import { Theme } from 'styles/Theme';
-import { ProfileButton } from './ProfileButton/ProfileButton';
-import useViewport from 'hooks/useViewport';
 import { MainMenu } from './MainMenu/MainMenu';
 import { BurgerMenu } from './BurgerMenu/BurgerMenu';
+import dynamic from 'next/dynamic';
+import useViewport from 'hooks/useViewport';
 
 const HeaderContainer = styled.div<{ isMobile: boolean }>`
   overflow: hidden;
@@ -29,6 +28,9 @@ const HeaderSettingsSection = styled.div`
 
 export const Header: React.FunctionComponent = () => {
   const { isMobile } = useViewport();
+  // dynamic load expensive items to increase initial load performance
+  const LanguageButton = dynamic(() => import('./LanguageButton'));
+  const ProfileButton = dynamic(() => import('./ProfileButton/ProfileButton'));
 
   const menu = isMobile ? <BurgerMenu /> : <MainMenu />;
 
