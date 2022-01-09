@@ -2,10 +2,6 @@
   "title": "Recipe Schema",
   "type": "object",
   "properties": {
-    "id": {
-      "type": "string",
-      "description": "Here the description where I expected to set it"
-    },
     "photoTitlePath": {
       "type": "string",
       "defaultSnippets": [
@@ -15,7 +11,82 @@
           "body": "/images/recipes/"
         }
       ]
+    },
+    "parts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "defaultSnippets": [
+              {
+                "label": "Title to explain which part of the process is this",
+                "description": "Title to explain which part of the process is this",
+                "body": "For the potatos"
+              }
+            ]
+          },
+          "ingredients": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "description": {
+                  "type": "string",
+                  "defaultSnippets": [
+                    {
+                      "label": "What is this ingredient ex. tomato",
+                      "description": "What is this ingredient ex. tomato",
+                      "body": "Tomato"
+                    }
+                  ]
+                },
+                "quantity": {
+                  "type": "object",
+                  "properties": {
+                    "amount": {
+                      "type": "number",
+                      "defaultSnippets": [
+                        {
+                          "label": "How much of this ingredient do we need?",
+                          "description": "How much of this ingredient do we need?",
+                          "body": 1
+                        }
+                      ]
+                    },
+                    "unit": {
+                      "type": "string",
+                      "enum": ["grams", "oz"]
+                    }
+                  }
+                }
+              },
+              "required": ["description"]
+            }
+          },
+          "steps": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": ["title", "ingredients", "steps"],
+        "defaultSnippets": [
+          {
+            "label": "The process needed to be executed for this part of the recipe.",
+            "description": "The process needed to be executed for this part of the recipe.",
+            "body": {
+              "ingredients": [{ "description": "tomato", "quantity": 1 }],
+              "steps": [
+                "This is what needs to be done on the ingredients above"
+              ]
+            }
+          }
+        ]
+      }
     }
   },
-  "required": ["photoTitlePath"]
+  "required": ["photoTitlePath", "parts"]
 }

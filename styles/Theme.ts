@@ -3,7 +3,7 @@ import { createTheme } from '@material-ui/core';
 export const Theme = createTheme({
   typography: {
     fontFamily: 'Archer',
-    fontSize: 10,
+    fontSize: 13,
   },
   palette: {
     background: {

@@ -25,5 +25,10 @@
     "respond": "Respond",
     "edit": "Edit",
     "cancel": "Cancel"
+  },
+  "measurement-units": {
+    "grams": "g",
+    "ounces": "oz",
+    "tablespoon": "tablespoon"
   }
 }

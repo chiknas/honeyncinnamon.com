@@ -25,5 +25,10 @@
     "respond": "Apantisi",
     "edit": "Epeksergasia",
     "cancel": "Akurwsh"
+  },
+  "measurement-units": {
+    "grams": "gr",
+    "ounces": "ouggies",
+    "tablespoon": "kts"
   }
 }

@@ -6,7 +6,7 @@
     "build": "next build",
     "fullBuild": "yarn validateRecipes && yarn lint && yarn build",
     "start": "next start",
-    "lint": "next lint --fix",
+    "lint": "next lint",
     "validateRecipes": "node recipes/RecipeJsonValidator.js",
     "pre-push": "yarn fullBuild",
     "postinstall": "husky install"

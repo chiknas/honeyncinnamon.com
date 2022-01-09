@@ -1,3 +1,4 @@
+import { IngredientList } from 'components/IngredientList/IngredientList';
 import React from 'react';
 import { PageContainer } from '../page.style';
 import { RecipeDetails } from './types';
@@ -15,6 +16,10 @@ export const RecipePage: React.FunctionComponent<RecipePageProps> = ({
       <img
         src={recipe.photoTitlePath}
         alt={`honey-cinnamon-recipe-${recipe.id}`}
+      />
+      <IngredientList
+        title={recipe.parts[0].title}
+        ingredients={recipe.parts[0].ingredients}
       />
     </PageContainer>
   );

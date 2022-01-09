@@ -5,4 +5,27 @@
 export interface RecipeDetails {
   id: string;
   photoTitlePath: string;
+  parts: Parts[];
+}
+
+export interface Parts {
+  title: string;
+  ingredients: Ingredient[];
+  steps: string[];
+}
+
+export enum MeasureUnit {
+  GRAMS = 'grams',
+  OUNCES = 'oz',
+  TABLE_SPOON = 'tablespoon',
+}
+
+export interface Quantity {
+  amount: number;
+  unit: MeasureUnit;
+}
+
+export interface Ingredient {
+  description: string;
+  quantity?: Quantity;
 }
