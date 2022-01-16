@@ -9,6 +9,7 @@ import { MobileLayout } from './MobileLayout';
 
 const MainContainer = styled.div`
   min-height: 100vh;
+  width: 100%;
   display: flex;
   flex-direction: column;
 `;

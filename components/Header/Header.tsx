@@ -13,7 +13,7 @@ const HeaderContainer = styled.div<{ isMobile: boolean }>`
   position: sticky;
   background-color: ${Theme.palette.background.default};
   top: 0;
-  width: 100vw;
+  width: 100%;
   display: flex;
   padding: 1em;
   text-align: center;
