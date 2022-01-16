@@ -36,6 +36,7 @@
     "tablespoon-short": "tablespoon"
   },
   "recipe": {
-    "ingredients-title": "Ingredients"
+    "ingredients-title": "Ingredients",
+    "steps-title": "Execution"
   }
 }
