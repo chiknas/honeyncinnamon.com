@@ -57,7 +57,7 @@
                     },
                     "unit": {
                       "type": "string",
-                      "enum": ["grams", "oz"]
+                      "enum": ["grams", "oz", "tablespoon", ""]
                     }
                   }
                 }

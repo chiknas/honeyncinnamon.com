@@ -30,5 +30,8 @@
     "grams": "gr",
     "ounces": "ouggies",
     "tablespoon": "kts"
+  },
+  "recipe": {
+    "ingredients-title": "Sustatika"
   }
 }

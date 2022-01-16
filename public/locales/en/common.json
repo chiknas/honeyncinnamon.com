@@ -30,5 +30,8 @@
     "grams": "g",
     "ounces": "oz",
     "tablespoon": "tablespoon"
+  },
+  "recipe": {
+    "ingredients-title": "Ingredients"
   }
 }

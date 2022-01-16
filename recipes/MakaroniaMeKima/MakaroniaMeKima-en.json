@@ -6,7 +6,49 @@
       "ingredients": [
         {
           "description": "Tomato",
+          "quantity": { "amount": 1, "unit": "" }
+        },
+        {
+          "description": "Patato",
           "quantity": { "amount": 1, "unit": "grams" }
+        },
+        {
+          "description": "Alati"
+        }
+      ],
+      "steps": [
+        "Cut the tomato in 4 pieaces",
+        "Eat the two pieces",
+        "Then eat the other two pieces"
+      ]
+    },
+    {
+      "title": "For the tomatos",
+      "ingredients": [
+        {
+          "description": "Tomato",
+          "quantity": { "amount": 1, "unit": "" }
+        },
+        {
+          "description": "Patato",
+          "quantity": { "amount": 1, "unit": "grams" }
+        },
+        {
+          "description": "Alati"
+        }
+      ],
+      "steps": [
+        "Cut the tomato in 4 pieaces",
+        "Eat the two pieces",
+        "Then eat the other two pieces"
+      ]
+    },
+    {
+      "title": "For the tomatos",
+      "ingredients": [
+        {
+          "description": "Tomato",
+          "quantity": { "amount": 1, "unit": "" }
         },
         {
           "description": "Patato",
