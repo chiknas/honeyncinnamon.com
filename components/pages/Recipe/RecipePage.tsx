@@ -8,6 +8,9 @@ import { PageContainer } from '../page.style';
 import { RecipeDetails } from './types';
 import { MeasureUnit } from 'components/pages/Recipe/types';
 import { StepsTimeline } from 'components/StepsTimeline/StepsTimeline';
+import dynamic from 'next/dynamic';
+import { CommentEntityType } from 'services/EntityServices/CommentService/types';
+import { Divider } from '@material-ui/core';
 
 const RecipeContainer = styled.div`
   display: flex;
@@ -43,6 +46,11 @@ type RecipePageProps = {
 export const RecipePage: React.FunctionComponent<RecipePageProps> = ({
   recipe,
 }) => {
+  // the user wont have to see this asap. lazy load to improve performance.
+  const CommentSection = dynamic(
+    () => import('components/Comment/CommentSection/CommentSection')
+  );
+
   const { t } = useTranslation();
   const [measureUnit, setMeasureUnit] = React.useState<MeasureUnit>(
     MeasureUnit.GRAMS
@@ -86,6 +94,8 @@ export const RecipePage: React.FunctionComponent<RecipePageProps> = ({
           ))}
         </StepsListContainer>
       </RecipeContainer>
+      <Divider />
+      <CommentSection id={recipe.id} entityType={CommentEntityType.RECIPES} />
     </PageContainer>
   );
 };

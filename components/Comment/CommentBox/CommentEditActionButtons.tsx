@@ -15,8 +15,11 @@ export const CommentEditActionButtons: React.FunctionComponent<CommentEditAction
     const { updateComment } = useCommentService();
     return (
       <React.Fragment>
-        <Button onClick={onCancel}>{t('comment-section.cancel')}</Button>
+        <Button style={{ flex: '0 1 auto' }} onClick={onCancel}>
+          {t('comment-section.cancel')}
+        </Button>
         <Button
+          style={{ flex: '0 1 auto' }}
           onClick={() => {
             updateComment(comment);
             onCancel?.();

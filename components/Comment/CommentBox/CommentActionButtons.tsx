@@ -34,17 +34,26 @@ export const CommentActionButtons: React.FunctionComponent<CommentActionButtonsP
         {isUsersComment && (
           <React.Fragment>
             <IconButton
+              style={{ flex: '0 1 auto' }}
               onClick={() => comment.id && deleteComment(comment)}
               disabled={!isUserSignedIn}
             >
               <MdDeleteForever size={15} />
             </IconButton>
-            <Button disabled={!isUserSignedIn} onClick={() => onEditClick?.()}>
+            <Button
+              style={{ flex: '0 1 auto' }}
+              disabled={!isUserSignedIn}
+              onClick={() => onEditClick?.()}
+            >
               {t('comment-section.edit')}
             </Button>
           </React.Fragment>
         )}
-        <Button onClick={onRespondClick} disabled={!isUserSignedIn}>
+        <Button
+          style={{ flex: '0 1 auto' }}
+          onClick={onRespondClick}
+          disabled={!isUserSignedIn}
+        >
           {t('comment-section.respond')}
         </Button>
       </React.Fragment>

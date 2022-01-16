@@ -1,5 +1,10 @@
 import { DataLoad } from 'services/EntityServices/types';
 
+export interface CommentAggregation {
+  id: string;
+  commentCount?: number;
+}
+
 // what entities in the system can have comments
 export enum CommentEntityType {
   POSTS = 'posts',
@@ -23,4 +28,7 @@ export interface CommentService {
   postComment: (comment: Comment) => Promise<Comment | undefined>;
   updateComment: (comment: Comment) => Promise<void>;
   deleteComment: (comment: Comment) => Promise<void>;
+  getCommentAggregation: (
+    entityId: string
+  ) => DataLoad<CommentAggregation | undefined>;
 }

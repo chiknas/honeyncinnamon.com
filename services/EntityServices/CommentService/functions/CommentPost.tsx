@@ -9,8 +9,13 @@ import {
   increment,
   updateDoc,
   deleteDoc,
+  getDoc,
+  DocumentReference,
 } from 'firebase/firestore';
-import { Comment } from 'services/EntityServices/CommentService/types';
+import {
+  Comment,
+  CommentAggregation,
+} from 'services/EntityServices/CommentService/types';
 
 export const postComment = async (
   comment: Comment
@@ -25,11 +30,17 @@ export const postComment = async (
       ...comment,
       timestamp: serverTimestamp(),
     }
-  ).then((e) => {
-    const entityRef = doc(getFirestore(), comment.entityType, comment.entityId);
-    updateDoc(entityRef, { commentCount: increment(1) }).catch((e) =>
-      console.error(e)
-    );
+  ).then(async (e) => {
+    const entityRef = doc(
+      getFirestore(),
+      'commentAggregation',
+      comment.entityId
+    ) as DocumentReference<Omit<CommentAggregation, 'id'>>;
+    const entityRefSnap = await getDoc(entityRef);
+    const commentCount = (entityRefSnap?.data()?.commentCount ?? 0) + 1;
+    setDoc(entityRef, {
+      commentCount,
+    }).catch((e) => console.error(e));
 
     return e as unknown as Comment;
   });
@@ -49,7 +60,7 @@ export const deleteComment = async (comment: Comment): Promise<void> => {
     ? deleteDoc(doc(getFirestore(), 'comments', comment.id)).then(() => {
         const entityRef = doc(
           getFirestore(),
-          comment.entityType,
+          'commentAggregation',
           comment.entityId
         );
         updateDoc(entityRef, { commentCount: increment(-1) }).catch((e) =>
