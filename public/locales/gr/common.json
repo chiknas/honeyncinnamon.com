@@ -27,9 +27,13 @@
     "cancel": "Akurwsh"
   },
   "measurement-units": {
-    "grams": "gr",
-    "ounces": "ouggies",
-    "tablespoon": "kts"
+    "title": "Mesoures",
+    "grams": "Grammaria",
+    "grams-short": "gr.",
+    "ounces": "Ouggies",
+    "ounces-short": "ouggies",
+    "tablespoon": "koutalaki ths soupas",
+    "tablespoon-short": "k.s."
   },
   "recipe": {
     "ingredients-title": "Sustatika"

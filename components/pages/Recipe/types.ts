@@ -16,7 +16,7 @@ export interface Parts {
 
 export enum MeasureUnit {
   GRAMS = 'grams',
-  OUNCES = 'oz',
+  OUNCES = 'ounces',
   TABLE_SPOON = 'tablespoon',
   NONE = '',
 }

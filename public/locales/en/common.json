@@ -27,9 +27,13 @@
     "cancel": "Cancel"
   },
   "measurement-units": {
-    "grams": "g",
-    "ounces": "oz",
-    "tablespoon": "tablespoon"
+    "title": "Measurement units",
+    "grams": "Grams",
+    "grams-short": "g",
+    "ounces": "Ounces",
+    "ounces-short": "oz",
+    "tablespoon": "tablespoon",
+    "tablespoon-short": "tablespoon"
   },
   "recipe": {
     "ingredients-title": "Ingredients"

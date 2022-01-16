@@ -6,11 +6,12 @@ import {
   IconButton,
   Collapse,
 } from '@material-ui/core';
-import { Ingredient } from 'components/pages/Recipe/types';
+import { Ingredient, MeasureUnit } from 'components/pages/Recipe/types';
 import { useTranslation } from 'next-i18next';
 import React, { useMemo, useState } from 'react';
 import styled from 'styled-components';
 import { BiPlus, BiMinus } from 'react-icons/bi';
+import { useMeasurementsConverter } from 'hooks/useMeasurementsConverter';
 
 const IngredientListContainer = styled.div`
   display: flex;
@@ -38,44 +39,52 @@ const HeaderContainer = styled.div`
 
 interface IngredientListProps {
   title: string;
+  measureUnit: MeasureUnit;
   ingredients: Ingredient[];
 }
 
 export const IngredientList: React.FunctionComponent<IngredientListProps> = ({
   title,
+  measureUnit,
   ingredients,
 }) => {
   const { t } = useTranslation();
   const [expand, setExpand] = useState(true);
+  const { convertQuantity } = useMeasurementsConverter();
 
   const lines = useMemo(
     () =>
-      ingredients.map((ingredient, index) => (
-        <React.Fragment
-          key={`ingredient-line-${ingredient.description}-${index}`}
-        >
-          <Divider />
-          <IngredientLineContainer>
-            <Checkbox />
-            {ingredient.quantity?.amount && (
-              <StyledTypography>
-                <Box sx={{ fontWeight: 'bold' }}>
-                  {ingredient.quantity?.amount}
-                </Box>
-              </StyledTypography>
-            )}
-            {ingredient.quantity?.unit && (
-              <StyledTypography>
-                <Box sx={{ fontWeight: 'bold' }}>
-                  {t(`measurement-units.${ingredient.quantity?.unit}`)}
-                </Box>
-              </StyledTypography>
-            )}
-            <StyledTypography>{ingredient.description}</StyledTypography>
-          </IngredientLineContainer>
-        </React.Fragment>
-      )),
-    [ingredients, t]
+      ingredients.map((ingredient, index) => {
+        const ingredientQuantity =
+          ingredient.quantity &&
+          convertQuantity(ingredient.quantity, measureUnit);
+        return (
+          <React.Fragment
+            key={`ingredient-line-${ingredient.description}-${index}`}
+          >
+            <Divider />
+            <IngredientLineContainer>
+              <Checkbox />
+              {ingredientQuantity?.amount && (
+                <StyledTypography>
+                  <Box sx={{ fontWeight: 'bold' }}>
+                    {ingredientQuantity.amount}
+                  </Box>
+                </StyledTypography>
+              )}
+              {ingredientQuantity?.unit && (
+                <StyledTypography>
+                  <Box sx={{ fontWeight: 'bold' }}>
+                    {t(`measurement-units.${ingredientQuantity.unit}-short`)}
+                  </Box>
+                </StyledTypography>
+              )}
+              <StyledTypography>{ingredient.description}</StyledTypography>
+            </IngredientLineContainer>
+          </React.Fragment>
+        );
+      }),
+    [convertQuantity, ingredients, measureUnit, t]
   );
   return (
     <IngredientListContainer>

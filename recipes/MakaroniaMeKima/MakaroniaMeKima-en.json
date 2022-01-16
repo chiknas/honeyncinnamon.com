@@ -10,10 +10,11 @@
         },
         {
           "description": "Patato",
-          "quantity": { "amount": 1, "unit": "grams" }
+          "quantity": { "amount": 750, "unit": "grams" }
         },
         {
-          "description": "Alati"
+          "description": "Alati",
+          "quantity": { "amount": 5, "unit": "tablespoon" }
         }
       ],
       "steps": [
