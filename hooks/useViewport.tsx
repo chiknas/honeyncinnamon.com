@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react';
+import { MaxWidth as MobileMaxWidth } from 'components/Layout/MobileLayout';
+import { MaxWidth as MainMaxWidth } from 'components/Layout/MobileLayout';
 
 const mobileViewportWidthThreashold = 768;
 
@@ -15,6 +17,7 @@ function getWindowDimensions(): WindowDimensions {
 type Viewport = {
   windowDimensions: WindowDimensions;
   isMobile: boolean;
+  bodyMaxWidth: string;
 };
 
 export default function useViewport(): Viewport {
@@ -22,19 +25,28 @@ export default function useViewport(): Viewport {
     width: 0,
     height: 0,
   });
+  const [isMobile, setIsMobile] = useState(
+    windowDimensions.width <= mobileViewportWidthThreashold
+  );
+  const [bodyMaxWidth, setBodyMaxWidth] = useState(
+    isMobile ? MobileMaxWidth : MainMaxWidth
+  );
 
   useEffect(() => {
     function handleResize() {
       setWindowDimensions(getWindowDimensions());
+      setIsMobile(windowDimensions.width <= mobileViewportWidthThreashold);
+      setBodyMaxWidth(isMobile ? MobileMaxWidth : MainMaxWidth);
     }
 
     handleResize();
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
-  }, []);
+  }, [isMobile, windowDimensions.width]);
 
   return {
     windowDimensions,
-    ...{ isMobile: windowDimensions.width <= mobileViewportWidthThreashold },
+    isMobile,
+    bodyMaxWidth,
   };
 }

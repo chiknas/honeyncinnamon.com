@@ -3,6 +3,8 @@ import React from 'react';
 import { useTheme } from '@material-ui/core';
 import { AdContainer, ContentContainer } from './Layout';
 
+export const MaxWidth = '960px';
+
 export const MainLayout: React.FunctionComponent = ({ children }) => {
   const { palette } = useTheme();
 
@@ -11,7 +13,7 @@ export const MainLayout: React.FunctionComponent = ({ children }) => {
       <AdContainer color={palette.background.paper}>
         <AdSense />
       </AdContainer>
-      <ContentContainer maxWidth="960px">{children}</ContentContainer>
+      <ContentContainer maxWidth={MaxWidth}>{children}</ContentContainer>
       <AdContainer color={palette.background.paper}>
         <AdSense />
       </AdContainer>
