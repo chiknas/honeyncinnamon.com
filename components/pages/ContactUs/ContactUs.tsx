@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import styled from 'styled-components';
 import { Button, TextField, Typography } from '@material-ui/core';
 import { Theme } from 'styles/Theme';
 import { useTranslation } from 'next-i18next';
 import useViewport from 'hooks/useViewport';
+import { ContactMessage } from 'pages/api/contact/types';
 
 const ContactUsContainer = styled.div<{ isMobile: boolean; minWidth: string }>`
   display: flex;
@@ -31,11 +32,9 @@ const StyledTextField = styled(TextField)`
 
 const StyledMultiLineTextField = styled(TextField)`
   background-color: ${Theme.palette.background.default};
-  height: 100px;
 `;
 
 const StyledLogin = styled(Button)`
-  margin-top: 1rem;
   background-color: ${() => Theme.palette.primary.main};
   &:hover {
     background-color: ${() => Theme.palette.primary.dark};
@@ -48,32 +47,36 @@ const FooterMessage = styled(Typography)`
   color: ${Theme.palette.text.hint};
 `;
 
-interface ContactMessage {
-  fullName: string;
-  subject: string;
-  email: string;
-  body: string;
-}
+const emptyContactMessage = {
+  fullName: '',
+  subject: '',
+  email: '',
+  body: '',
+};
 
 export const ContactUs: React.FunctionComponent = () => {
   const { t } = useTranslation();
   const { isMobile, bodyMaxWidth } = useViewport();
-  const [contactMessage, setContactMessage] = useState<ContactMessage>({
-    fullName: '',
-    subject: '',
-    email: '',
-    body: '',
-  });
+  const [contactMessage, setContactMessage] =
+    useState<ContactMessage>(emptyContactMessage);
+  const handleSubmit = useCallback(
+    (e) => {
+      e.preventDefault();
+      void fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json, text/plain, */*',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(contactMessage),
+      }).finally(() => setContactMessage(emptyContactMessage));
+    },
+    [contactMessage]
+  );
   return (
     <ContactUsContainer isMobile={isMobile} minWidth={bodyMaxWidth}>
       <Typography variant="h2">{t('contact-us.title')}</Typography>
-      <FormContainer
-        isMobile={isMobile}
-        onSubmit={(e) => {
-          e.preventDefault();
-          console.log(contactMessage);
-        }}
-      >
+      <FormContainer isMobile={isMobile} onSubmit={handleSubmit}>
         <StyledTextField
           required
           label={t('contact-us.full-name')}
