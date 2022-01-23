@@ -1,9 +1,15 @@
 import React from 'react';
 import { useUserService } from 'services/EntityServices/UserService/UserService';
+import styled from 'styled-components';
 import { ProfileLogin } from './ProfileLogin';
 import { ProfileUserSettings } from './ProfileUserSettings';
 
-const ProfileButtonSize = '1.1em';
+const ProfileButtonSize = '1.5em';
+
+const ProfileButtonContainer = styled.div`
+  display: flex;
+  justify-content: center;
+`;
 
 const ProfileButton: React.FunctionComponent = () => {
   const { getCurrentUser } = useUserService();
@@ -14,7 +20,7 @@ const ProfileButton: React.FunctionComponent = () => {
     <ProfileLogin size={ProfileButtonSize} />
   );
 
-  return <>{profile}</>;
+  return <ProfileButtonContainer>{profile}</ProfileButtonContainer>;
 };
 
 export default ProfileButton;

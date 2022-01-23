@@ -1,7 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { BsInstagram } from 'react-icons/bs';
-import Link from 'next/link';
 import { Theme } from 'styles/Theme';
 import { MainMenu } from './MainMenu/MainMenu';
 import { BurgerMenu } from './BurgerMenu/BurgerMenu';
@@ -21,31 +19,33 @@ const HeaderContainer = styled.div<{ isMobile: boolean }>`
   gap: 1.5em;
 `;
 
-const HeaderSettingsSection = styled.div`
+const HeaderSettingsSection = styled.div<{ isMobile: boolean }>`
   display: flex;
   gap: 1em;
+  position: absolute;
+  right: ${(props) => (props.isMobile ? '1.5em' : '3em')};
 `;
 
-export const Header: React.FunctionComponent = () => {
+const Header: React.FunctionComponent = () => {
   const { isMobile } = useViewport();
   // dynamic load expensive items to increase initial load performance
   const LanguageButton = dynamic(() => import('./LanguageButton'));
   const ProfileButton = dynamic(() => import('./ProfileButton/ProfileButton'));
 
-  const menu = isMobile ? <BurgerMenu /> : <MainMenu />;
+  const menu = React.useMemo(
+    () => (isMobile ? <BurgerMenu /> : <MainMenu />),
+    [isMobile]
+  );
 
   return (
     <HeaderContainer isMobile={isMobile}>
       {menu}
-      <HeaderSettingsSection>
+      <HeaderSettingsSection isMobile={isMobile}>
         <LanguageButton />
-        <Link href="https://www.instagram.com" passHref={true}>
-          <a>
-            <BsInstagram color="purple" />
-          </a>
-        </Link>
         <ProfileButton />
       </HeaderSettingsSection>
     </HeaderContainer>
   );
 };
+
+export default React.memo<React.FunctionComponent>(Header);

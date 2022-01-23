@@ -15,7 +15,7 @@ const FooterContainer = styled.div`
   }
 `;
 
-export const Footer: React.FunctionComponent = () => {
+const Footer: React.FunctionComponent = () => {
   return (
     <FooterContainer>
       <BsFacebook color="#3b5998" />
@@ -25,3 +25,5 @@ export const Footer: React.FunctionComponent = () => {
     </FooterContainer>
   );
 };
+
+export default React.memo(Footer);

@@ -2,8 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { Theme } from 'styles/Theme';
 import useViewport from '../../hooks/useViewport';
-import { Footer } from '../Footer/Footer';
-import { Header } from '../Header/Header';
+import Footer from '../Footer/Footer';
+import Header from '../Header/Header';
 import { MainLayout } from './MainLayout';
 import { MobileLayout } from './MobileLayout';
 

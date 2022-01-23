@@ -3,6 +3,8 @@ import React, { useCallback, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 
 const WrappedComponentContainer = styled.div`
+  display: flex;
+  align-items: center;
   &:hover {
     cursor: pointer;
   }

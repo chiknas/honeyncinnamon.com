@@ -10,17 +10,17 @@ type LanguageItemProps = {
   language: string;
 };
 
+const StyledMenuItem = styled(MenuItem)`
+  background-color: ${Theme.palette.background.default};
+  &:hover {
+    background-color: ${Theme.palette.background.paper};
+  }
+`;
+
 const LanguageItem: React.FunctionComponent<LanguageItemProps> = ({
   language,
 }) => {
   const { pathname, query } = useRouter();
-
-  const StyledMenuItem = styled(MenuItem)`
-    background-color: ${Theme.palette.background.default};
-    &:hover {
-      background-color: ${Theme.palette.background.paper};
-    }
-  `;
 
   return (
     <StyledMenuItem key={language}>
