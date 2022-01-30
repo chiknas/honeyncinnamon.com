@@ -32,6 +32,22 @@ export const ContentContainer = styled.div<{ maxWidth?: string }>`
   ${(props) => props.maxWidth && `max-width: ${props.maxWidth};`}
 `;
 
+const SkipNavigation = styled.a`
+  text-decoration: underline;
+  position: absolute;
+  z-index: 1000;
+  background: ${Theme.palette.primary.main};
+  padding: 0.5rem 1.5rem;
+  border-radius 0 0 0.25rem 0.25rem;
+  left: 0.5rem;
+
+  transform: translateY(-120%);
+  transition: transform 325ms ease-in;
+  &:focus {
+    transform: translateY(0);
+  }
+`;
+
 const Layout: React.FunctionComponent = ({ children }) => {
   const { isMobile } = useViewport();
   const Content = isMobile ? (
@@ -41,8 +57,11 @@ const Layout: React.FunctionComponent = ({ children }) => {
   );
   return (
     <MainContainer>
+      <SkipNavigation href="#main-content">Skip navigation</SkipNavigation>
       <Header />
-      <BodyContainer isMobile={isMobile}>{Content}</BodyContainer>
+      <BodyContainer id="main-content" isMobile={isMobile}>
+        {Content}
+      </BodyContainer>
       <Footer />
     </MainContainer>
   );
