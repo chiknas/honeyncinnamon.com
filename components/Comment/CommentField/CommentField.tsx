@@ -43,6 +43,11 @@ const StyledTypography = styled(Typography)`
   font-size: 1rem;
 `;
 
+const LoginActionContainer = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+
 type CommentFieldProps = {
   // the entity (post/recipes) that we are commenting on
   entityId: string;
@@ -124,7 +129,7 @@ export const CommentField: React.FunctionComponent<CommentFieldProps> = ({
           </ActionsContainer>
         </CommentBoxContainer>
       ) : (
-        LoginActionText
+        <LoginActionContainer>{LoginActionText}</LoginActionContainer>
       )}
     </>
   );

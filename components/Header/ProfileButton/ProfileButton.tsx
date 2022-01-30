@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { ProfileLogin } from './ProfileLogin';
 import { ProfileUserSettings } from './ProfileUserSettings';
 
-const ProfileButtonSize = '1.5em';
+const ProfileButtonSize = '22px';
 
 const ProfileButtonContainer = styled.div`
   display: flex;

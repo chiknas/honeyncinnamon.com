@@ -9,6 +9,7 @@ import useViewport from 'hooks/useViewport';
 const HeaderContainer = styled.div<{ isMobile: boolean }>`
   overflow: hidden;
   position: sticky;
+  z-index: 999;
   background-color: ${Theme.palette.background.default};
   top: 0;
   width: 100%;

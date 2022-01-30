@@ -69,7 +69,7 @@ export const CommentDetails: React.FunctionComponent<CommentDetailsProps> = ({
           />
         </CommentBoxActionContainer>
       </CommentBox>
-      {isResponding && (
+      {isUserSignedIn && isResponding && (
         <CommentField
           commentId={responseCommentId}
           entityId={comment.entityId}
