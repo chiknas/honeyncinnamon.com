@@ -12,13 +12,17 @@ interface Params extends ParsedUrlQuery {
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const { id } = context.params as Params;
-  // const recipesAbsolutePaths = ThroughDirectory('recipes', 'recipes', true);
+  // get all the files in different translations for this recipe
+  const recipeTranslations = fs.readdirSync(path.join('recipes', id));
+  // pick the correct file based on the locale used
+  const translatedRecipeFile =
+    recipeTranslations.find((recipe) =>
+      recipe.includes(context.locale ?? 'en')
+    ) ?? recipeTranslations[0];
+  // parse file to an object
   const recipeJson = {
     ...JSON.parse(
-      fs.readFileSync(
-        path.join('recipes', id, `${id}-${context.locale}.json`),
-        'utf-8'
-      )
+      fs.readFileSync(path.join('recipes', id, translatedRecipeFile), 'utf-8')
     ),
     id,
   } as RecipeDetails;
