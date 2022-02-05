@@ -1,7 +1,9 @@
 import { Button, TextField, Typography } from '@material-ui/core';
 import { useTranslation } from 'next-i18next';
+import { useRouter } from 'next/dist/client/router';
 import React, { useState } from 'react';
 import { useUserService } from 'services/EntityServices/UserService/UserService';
+import { routes } from 'services/routes';
 import styled from 'styled-components';
 import { Theme } from 'styles/Theme';
 
@@ -19,16 +21,26 @@ const StyledTextField = styled(TextField)`
   background-color: ${() => Theme.palette.background.default};
 `;
 
-const StyledLogin = styled(Button)`
-  background-color: ${() => Theme.palette.primary.main};
+const StyledActionButton = styled(Button)<{ secondary?: boolean }>`
+  flex: 1;
+  background-color: ${(p) =>
+    p.secondary ? Theme.palette.info.main : Theme.palette.primary.main};
   &:hover {
-    background-color: ${() => Theme.palette.primary.dark};
-    color: ${() => Theme.palette.primary.light};
+    background-color: ${(p) =>
+      p.secondary ? Theme.palette.info.dark : Theme.palette.primary.dark};
+    color: ${(p) =>
+      p.secondary ? Theme.palette.info.light : Theme.palette.primary.light};
   }
 `;
 
 const Error = styled(Typography)`
   color: red;
+`;
+
+const ActionsContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
 `;
 
 export const LoginForm: React.FunctionComponent = () => {
@@ -38,6 +50,7 @@ export const LoginForm: React.FunctionComponent = () => {
   const [password, setPassword] = useState('');
   const { emailLogin } = useUserService();
   const { t } = useTranslation();
+  const { push } = useRouter();
 
   return (
     <FormContainer
@@ -66,9 +79,18 @@ export const LoginForm: React.FunctionComponent = () => {
         onChange={(state) => setPassword(state.currentTarget.value)}
       />
       {error && <Error>{t('profile.error')}</Error>}
-      <StyledLogin type="submit" disabled={logginIn}>
-        {t('profile.login')}
-      </StyledLogin>
+      <ActionsContainer>
+        <StyledActionButton type="submit" disabled={logginIn}>
+          {t('profile.login')}
+        </StyledActionButton>
+        <StyledActionButton
+          secondary={true}
+          disabled={logginIn}
+          onClick={() => push(routes.register)}
+        >
+          {t('profile.register')}
+        </StyledActionButton>
+      </ActionsContainer>
     </FormContainer>
   );
 };

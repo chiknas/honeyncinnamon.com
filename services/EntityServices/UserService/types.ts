@@ -10,5 +10,10 @@ export interface User {
 export interface UserService {
   getCurrentUser: () => DataLoad<User | undefined>;
   emailLogin: (email: string, password: string) => Promise<void>;
+  emailRegister: (
+    displayName: string,
+    email: string,
+    password: string
+  ) => Promise<void>;
   signOut: () => void;
 }

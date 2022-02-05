@@ -16,7 +16,19 @@
     "email": "Email",
     "password": "Password",
     "login": "Log In",
-    "signout": "Sign Out"
+    "signout": "Sign Out",
+    "register": "Register"
+  },
+  "register": {
+    "title": "Register",
+    "full-name": "Full name",
+    "email": "Email",
+    "password": "Password",
+    "confirm-password": "Confirm Password",
+    "apply": "Register",
+    "error": {
+      "passwords-not-match": "Passwords do not match"
+    }
   },
   "comment-section": {
     "show-comments": "Show Comments ({{count}})",

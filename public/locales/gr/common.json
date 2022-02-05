@@ -16,7 +16,19 @@
     "email": "Hlektroniko Taxudromio",
     "password": "Mustikos kwdikos",
     "login": "Eisodos",
-    "signout": "Eksodos"
+    "signout": "Eksodos",
+    "register": "Eggrafi"
+  },
+  "register": {
+    "title": "Eggrafi",
+    "full-name": "Onomateponimo",
+    "email": "Email",
+    "password": "Password",
+    "confirm-password": "Epalitheusi Password",
+    "apply": "Eggrafi",
+    "error": {
+      "passwords-not-match": "Oi kwdikoi den tairiazoun"
+    }
   },
   "comment-section": {
     "show-comments": "Sxolia ({{count}})",

@@ -1,7 +1,16 @@
 import { useCurrentUser } from './hooks/useCurrentUser';
 import { UserService } from './types';
-import { emailLogin, userSignOut } from './functions/Credentials';
+import {
+  emailLogin,
+  userSignOut,
+  emailRegister,
+} from './functions/Credentials';
 
 export const useUserService = (): UserService => {
-  return { getCurrentUser: useCurrentUser, emailLogin, signOut: userSignOut };
+  return {
+    getCurrentUser: useCurrentUser,
+    emailRegister,
+    emailLogin,
+    signOut: userSignOut,
+  };
 };

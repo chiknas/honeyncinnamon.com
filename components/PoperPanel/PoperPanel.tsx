@@ -1,4 +1,5 @@
 import { Popper } from '@material-ui/core';
+import { useRouter } from 'next/dist/client/router';
 import React, { useCallback, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 
@@ -24,6 +25,7 @@ export const withPoperPanel = (
   const PoperPanel: React.FunctionComponent<any> = ({ children }) => {
     const ref = useRef(null);
     const [anchorEl, setAnchorEl] = React.useState(null);
+    const { events } = useRouter();
     const open = Boolean(anchorEl);
 
     const handleClick = (event: any) => {
@@ -48,6 +50,11 @@ export const withPoperPanel = (
         document.removeEventListener('click', handleClickOutside, true);
       };
     }, [handleClickOutside]);
+
+    // the page is about to change and the poper is up close it.
+    useEffect(() => {
+      events.on('routeChangeStart', () => handleClose());
+    }, [events]);
 
     return (
       <>
