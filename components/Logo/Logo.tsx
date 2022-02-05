@@ -1,3 +1,4 @@
+import useViewport from 'hooks/useViewport';
 import { useTranslation } from 'next-i18next';
 import { useRouter } from 'next/dist/client/router';
 import React from 'react';
@@ -8,20 +9,21 @@ const Clickable = styled.div`
   cursor: pointer;
 `;
 
-const ImageContainer = styled.div`
-  margin: 7em;
+const ImageContainer = styled.div<{ isMobile?: boolean }>`
+  margin: ${(p) => (p.isMobile ? '1em' : '7em')};
 `;
 
 export const Logo: React.FunctionComponent = () => {
   const router = useRouter();
   const { i18n } = useTranslation();
+  const { isMobile } = useViewport();
 
   const onClick = () => {
     router.push(routes.home);
   };
   return (
     <Clickable onClick={onClick}>
-      <ImageContainer>
+      <ImageContainer isMobile={isMobile}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={`/logo-${i18n.language?.toLowerCase() ?? 'en'}.jpg`}
