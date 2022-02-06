@@ -1,5 +1,10 @@
 {
   "error-with-status": "A {{statusCode}} error occurred on server",
+  "cookie-consent": {
+    "message": "This site uses third party cookies to improve user experience and more focused advertising.",
+    "accept-button": "I Understand",
+    "decline-button": "I Decline"
+  },
   "donate": "Donate",
   "header": {
     "home": "HOME",

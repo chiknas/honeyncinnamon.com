@@ -41,11 +41,6 @@ class MyDocument extends Document {
             href="http://fonts.cdnfonts.com/css/archer-2"
             rel="stylesheet"
           />
-          <script
-            async
-            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9199532486898731"
-            crossOrigin="anonymous"
-          ></script>
         </Head>
         <body>
           <Main />

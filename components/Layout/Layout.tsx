@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import styled from 'styled-components';
 import { Theme } from 'styles/Theme';
 import useViewport from '../../hooks/useViewport';
@@ -6,6 +6,7 @@ import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
 import { MainLayout } from './MainLayout';
 import { MobileLayout } from './MobileLayout';
+import dynamic from 'next/dynamic';
 
 const MainContainer = styled.div`
   min-height: 100vh;
@@ -50,17 +51,28 @@ const SkipNavigation = styled.a`
 
 const Layout: React.FunctionComponent = ({ children }) => {
   const { isMobile } = useViewport();
-  const Content = isMobile ? (
-    <MobileLayout>{children}</MobileLayout>
-  ) : (
-    <MainLayout>{children}</MainLayout>
+  // Dynamically load the consent bar to increase performance since we do not need it right away.
+  const CookieConsentBar = dynamic(
+    () => import('components/CookieConsentBar/CookieConsentBar')
   );
+
+  const Content = useMemo(
+    () =>
+      isMobile ? (
+        <MobileLayout>{children}</MobileLayout>
+      ) : (
+        <MainLayout>{children}</MainLayout>
+      ),
+    [children, isMobile]
+  );
+
   return (
     <MainContainer>
       <SkipNavigation href="#main-content">Skip navigation</SkipNavigation>
       <Header />
       <BodyContainer id="main-content" isMobile={isMobile}>
         {Content}
+        <CookieConsentBar />
       </BodyContainer>
       <Footer />
     </MainContainer>
