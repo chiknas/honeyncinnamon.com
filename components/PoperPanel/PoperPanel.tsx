@@ -1,4 +1,4 @@
-import { Popper } from '@material-ui/core';
+import { Grow, Popper } from '@material-ui/core';
 import { useRouter } from 'next/dist/client/router';
 import React, { useCallback, useEffect, useRef } from 'react';
 import styled from 'styled-components';
@@ -61,8 +61,18 @@ export const withPoperPanel = (
         <WrappedComponentContainer onClick={handleClick}>
           {wrappedComponent}
         </WrappedComponentContainer>
-        <Popper ref={ref} anchorEl={anchorEl} open={open} transition>
-          <React.Fragment>{children}</React.Fragment>
+        <Popper
+          style={{ zIndex: 9999 }}
+          ref={ref}
+          anchorEl={anchorEl}
+          open={open}
+          transition
+        >
+          {({ TransitionProps }) => (
+            <Grow {...TransitionProps} timeout={250}>
+              {children}
+            </Grow>
+          )}
         </Popper>
       </>
     );

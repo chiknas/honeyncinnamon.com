@@ -12,6 +12,7 @@ type LanguageItemProps = {
 
 const StyledMenuItem = styled(MenuItem)`
   background-color: ${Theme.palette.background.default};
+  border-bottom: 1px solid black;
   &:hover {
     background-color: ${Theme.palette.background.paper};
   }
@@ -57,6 +58,7 @@ const LanguageButton: React.FunctionComponent = () => {
           id="basic-button"
           aria-controls="basic-menu"
           aria-haspopup="true"
+          disableRipple
         >
           <Typography>{locale}</Typography>
         </StyledLanguageButton>
