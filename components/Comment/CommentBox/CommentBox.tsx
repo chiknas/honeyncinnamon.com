@@ -22,7 +22,7 @@ export const CommentBox: React.FunctionComponent<CommentBoxProps> = ({
 
   return (
     <CommentBoxContainer>
-      <UserProfilePic src={comment.userPhotoUrl} />
+      <UserProfilePic />
       {!isEditing ? (
         <CommentDetails comment={comment} onEdit={() => setIsEditing(true)} />
       ) : (

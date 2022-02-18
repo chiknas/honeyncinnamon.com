@@ -114,7 +114,7 @@ export const CommentField: React.FunctionComponent<CommentFieldProps> = ({
       {!loading && currentUser ? (
         <CommentBoxContainer>
           <InputRowContainer>
-            <UserProfilePic src={currentUser?.photoUrl} />
+            <UserProfilePic />
             <StyledTextField
               multiline={true}
               value={comment}

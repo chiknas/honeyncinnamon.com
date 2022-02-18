@@ -16,6 +16,7 @@ const HeaderContainer = styled.div<{ isMobile: boolean }>`
   display: flex;
   padding: 1em;
   text-align: center;
+  align-items: center;
   justify-content: ${(props) => (props.isMobile ? 'space-between' : 'center')};
   gap: 1.5em;
 `;

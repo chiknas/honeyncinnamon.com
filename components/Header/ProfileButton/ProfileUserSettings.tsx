@@ -12,14 +12,10 @@ type ProfileUserSettingsProps = {
 export const ProfileUserSettings: React.FunctionComponent<ProfileUserSettingsProps> =
   ({ size }) => {
     const { t } = useTranslation();
-    const { getCurrentUser, signOut } = useUserService();
-    const { result: currentUser } = getCurrentUser();
+    const { signOut } = useUserService();
     const UserProfilePicPoper = useMemo(
-      () =>
-        withPoperPanel(
-          <UserProfilePic src={currentUser?.photoUrl} size={size} />
-        ),
-      [currentUser?.photoUrl, size]
+      () => withPoperPanel(<UserProfilePic size={size} />),
+      [size]
     );
     return (
       <UserProfilePicPoper>
