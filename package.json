@@ -4,12 +4,13 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "fullBuild": "yarn validateRecipes && yarn lint && yarn build",
+    "fullBuild": "yarn validateRecipes && yarn lint && yarn test && yarn build",
     "start": "next start",
     "lint": "next lint",
     "validateRecipes": "node recipes/RecipeJsonValidator.js",
     "pre-push": "yarn fullBuild",
-    "postinstall": "husky install"
+    "postinstall": "husky install",
+    "test": "jest --coverage"
   },
   "dependencies": {
     "@material-ui/core": "^4.12.3",
@@ -32,6 +33,10 @@
     "styled-components": "^5.3.3"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^5.16.2",
+    "@testing-library/react": "^12.1.3",
+    "@testing-library/user-event": "^13.5.0",
+    "@types/jest": "^27.4.0",
     "@types/node": "16.11.6",
     "@types/nodemailer": "^6.4.4",
     "@types/react": "17.0.34",
@@ -46,6 +51,7 @@
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
     "husky": "^7.0.4",
+    "jest": "^27.5.1",
     "prettier": "^2.4.1",
     "typescript": "4.4.4"
   }
