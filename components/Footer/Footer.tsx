@@ -1,10 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 import { BsFacebook, BsInstagram, BsTwitter, BsGithub } from 'react-icons/bs';
+import { Theme } from 'styles/Theme';
 
 const FooterContainer = styled.div`
-  margin-top: 1em;
+  padding: 1em;
   overflow: hidden;
+  background-color: ${Theme.palette.background.default};
   bottom: 0;
   display: flex;
   justify-content: center;
