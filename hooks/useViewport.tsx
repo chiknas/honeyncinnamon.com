@@ -1,6 +1,5 @@
+import { MobileMaxWidth, MainMaxWidth } from 'components/Layout/Layout';
 import { useState, useEffect } from 'react';
-import { MaxWidth as MobileMaxWidth } from 'components/Layout/MobileLayout';
-import { MaxWidth as MainMaxWidth } from 'components/Layout/MobileLayout';
 
 const mobileViewportWidthThreashold = 768;
 

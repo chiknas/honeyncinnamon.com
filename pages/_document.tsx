@@ -38,7 +38,7 @@ class MyDocument extends Document {
       <Html dir="ltr">
         <Head>
           <link
-            href="http://fonts.cdnfonts.com/css/archer-2"
+            href="https://fonts.cdnfonts.com/css/archer-2"
             rel="stylesheet"
           />
         </Head>

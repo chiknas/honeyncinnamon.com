@@ -11,6 +11,7 @@ const ContactUsContainer = styled.div<{ isMobile: boolean; minWidth: string }>`
   flex-direction: column;
   text-align: center;
   gap: 3em;
+  height: fit-content;
   padding: ${(props) => (props.isMobile ? '1em' : '3em')};
   ${(props) => !props.isMobile && `min-width: ${props.minWidth};`}
 `;

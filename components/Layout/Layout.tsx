@@ -1,36 +1,28 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { Theme } from 'styles/Theme';
-import useViewport from '../../hooks/useViewport';
 import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
-import { MainLayout } from './MainLayout';
-import { MobileLayout } from './MobileLayout';
 import dynamic from 'next/dynamic';
+
+export const MobileMaxWidth = '600px';
+export const MainMaxWidth = '960px';
 
 const MainContainer = styled.div`
   min-height: 100vh;
   width: 100%;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  background-color: beige;
 `;
 
-const BodyContainer = styled.div<{ isMobile?: boolean }>`
+const BodyContainer = styled.div`
   flex: 1 1 auto;
   display: flex;
-  flex-direction: ${(props) => (props.isMobile ? 'column' : 'row')};
-`;
-
-export const AdContainer = styled.div`
-  flex: 1 2 auto;
-  background-color: ${(props) => props.color};
-`;
-
-export const ContentContainer = styled.div<{ maxWidth?: string }>`
-  flex: 2 1 auto;
-  height: 100%;
   background-color: ${Theme.palette.background.default};
-  ${(props) => props.maxWidth && `max-width: ${props.maxWidth};`}
+  flex-direction: row;
+  max-width: ${MainMaxWidth};
 `;
 
 const SkipNavigation = styled.a`
@@ -50,32 +42,21 @@ const SkipNavigation = styled.a`
 `;
 
 const Layout: React.FunctionComponent = ({ children }) => {
-  const { isMobile } = useViewport();
   // Dynamically load the consent bar to increase performance since we do not need it right away.
   const CookieConsentBar = dynamic(
     () => import('components/CookieConsentBar/CookieConsentBar')
   );
 
-  const Content = useMemo(
-    () =>
-      isMobile ? (
-        <MobileLayout>{children}</MobileLayout>
-      ) : (
-        <MainLayout>{children}</MainLayout>
-      ),
-    [children, isMobile]
-  );
-
   return (
-    <MainContainer>
-      <SkipNavigation href="#main-content">Skip navigation</SkipNavigation>
-      <Header />
-      <BodyContainer id="main-content" isMobile={isMobile}>
-        {Content}
-        <CookieConsentBar />
-      </BodyContainer>
-      <Footer />
-    </MainContainer>
+    <>
+      <MainContainer>
+        <SkipNavigation href="#main-content">Skip navigation</SkipNavigation>
+        <Header />
+        <BodyContainer id="main-content">{children}</BodyContainer>
+        <Footer />
+      </MainContainer>
+      <CookieConsentBar />
+    </>
   );
 };
 
