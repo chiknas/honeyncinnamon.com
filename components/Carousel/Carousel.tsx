@@ -6,6 +6,7 @@ import { FaArrowAltCircleLeft, FaArrowAltCircleRight } from 'react-icons/fa';
 import { CarouselItem } from './CarouselItem';
 import { CarouselItemData } from './types';
 import { Theme } from 'styles/Theme';
+import useViewport from 'hooks/useViewport';
 
 const Container = styled.div`
   display: flex;
@@ -59,28 +60,32 @@ interface CarouselProps {
 export const Carousel: React.FunctionComponent<CarouselProps> = ({
   data,
   title,
-  pageSize = 4,
+  pageSize,
   autoScroll = false,
   autoScrollInterval = 5000,
 }) => {
-  const [carouselState, setCarouselState] = useState<CarouselState>({
-    page: 0,
-    pageSize,
-    totalPages: Math.ceil(data.length / pageSize),
-  });
+  const [carouselState, setCarouselState] = useState<
+    CarouselState | undefined
+  >();
+
+  const { loading, isMobile } = useViewport();
 
   // update carousel state on prop change
-  useEffect(
-    () =>
+  useEffect(() => {
+    const mobilePageSize = !loading ? (isMobile ? 1 : 4) : undefined;
+    const itemsPerPage = pageSize ?? mobilePageSize;
+    itemsPerPage &&
       setCarouselState({
         page: 0,
-        pageSize,
-        totalPages: Math.ceil(data.length / pageSize),
-      }),
-    [data.length, pageSize]
-  );
+        pageSize: itemsPerPage,
+        totalPages: Math.ceil(data.length / itemsPerPage),
+      });
+  }, [data.length, isMobile, loading, pageSize]);
 
   const items = useMemo(() => {
+    if (!carouselState) {
+      return [];
+    }
     const pageIndex = carouselState.page * carouselState.pageSize;
     return data.map((item, index) => {
       const isItemInCurrentPage =
@@ -89,22 +94,29 @@ export const Carousel: React.FunctionComponent<CarouselProps> = ({
         <CarouselItem {...item} visible={isItemInCurrentPage} key={index} />
       );
     });
-  }, [carouselState.page, carouselState.pageSize, data]);
+  }, [carouselState, data]);
 
   // move the carousel forward or backwards
   // positive numbers: forward
   // negative numbers: backward
   const carouselChangePage = useCallback(
     (next: number) => {
+      if (!carouselState) {
+        return;
+      }
       const nextPage = carouselState.page + next;
       const page = nextPage % carouselState.totalPages;
-      setCarouselState((currentState) => ({
-        ...currentState,
-        // if we exceed the page limits wrap around to the first/last element
-        page: page < 0 ? carouselState.totalPages - 1 : page,
-      }));
+      setCarouselState((currentState) =>
+        currentState
+          ? {
+              ...currentState,
+              // if we exceed the page limits wrap around to the first/last element
+              page: page < 0 ? carouselState.totalPages - 1 : page,
+            }
+          : undefined
+      );
     },
-    [carouselState.page, carouselState.totalPages]
+    [carouselState]
   );
 
   // auto scroll to the next page
@@ -122,15 +134,19 @@ export const Carousel: React.FunctionComponent<CarouselProps> = ({
         <Typography variant="h5">{title}</Typography>
       </HeaderContainer>
       <CarouselContainer>
-        <StyledIconButton onClick={() => carouselChangePage(-1)}>
-          <FaArrowAltCircleLeft />
-        </StyledIconButton>
-        <CarouselLineContainer visibleItems={carouselState.pageSize}>
-          {items}
+        {carouselState && (
+          <StyledIconButton onClick={() => carouselChangePage(-1)}>
+            <FaArrowAltCircleLeft />
+          </StyledIconButton>
+        )}
+        <CarouselLineContainer visibleItems={carouselState?.pageSize ?? 1}>
+          {carouselState ? items : 'Loading...'}
         </CarouselLineContainer>
-        <StyledIconButton onClick={() => carouselChangePage(1)}>
-          <FaArrowAltCircleRight />
-        </StyledIconButton>
+        {carouselState && (
+          <StyledIconButton onClick={() => carouselChangePage(1)}>
+            <FaArrowAltCircleRight />
+          </StyledIconButton>
+        )}
       </CarouselContainer>
     </Container>
   );

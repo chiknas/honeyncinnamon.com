@@ -17,6 +17,7 @@ type Viewport = {
   windowDimensions: WindowDimensions;
   isMobile: boolean;
   bodyMaxWidth: string;
+  loading: boolean;
 };
 
 export default function useViewport(): Viewport {
@@ -47,5 +48,6 @@ export default function useViewport(): Viewport {
     windowDimensions,
     isMobile,
     bodyMaxWidth,
+    loading: typeof window === 'undefined',
   };
 }
