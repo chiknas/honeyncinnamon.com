@@ -12,6 +12,25 @@
         }
       ]
     },
+    "title": {
+      "type": "string",
+      "defaultSnippets": [
+        {
+          "label": "Makaronia me kim",
+          "description": "The name of this plate/recipe",
+          "body": "Makaronia me kima"
+        }
+      ]
+    },
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "mealType": {
+          "type": "string",
+          "enum": ["breakfast", "branch", "lunch", "supper", "dinner"]
+        }
+      }
+    },
     "parts": {
       "type": "array",
       "items": {

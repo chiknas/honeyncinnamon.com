@@ -1,5 +1,9 @@
 {
   "photoTitlePath": "/images/recipes/MakaroniaMeKima/makaronia.jpg",
+  "title": "Makaronia me kima",
+  "metadata": {
+    "mealType": "lunch"
+  },
   "parts": [
     {
       "title": "For the tomatos",

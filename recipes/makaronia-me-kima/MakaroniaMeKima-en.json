@@ -1,5 +1,9 @@
 {
   "photoTitlePath": "/images/recipes/MakaroniaMeKima/makaronia_me_saki.jpg",
+  "title": "Bolognese",
+  "metadata": {
+    "mealType": "lunch"
+  },
   "parts": [
     {
       "title": "For the tomatos",

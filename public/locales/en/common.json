@@ -58,6 +58,17 @@
     "ingredients-title": "Ingredients",
     "steps-title": "Execution"
   },
+  "recipe-details": {
+    "metadata": {
+      "meal-type": {
+        "breakfast": "Breakfast",
+        "branch": "Branch",
+        "lunch": "Lunch",
+        "supper": "Supper",
+        "dinner": "Dinner"
+      }
+    }
+  },
   "contact-us": {
     "title": "Contact Us",
     "email": "Email",

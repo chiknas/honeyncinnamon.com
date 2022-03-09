@@ -1,31 +1,39 @@
-import React, { useEffect, useState } from 'react';
-import { Carousel } from 'components/Carousel/Carousel';
+import React, { useMemo } from 'react';
 import { PageContainer } from '../page.style';
-import { carouselMockData } from 'components/Carousel/mockData';
-import styled from 'styled-components';
-import useViewport from 'hooks/useViewport';
+import { Gallery } from 'components/Gallery/Gallery';
+import { RecipeDetails } from '../Recipe/types';
+import { useRouter } from 'next/dist/client/router';
+import { routes } from 'services/routes';
+import { groupBy } from 'utils/helperFunctions';
+import { useTranslation } from 'next-i18next';
 
-const TestContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 10em;
-`;
+interface RecipesProps {
+  recipes: RecipeDetails[];
+}
 
-const Recipes: React.FunctionComponent = () => {
-  const [pageSize, setPageSize] = useState(1);
-  const { isMobile } = useViewport();
-  useEffect(() => setPageSize(isMobile ? 1 : 4), [isMobile]);
+const Recipes: React.FunctionComponent<RecipesProps> = ({ recipes }) => {
+  const { t } = useTranslation();
+  const router = useRouter();
+  const galleryData = useMemo(
+    () =>
+      // group recipes by meal type
+      Object.values(groupBy(recipes, (i) => i.metadata.mealType))
+        .filter((group) => group.length !== 0)
+        .map((group) => ({
+          title: t(
+            `recipe-details.metadata.meal-type.${group[0].metadata.mealType}`
+          ),
+          items: group.map((item) => ({
+            title: item.title,
+            img: item.photoTitlePath,
+            onClick: () => router.push(routes.recipe(item.id)),
+          })),
+        })),
+    [recipes, router, t]
+  );
   return (
     <PageContainer>
-      <TestContainer>
-        <Carousel title="Sweets" data={carouselMockData} pageSize={pageSize} />
-        <Carousel title="Salties" data={carouselMockData} pageSize={pageSize} />
-        <Carousel
-          title="Blog posts"
-          data={carouselMockData}
-          pageSize={pageSize}
-        />
-      </TestContainer>
+      <Gallery data={galleryData} />
     </PageContainer>
   );
 };

@@ -1,7 +1,7 @@
 import useViewport from 'hooks/useViewport';
 import { useTranslation } from 'next-i18next';
 import { useRouter } from 'next/dist/client/router';
-import React from 'react';
+import React, { useCallback } from 'react';
 import styled from 'styled-components';
 import { routes } from '../../services/routes';
 
@@ -18,9 +18,9 @@ export const Logo: React.FunctionComponent = () => {
   const { i18n } = useTranslation();
   const { isMobile } = useViewport();
 
-  const onClick = () => {
+  const onClick = useCallback(() => {
     router.push(routes.home);
-  };
+  }, [router]);
   return (
     <Clickable onClick={onClick}>
       <ImageContainer isMobile={isMobile}>

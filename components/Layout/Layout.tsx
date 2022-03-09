@@ -22,7 +22,15 @@ const BodyContainer = styled.div`
   display: flex;
   background-color: ${Theme.palette.background.default};
   flex-direction: row;
+  // keep a constant width to the body of the page unless the view port is getting smaller than this width
+  // in this case keep the body as wide as the view port
   max-width: ${MainMaxWidth};
+  @media (min-width: ${MainMaxWidth}) {
+    min-width: ${MainMaxWidth};
+  }
+  @media (max-width: ${MainMaxWidth}) {
+    min-width: 100vw;
+  }
 `;
 
 const SkipNavigation = styled.a`

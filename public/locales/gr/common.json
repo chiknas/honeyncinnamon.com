@@ -58,6 +58,17 @@
     "ingredients-title": "Sustatika",
     "steps-title": "Methodos"
   },
+  "recipe-details": {
+    "metadata": {
+      "meal-type": {
+        "breakfast": "Prwino",
+        "branch": "Dekatiano",
+        "lunch": "Mesimeriano",
+        "supper": "Apogeumatino",
+        "dinner": "Vraduno"
+      }
+    }
+  },
   "contact-us": {
     "title": "Epoikinoniste mazi mas",
     "email": "Email",

@@ -4,6 +4,8 @@
  */
 export interface RecipeDetails {
   id: string;
+  title: string;
+  metadata: Metadata;
   photoTitlePath: string;
   parts: Parts[];
 }
@@ -21,6 +23,14 @@ export enum MeasureUnit {
   NONE = '',
 }
 
+export enum MealType {
+  BREAKFAST = 'breakfast',
+  BRUNCH = 'branch',
+  LUNCH = 'lunch',
+  SUPPER = 'supper',
+  DINNER = 'dinner',
+}
+
 export interface Quantity {
   amount: number;
   unit: MeasureUnit;
@@ -29,4 +39,8 @@ export interface Quantity {
 export interface Ingredient {
   description: string;
   quantity?: Quantity;
+}
+
+export interface Metadata {
+  mealType: MealType;
 }

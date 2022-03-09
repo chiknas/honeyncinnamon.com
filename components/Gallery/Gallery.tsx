@@ -1,9 +1,7 @@
 import { Typography } from '@material-ui/core';
-import useViewport from 'hooks/useViewport';
 import React, { useMemo } from 'react';
 import styled from 'styled-components';
 import { GalleryGroupData } from './types';
-import { useTranslation } from 'next-i18next';
 
 const GalleryContainer = styled.div`
   display: flex;
@@ -24,9 +22,9 @@ const GalleryGroupContentContainer = styled.div`
   flex-wrap: wrap;
 `;
 
-const GalleryItem = styled.div<{ isMobile: boolean; clickAble?: boolean }>`
+const GalleryItem = styled.div<{ clickAble?: boolean }>`
   flex: 1 1 auto;
-  max-width: ${(p) => (p.isMobile ? '100%' : '33%')};
+  max-width: 300px;
   padding: 1rem;
   opacity: 1;
   transition: 0.3s ease;
@@ -47,34 +45,26 @@ interface GalleryProps {
 }
 
 export const Gallery: React.FunctionComponent<GalleryProps> = ({ data }) => {
-  const { loading, isMobile } = useViewport();
-  const { t } = useTranslation();
-
   const items = useMemo(
     () =>
-      !loading ? (
-        data.map((group, index) => (
-          <GalleryGroupContainer key={index}>
-            <GroupTitle variant="h4">{group.title}</GroupTitle>
-            <GalleryGroupContentContainer>
-              {group.items.map((item, index) => (
-                <GalleryItem
-                  key={index}
-                  onClick={item.onClick}
-                  isMobile={isMobile}
-                  clickAble={item.onClick !== undefined}
-                >
-                  <img src={item.img} alt={item.title} />
-                  <Typography variant="h6">{item.title}</Typography>
-                </GalleryItem>
-              ))}
-            </GalleryGroupContentContainer>
-          </GalleryGroupContainer>
-        ))
-      ) : (
-        <Typography>{t('loading')}</Typography>
-      ),
-    [data, isMobile, loading, t]
+      data.map((group, index) => (
+        <GalleryGroupContainer key={index}>
+          <GroupTitle variant="h4">{group.title}</GroupTitle>
+          <GalleryGroupContentContainer>
+            {group.items.map((item, index) => (
+              <GalleryItem
+                key={index}
+                onClick={item.onClick}
+                clickAble={item.onClick !== undefined}
+              >
+                <img src={item.img} alt={item.title} />
+                <Typography variant="h6">{item.title}</Typography>
+              </GalleryItem>
+            ))}
+          </GalleryGroupContentContainer>
+        </GalleryGroupContainer>
+      )),
+    [data]
   );
   return <GalleryContainer>{items}</GalleryContainer>;
 };
