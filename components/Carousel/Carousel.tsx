@@ -7,6 +7,7 @@ import { CarouselItem } from './CarouselItem';
 import { CarouselItemData } from './types';
 import { Theme } from 'styles/Theme';
 import useViewport from 'hooks/useViewport';
+import { useTranslation } from 'next-i18next';
 
 const Container = styled.div`
   display: flex;
@@ -64,6 +65,7 @@ export const Carousel: React.FunctionComponent<CarouselProps> = ({
   autoScroll = false,
   autoScrollInterval = 5000,
 }) => {
+  const { t } = useTranslation();
   const [carouselState, setCarouselState] = useState<
     CarouselState | undefined
   >();
@@ -140,7 +142,7 @@ export const Carousel: React.FunctionComponent<CarouselProps> = ({
           </StyledIconButton>
         )}
         <CarouselLineContainer visibleItems={carouselState?.pageSize ?? 1}>
-          {carouselState ? items : 'Loading...'}
+          {carouselState ? items : t('loading')}
         </CarouselLineContainer>
         {carouselState && (
           <StyledIconButton onClick={() => carouselChangePage(1)}>
