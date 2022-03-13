@@ -39,6 +39,7 @@ export interface Quantity {
 export interface Ingredient {
   description: string;
   quantity?: Quantity;
+  url?: string;
 }
 
 export interface Metadata {

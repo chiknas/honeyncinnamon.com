@@ -14,7 +14,8 @@
         },
         {
           "description": "Patato",
-          "quantity": { "amount": 750, "unit": "grams" }
+          "quantity": { "amount": 750, "unit": "grams" },
+          "url": "https://www.amazon.com"
         },
         {
           "description": "Alati",

@@ -61,6 +61,16 @@
                     }
                   ]
                 },
+                "url": {
+                  "type": "string",
+                  "defaultSnippets": [
+                    {
+                      "label": "Link to navigate to the ingredient store page or affiliate link",
+                      "description": "Link to navigate to the ingredient store page or affiliate linko",
+                      "body": "https://www.affiliatelink.com/ingredient"
+                    }
+                  ]
+                },
                 "quantity": {
                   "type": "object",
                   "properties": {
