@@ -3,6 +3,8 @@ export const routes = {
   donate: '/donate',
   recipes: '/recipes',
   recipe: (id: string) => `/recipe/${id}`,
+  posts: '/posts',
+  post: (id: string) => `/post/${id}`,
   'contact-us': '/contact',
   register: '/register',
 };

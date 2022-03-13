@@ -5,6 +5,6 @@ export interface GalleryItemData {
 }
 
 export interface GalleryGroupData {
-  title: string;
+  title?: string;
   items: GalleryItemData[];
 }

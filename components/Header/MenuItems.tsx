@@ -17,7 +17,7 @@ export const getMenuItems = (t: (key: string) => string): React.ReactNode[] => [
   <HeaderButton key={'menu-item-3'} route={routes.recipes}>
     {t('header.recipes')}
   </HeaderButton>,
-  <HeaderButton key={'menu-item-4'} route={routes.recipes}>
+  <HeaderButton key={'menu-item-4'} route={routes.posts}>
     {t('header.blog')}
   </HeaderButton>,
   <HeaderButton key={'menu-item-5'} route={routes['contact-us']}>

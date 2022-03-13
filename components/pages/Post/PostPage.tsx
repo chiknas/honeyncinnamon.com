@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Divider, Typography } from '@material-ui/core';
+import { Divider, Typography } from '@material-ui/core';
 import { CommentEntityType } from 'services/EntityServices/CommentService/types';
 import { PageContainer } from '../page.style';
 import dynamic from 'next/dynamic';
@@ -8,6 +8,7 @@ import styled from 'styled-components';
 
 const PostTitle = styled(Typography)`
   text-decoration: underline;
+  text-decoration-thickness: 5%;
 `;
 
 const PostContainer = styled.div`
@@ -32,9 +33,7 @@ export const PostPage: React.FunctionComponent<PostProps> = ({
   );
   return (
     <PageContainer>
-      <PostTitle variant="h3">
-        <Box sx={{ fontWeight: 'bold' }}>{postDetails.title}</Box>
-      </PostTitle>
+      <PostTitle variant="h3">{postDetails.title}</PostTitle>
       <img src={postDetails.img} />
       <PostContainer dangerouslySetInnerHTML={{ __html: content }} />
       <Divider />

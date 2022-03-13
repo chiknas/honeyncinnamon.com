@@ -49,7 +49,7 @@ export const Gallery: React.FunctionComponent<GalleryProps> = ({ data }) => {
     () =>
       data.map((group, index) => (
         <GalleryGroupContainer key={index}>
-          <GroupTitle variant="h4">{group.title}</GroupTitle>
+          {group.title && <GroupTitle variant="h4">{group.title}</GroupTitle>}
           <GalleryGroupContentContainer>
             {group.items.map((item, index) => (
               <GalleryItem
