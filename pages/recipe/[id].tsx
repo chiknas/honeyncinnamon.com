@@ -36,8 +36,10 @@ export const getStaticPaths: GetStaticPaths = async () => {
   // find all the subfolders in the recipes folder (the subfolder name is the recipe id)
   const recipes = fs
     .readdirSync(path.join('recipes'))
-    .filter((recipePath) =>
-      fs.statSync(path.join('recipes', recipePath)).isDirectory()
+    .filter(
+      (recipePath) =>
+        !recipePath.includes('__tests__') &&
+        fs.statSync(path.join('recipes', recipePath)).isDirectory()
     );
 
   const paths = recipes.flatMap((recipe) => {

@@ -4,10 +4,9 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "fullBuild": "yarn validateRecipes && yarn lint && yarn test && yarn build",
+    "fullBuild": "yarn lint && yarn test && yarn build",
     "start": "next start",
     "lint": "next lint",
-    "validateRecipes": "node recipes/RecipeJsonValidator.js",
     "pre-push": "yarn fullBuild",
     "postinstall": "husky install",
     "test": "jest --coverage"

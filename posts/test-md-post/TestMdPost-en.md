@@ -1,3 +1,8 @@
+---
+title: 'How can you make the perfect Makaronia me Saltsa??'
+img: '/images/recipes/MakaroniaMeKima/makaronia.jpg'
+---
+
 # Size Limit [![Cult Of Martians][cult-img]][cult]
 
 <img src="https://ai.github.io/size-limit/logo.svg" align="right"
@@ -19,7 +24,7 @@ if the cost exceeds the limit.
   used in your JS.
 
 <p align="center">
-  <img src="./img/example.png" alt="Size Limit CLI" width="738">
+  <img src="./img/example.png" alt="Size Limit CLI">
 </p>
 
 With **[GitHub action]** Size Limit will post bundle size changes as a comment
@@ -27,8 +32,7 @@ in pull request discussion.
 
 <p align="center">
 <img src="https://raw.githubusercontent.com/andresz1/size-limit-action/master/assets/pr.png"
-  alt="Size Limit comment in pull request about bundle size changes"
-  width="686" height="289">
+  alt="Size Limit comment in pull request about bundle size changes">
 </p>
 
 With `--why`, Size Limit can tell you _why_ your library is of this size
@@ -36,13 +40,13 @@ and show the real cost of all your internal dependencies.
 We are using [Statoscope] for this analysis.
 
 <p align="center">
-  <img src="./img/why.png" alt="Statoscope example" width="650">
+  <img src="./img/why.png" alt="Statoscope example">
 </p>
 
 <p align="center">
   <a href="https://evilmartians.com/?utm_source=size-limit">
     <img src="https://evilmartians.com/badges/sponsored-by-evil-martians.svg"
-         alt="Sponsored by Evil Martians" width="236" height="54">
+         alt="Sponsored by Evil Martians">
   </a>
 </p>
 
@@ -99,60 +103,59 @@ interactive elements, using React/Vue/Svelte lib or vanilla JS.
 
 <details><summary><b>Show instructions</b></summary>
 
-1. Install the preset:
+1.  Install the preset:
 
-   ```sh
-   $ npm install --save-dev size-limit @size-limit/file
-   ```
+    sh
+    $ npm install --save-dev size-limit @size-limit/file
 
-2. Add the `size-limit` section and the `size` script to your `package.json`:
+2.  Add the `size-limit` section and the `size` script to your `package.json`:
 
-   ```diff
-   + "size-limit": [
-   +   {
-   +     "path": "dist/app-*.js"
-   +   }
-   + ],
-     "scripts": {
-       "build": "webpack ./webpack.config.js",
-   +   "size": "npm run build && size-limit",
-       "test": "jest && eslint ."
-     }
-   ```
+    diff
 
-3. Here’s how you can get the size for your current project:
+    - "size-limit": [
+    - {
+    -     "path": "dist/app-*.js"
+    - }
+    - ],
+      "scripts": {
+      "build": "webpack ./webpack.config.js",
+    - "size": "npm run build && size-limit",
+      "test": "jest && eslint ."
+      }
 
-   ```sh
-   $ npm run size
+3.  Here’s how you can get the size for your current project:
 
-     Package size: 30.08 kB with all dependencies, minified and gzipped
-   ```
+    sh
+    $ npm run size
 
-4. Now, let’s set the limit. Add 25% to the current total time and use that as
-   the limit in your `package.json`:
+    Package size: 30.08 kB with all dependencies, minified and gzipped
 
-   ```diff
-     "size-limit": [
-       {
-   +     "limit": "35 kB",
-         "path": "dist/app-*.js"
-       }
-     ],
-   ```
+4.  Now, let’s set the limit. Add 25% to the current total time and use that as
+    the limit in your `package.json`:
 
-5. Add the `size` script to your test suite:
+    diff
+    "size-limit": [
+    {
 
-   ```diff
-     "scripts": {
-       "build": "webpack ./webpack.config.js",
-       "size": "npm run build && size-limit",
-   -   "test": "jest && eslint ."
-   +   "test": "jest && eslint . && npm run size"
-     }
-   ```
+    -     "limit": "35 kB",
+          "path": "dist/app-*.js"
+      }
+      ],
 
-6. If you don’t have a continuous integration service running, don’t forget
-   to add one — start with [Travis CI].
+5.  Add the `size` script to your test suite:
+
+    diff
+    "scripts": {
+    "build": "webpack ./webpack.config.js",
+    "size": "npm run build && size-limit",
+
+    - "test": "jest && eslint ."
+
+    * "test": "jest && eslint . && npm run size"
+      }
+
+6.  If you don’t have a continuous integration service running, don’t forget
+    to add one — start with [Travis CI].
 
 </details>
 
@@ -168,63 +171,62 @@ to track the time a browser takes to compile and execute your JS.
 
 <details><summary><b>Show instructions</b></summary>
 
-1. Install the preset:
+1.  Install the preset:
 
-   ```sh
-   $ npm install --save-dev size-limit @size-limit/preset-app
-   ```
+    sh
+    $ npm install --save-dev size-limit @size-limit/preset-app
 
-2. Add the `size-limit` section and the `size` script to your `package.json`:
+2.  Add the `size-limit` section and the `size` script to your `package.json`:
 
-   ```diff
-   + "size-limit": [
-   +   {
-   +     "path": "dist/app-*.js"
-   +   }
-   + ],
-     "scripts": {
-       "build": "webpack ./webpack.config.js",
-   +   "size": "npm run build && size-limit",
-       "test": "jest && eslint ."
-     }
-   ```
+    diff
 
-3. Here’s how you can get the size for your current project:
+    - "size-limit": [
+    - {
+    -     "path": "dist/app-*.js"
+    - }
+    - ],
+      "scripts": {
+      "build": "webpack ./webpack.config.js",
+    - "size": "npm run build && size-limit",
+      "test": "jest && eslint ."
+      }
 
-   ```sh
-   $ npm run size
+3.  Here’s how you can get the size for your current project:
 
-     Package size: 30.08 kB with all dependencies, minified and gzipped
-     Loading time: 602 ms   on slow 3G
-     Running time: 214 ms   on Snapdragon 410
-     Total time:   815 ms
-   ```
+    sh
+    $ npm run size
 
-4. Now, let’s set the limit. Add 25% to the current total time and use that as
-   the limit in your `package.json`:
+    Package size: 30.08 kB with all dependencies, minified and gzipped
+    Loading time: 602 ms on slow 3G
+    Running time: 214 ms on Snapdragon 410
+    Total time: 815 ms
 
-   ```diff
-     "size-limit": [
-       {
-   +     "limit": "1 s",
-         "path": "dist/app-*.js"
-       }
-     ],
-   ```
+4.  Now, let’s set the limit. Add 25% to the current total time and use that as
+    the limit in your `package.json`:
 
-5. Add the `size` script to your test suite:
+    diff
+    "size-limit": [
+    {
 
-   ```diff
-     "scripts": {
-       "build": "webpack ./webpack.config.js",
-       "size": "npm run build && size-limit",
-   -   "test": "jest && eslint ."
-   +   "test": "jest && eslint . && npm run size"
-     }
-   ```
+    -     "limit": "1 s",
+          "path": "dist/app-*.js"
+      }
+      ],
 
-6. If you don’t have a continuous integration service running, don’t forget
-   to add one — start with [Travis CI].
+5.  Add the `size` script to your test suite:
+
+    diff
+    "scripts": {
+    "build": "webpack ./webpack.config.js",
+    "size": "npm run build && size-limit",
+
+    - "test": "jest && eslint ."
+
+    * "test": "jest && eslint . && npm run size"
+      }
+
+6.  If you don’t have a continuous integration service running, don’t forget
+    to add one — start with [Travis CI].
 
 </details>
 
@@ -239,86 +241,86 @@ the size in bytes. Library like [React] is a good example for this preset.
 
 <details><summary><b>Show instructions</b></summary>
 
-1. Install preset:
+1.  Install preset:
 
-   ```sh
-   $ npm install --save-dev size-limit @size-limit/preset-big-lib
-   ```
+    sh
+    $ npm install --save-dev size-limit @size-limit/preset-big-lib
 
-2. Add the `size-limit` section and the `size` script to your `package.json`:
+2.  Add the `size-limit` section and the `size` script to your `package.json`:
 
-   ```diff
-   + "size-limit": [
-   +   {
-   +     "path": "dist/react.production-*.js"
-   +   }
-   + ],
-     "scripts": {
-       "build": "webpack ./scripts/rollup/build.js",
-   +   "size": "npm run build && size-limit",
-       "test": "jest && eslint ."
-     }
-   ```
+    diff
 
-3. If you use ES modules you can test the size after tree-shaking with `import`
-   option:
+    - "size-limit": [
+    - {
+    -     "path": "dist/react.production-*.js"
+    - }
+    - ],
+      "scripts": {
+      "build": "webpack ./scripts/rollup/build.js",
+    - "size": "npm run build && size-limit",
+      "test": "jest && eslint ."
+      }
 
-   ```diff
-     "size-limit": [
-       {
-         "path": "dist/react.production-*.js",
-   +     "import": "{ createComponent }"
-       }
-     ],
-   ```
+3.  If you use ES modules you can test the size after tree-shaking with `import`
+    option:
 
-4. Here’s how you can get the size for your current project:
+    diff
+    "size-limit": [
+    {
+    "path": "dist/react.production-\*.js",
 
-   ```sh
-   $ npm run size
+    -     "import": "{ createComponent }"
+      }
+      ],
 
-     Package size: 30.08 kB with all dependencies, minified and gzipped
-     Loading time: 602 ms   on slow 3G
-     Running time: 214 ms   on Snapdragon 410
-     Total time:   815 ms
-   ```
+4.  Here’s how you can get the size for your current project:
 
-5. Now, let’s set the limit. Add 25% to the current total time and use that
-   as the limit in your `package.json`:
+    sh
+    $ npm run size
 
-   ```diff
-     "size-limit": [
-       {
-   +     "limit": "1 s",
-         "path": "dist/react.production-*.js"
-       }
-     ],
-   ```
+    Package size: 30.08 kB with all dependencies, minified and gzipped
+    Loading time: 602 ms on slow 3G
+    Running time: 214 ms on Snapdragon 410
+    Total time: 815 ms
 
-6. Add a `size` script to your test suite:
+5.  Now, let’s set the limit. Add 25% to the current total time and use that
+    as the limit in your `package.json`:
 
-   ```diff
-     "scripts": {
-       "build": "rollup ./scripts/rollup/build.js",
-       "size": "npm run build && size-limit",
-   -   "test": "jest && eslint ."
-   +   "test": "jest && eslint . && npm run size"
-     }
-   ```
+    diff
+    "size-limit": [
+    {
 
-7. If you don’t have a continuous integration service running, don’t forget
-   to add one — start with [Travis CI].
-8. Add the library size to docs, it will help users to choose your project:
+    -     "limit": "1 s",
+          "path": "dist/react.production-*.js"
+      }
+      ],
 
-   ```diff
-     # Project Name
+6.  Add a `size` script to your test suite:
 
-     Short project description
+    diff
+    "scripts": {
+    "build": "rollup ./scripts/rollup/build.js",
+    "size": "npm run build && size-limit",
 
-     * **Fast.** 10% faster than competitor.
-   + * **Small.** 15 kB (minified and gzipped).
-   +   [Size Limit](https://github.com/ai/size-limit) controls the size.
-   ```
+    - "test": "jest && eslint ."
+
+    * "test": "jest && eslint . && npm run size"
+      }
+
+7.  If you don’t have a continuous integration service running, don’t forget
+    to add one — start with [Travis CI].
+8.  Add the library size to docs, it will help users to choose your project:
+
+    diff
+
+    # Project Name
+
+    Short project description
+
+    - **Fast.** 10% faster than competitor.
+
+    * - **Small.** 15 kB (minified and gzipped).
+    * [Size Limit](https://github.com/ai/size-limit) controls the size.
 
 </details>
 
@@ -333,78 +335,77 @@ for this preset.
 
 <details><summary><b>Show instructions</b></summary>
 
-1. First, install `size-limit`:
+1.  First, install `size-limit`:
 
-   ```sh
-   $ npm install --save-dev size-limit @size-limit/preset-small-lib
-   ```
+    sh
+    $ npm install --save-dev size-limit @size-limit/preset-small-lib
 
-2. Add the `size-limit` section and the `size` script to your `package.json`:
+2.  Add the `size-limit` section and the `size` script to your `package.json`:
 
-   ```diff
-   + "size-limit": [
-   +   {
-   +     "path": "index.js"
-   +   }
-   + ],
-     "scripts": {
-   +   "size": "size-limit",
-       "test": "jest && eslint ."
-     }
-   ```
+    diff
 
-3. Here’s how you can get the size for your current project:
+    - "size-limit": [
+    - {
+    -     "path": "index.js"
+    - }
+    - ],
+      "scripts": {
+    - "size": "size-limit",
+      "test": "jest && eslint ."
+      }
 
-   ```sh
-   $ npm run size
+3.  Here’s how you can get the size for your current project:
 
-     Package size: 177 B with all dependencies, minified and gzipped
-   ```
+    sh
+    $ npm run size
 
-4. If your project size starts to look bloated, run `--why` for analysis:
+    Package size: 177 B with all dependencies, minified and gzipped
 
-   ```sh
-   $ npm run size -- --why
-   ```
+4.  If your project size starts to look bloated, run `--why` for analysis:
 
-   > We use [Statoscope](https://github.com/statoscope/statoscope) as bundle analyzer.
+    sh
+    $ npm run size -- --why
 
-5. Now, let’s set the limit. Determine the current size of your library,
-   add just a little bit (a kilobyte, maybe) and use that as the limit
-   in your `package.json`:
+    > We use [Statoscope](https://github.com/statoscope/statoscope) as bundle analyzer.
 
-   ```diff
+5.  Now, let’s set the limit. Determine the current size of your library,
+    add just a little bit (a kilobyte, maybe) and use that as the limit
+    in your `package.json`:
+
+    diff
     "size-limit": [
-       {
-   +     "limit": "9 kB",
-         "path": "index.js"
-       }
-    ],
-   ```
+    {
 
-6. Add the `size` script to your test suite:
+    -     "limit": "9 kB",
+           "path": "index.js"
+      }
+      ],
 
-   ```diff
-     "scripts": {
-       "size": "size-limit",
-   -   "test": "jest && eslint ."
-   +   "test": "jest && eslint . && npm run size"
-     }
-   ```
+6.  Add the `size` script to your test suite:
 
-7. If you don’t have a continuous integration service running, don’t forget
-   to add one — start with [Travis CI].
-8. Add the library size to docs, it will help users to choose your project:
+    diff
+    "scripts": {
+    "size": "size-limit",
 
-   ```diff
-     # Project Name
+    - "test": "jest && eslint ."
 
-     Short project description
+    * "test": "jest && eslint . && npm run size"
+      }
 
-     * **Fast.** 10% faster than competitor.
-   + * **Small.** 500 bytes (minified and gzipped). No dependencies.
-   +   [Size Limit](https://github.com/ai/size-limit) controls the size.
-   ```
+7.  If you don’t have a continuous integration service running, don’t forget
+    to add one — start with [Travis CI].
+8.  Add the library size to docs, it will help users to choose your project:
+
+    diff
+
+    # Project Name
+
+    Short project description
+
+    - **Fast.** 10% faster than competitor.
+
+    * - **Small.** 500 bytes (minified and gzipped). No dependencies.
+    * [Size Limit](https://github.com/ai/size-limit) controls the size.
 
 </details>
 
@@ -427,39 +428,36 @@ Size Limits supports three ways to define config.
 
 1. `size-limit` section in `package.json`:
 
-   ```json
-     "size-limit": [
-       {
-         "path": "index.js",
-         "import": "{ createStore }",
-         "limit": "500 ms"
-       }
-     ]
-   ```
+   json
+   "size-limit": [
+   {
+   "path": "index.js",
+   "import": "{ createStore }",
+   "limit": "500 ms"
+   }
+   ]
 
 2. or a separate `.size-limit.json` config file:
 
-   ```js
+   js
    [
-     {
-       path: 'index.js',
-       import: '{ createStore }',
-       limit: '500 ms',
-     },
+   {
+   path: 'index.js',
+   import: '{ createStore }',
+   limit: '500 ms',
+   },
    ];
-   ```
 
 3. or a more flexible `.size-limit.js` or `.size-limit.cjs` config file:
 
-   ```js
+   js
    module.exports = [
-     {
-       path: 'index.js',
-       import: '{ createStore }',
-       limit: '500 ms',
-     },
+   {
+   path: 'index.js',
+   import: '{ createStore }',
+   limit: '500 ms',
+   },
    ];
-   ```
 
 Each section in the config can have these options:
 

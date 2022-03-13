@@ -10,7 +10,9 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const postsDetails = fs
     .readdirSync('posts')
     // filter out any files from the root folder
-    .filter((fileName) => !fileName.includes('.'))
+    .filter(
+      (fileName) => !fileName.includes('.') && !fileName.includes('__tests__')
+    )
     // go through each recipe folder
     .flatMap((postFolder) => {
       // find the correct json based on the locale

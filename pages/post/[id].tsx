@@ -42,8 +42,10 @@ export const getStaticProps: GetStaticProps = async (context) => {
 export const getStaticPaths: GetStaticPaths = async () => {
   const posts = fs
     .readdirSync(path.join('posts'))
-    .filter((postPath) =>
-      fs.statSync(path.join('posts', postPath)).isDirectory()
+    .filter(
+      (postPath) =>
+        !postPath.includes('__tests__') &&
+        fs.statSync(path.join('posts', postPath)).isDirectory()
     );
 
   const paths = posts.flatMap((post) => {
