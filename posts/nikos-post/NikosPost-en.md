@@ -1,27 +1,27 @@
-![stronghold logo](img/stronghold-logo-left.png)
+---
+title: 'How can you make the perfect Makaronia me Kima??'
+img: '/images/recipes/MakaroniaMeKima/makaronia.jpg'
+---
 
 [![Downloads](http://pepy.tech/badge/stronghold)](http://pepy.tech/count/stronghold)
 
 `stronghold` is the easiest way to securely configure your Mac.
 
-![GIF demo](img/demo.gif)
+![GIF demo](https://c.tenor.com/IuNaCVubkX4AAAAC/cooking-mama.gif)
 
 Designed for macOS Sierra and High Sierra. _Not yet tested on macOS Mojave, but I'm working on updating it!_
 
 ## **Usage**
 
-```
 Usage: stronghold.py [OPTIONS]
 
-  Securely configure your Mac.
-  Developed by Aaron Lichtman -> (Github: alichtman)
-
+Securely configure your Mac.
+Developed by Aaron Lichtman -> (Github: alichtman)
 
 Options:
-  -lockdown  Set secure configuration without user interaction.
-  -v         Display version and author information and exit.
-  -help, -h  Show this message and exit.
-```
+-lockdown Set secure configuration without user interaction.
+-v Display version and author information and exit.
+-help, -h Show this message and exit.
 
 ## **Installation Options**
 

@@ -5,6 +5,7 @@ import { ParsedUrlQuery } from 'querystring';
 import { withTranslateProps } from 'services/StaticPropsHelpers';
 import { PostPage } from 'components/pages/Post/PostPage';
 import { Converter } from 'showdown';
+import matter from 'gray-matter';
 
 const mdConverter = new Converter();
 
@@ -20,13 +21,21 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const translatedPostFile =
     translatedPosts.find((post) => post.includes(context.locale ?? 'en')) ??
     translatedPosts[0];
-  // convert md to html
-  const data = mdConverter.makeHtml(
-    fs.readFileSync(path.join('posts', id, translatedPostFile), 'utf-8')
+  //  read the md file content
+  const postFileContent = fs.readFileSync(
+    path.join('posts', id, translatedPostFile),
+    'utf-8'
   );
+  const { data: postDetails, content: mdToString } = matter(postFileContent);
+  // convert md to html
+  const content = mdConverter.makeHtml(mdToString);
 
   return {
-    props: await withTranslateProps(context, { id, data }),
+    props: await withTranslateProps(context, {
+      id,
+      postDetails,
+      content,
+    }),
   };
 };
 
