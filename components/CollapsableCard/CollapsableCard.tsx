@@ -18,6 +18,7 @@ const HeaderContainer = styled.div<{ folder?: boolean }>`
   border-bottom: 2px solid black;
   ${(props) =>
     props.folder && `background-color: ${Theme.palette.primary.light};`}
+  ${(props) => props.folder && `color: ${Theme.palette.primary.contrastText};`}
   ${(props) => props.folder && 'border-radius: 8px 8px 0 0;'}
   ${(props) => props.folder && 'padding: 0 0.3rem 0 0.3rem;'}
 `;

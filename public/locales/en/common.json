@@ -25,7 +25,13 @@
   },
   "footer": {
     "cookie-policy": "COOKIES POLICY",
-    "privacy-policy": "PRIVACY POLICY"
+    "privacy-policy": "PRIVACY POLICY",
+    "newsletter": {
+      "title": "Subscribe to our newsletter!",
+      "email": "Register your email here",
+      "consent": "I want to get updates with email.",
+      "register": "Register"
+    }
   },
   "profile": {
     "title": "Log In",

@@ -25,7 +25,13 @@
   },
   "footer": {
     "cookie-policy": "ΠΟΛΙΤΙΚΗ COOKIES",
-    "privacy-policy": "ΠΟΛΙΤΙΚΗ ΑΠΟΡΡΗΤΟΥ"
+    "privacy-policy": "ΠΟΛΙΤΙΚΗ ΑΠΟΡΡΗΤΟΥ",
+    "newsletter": {
+      "title": "Eggrafi stin effimerida mas!",
+      "email": "Vale edw to mail sou",
+      "consent": "Thelw na lamvanw updates apo email",
+      "register": "Eggrafi"
+    }
   },
   "profile": {
     "title": "Eisodos",

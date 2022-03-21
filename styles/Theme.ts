@@ -11,11 +11,12 @@ export const Theme = createTheme({
       default: 'white',
     },
     primary: {
-      main: '#CDA67A',
+      main: '#484f4f',
+      contrastText: '#ffffff',
       dark: '#6A462F',
     },
     secondary: {
-      main: '#FAE9CF',
+      main: '#fefbd8',
     },
   },
 });
