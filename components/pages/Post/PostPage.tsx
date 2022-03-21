@@ -5,6 +5,7 @@ import { PageContainer } from '../page.style';
 import dynamic from 'next/dynamic';
 import { PostDetails } from './type';
 import styled from 'styled-components';
+import Head from 'next/head';
 
 const PostTitle = styled(Typography)`
   text-decoration: underline;
@@ -32,12 +33,17 @@ export const PostPage: React.FunctionComponent<PostProps> = ({
     () => import('components/Comment/CommentSection/CommentSection')
   );
   return (
-    <PageContainer>
-      <PostTitle variant="h3">{postDetails.title}</PostTitle>
-      <img src={postDetails.img} />
-      <PostContainer dangerouslySetInnerHTML={{ __html: content }} />
-      <Divider />
-      <CommentSection id={id} entityType={CommentEntityType.POSTS} />
-    </PageContainer>
+    <>
+      <Head>
+        <title>{postDetails.title}</title>
+      </Head>
+      <PageContainer>
+        <PostTitle variant="h3">{postDetails.title}</PostTitle>
+        <img src={postDetails.img} />
+        <PostContainer dangerouslySetInnerHTML={{ __html: content }} />
+        <Divider />
+        <CommentSection id={id} entityType={CommentEntityType.POSTS} />
+      </PageContainer>
+    </>
   );
 };

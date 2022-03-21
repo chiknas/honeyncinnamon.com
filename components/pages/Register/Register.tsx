@@ -7,6 +7,7 @@ import { Theme } from 'styles/Theme';
 import { useRouter } from 'next/dist/client/router';
 import { routes } from 'services/routes';
 import { useUserService } from 'services/EntityServices/UserService/UserService';
+import Head from 'next/head';
 
 const RegisterContainer = styled.div<{ isMobile: boolean; minWidth: string }>`
   display: flex;
@@ -79,45 +80,50 @@ export const Register: React.FunctionComponent = () => {
   );
 
   return (
-    <RegisterContainer isMobile={isMobile} minWidth={bodyMaxWidth}>
-      <Typography variant="h2">{t('register.title')}</Typography>
-      <FormContainer isMobile={isMobile} onSubmit={handleSubmit}>
-        <StyledTextField
-          required
-          label={t('register.full-name')}
-          variant="outlined"
-          value={displayName}
-          onChange={(e) => setDisplayName(e.target.value)}
-        />
-        <StyledTextField
-          required
-          label={t('register.email')}
-          variant="outlined"
-          value={email}
-          type="email"
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <StyledTextField
-          required
-          label={t('register.password')}
-          variant="outlined"
-          value={password}
-          type="password"
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <StyledTextField
-          required
-          label={t('register.confirm-password')}
-          variant="outlined"
-          value={confirmPassword}
-          type="password"
-          onChange={(e) => setConfirmPassword(e.target.value)}
-        />
-        <Error>{error}</Error>
-        <StyledLogin type="submit" disabled={registerInProgress}>
-          {t('register.apply')}
-        </StyledLogin>
-      </FormContainer>
-    </RegisterContainer>
+    <>
+      <Head>
+        <title>{t('page-title.register')}</title>
+      </Head>
+      <RegisterContainer isMobile={isMobile} minWidth={bodyMaxWidth}>
+        <Typography variant="h2">{t('register.title')}</Typography>
+        <FormContainer isMobile={isMobile} onSubmit={handleSubmit}>
+          <StyledTextField
+            required
+            label={t('register.full-name')}
+            variant="outlined"
+            value={displayName}
+            onChange={(e) => setDisplayName(e.target.value)}
+          />
+          <StyledTextField
+            required
+            label={t('register.email')}
+            variant="outlined"
+            value={email}
+            type="email"
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <StyledTextField
+            required
+            label={t('register.password')}
+            variant="outlined"
+            value={password}
+            type="password"
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <StyledTextField
+            required
+            label={t('register.confirm-password')}
+            variant="outlined"
+            value={confirmPassword}
+            type="password"
+            onChange={(e) => setConfirmPassword(e.target.value)}
+          />
+          <Error>{error}</Error>
+          <StyledLogin type="submit" disabled={registerInProgress}>
+            {t('register.apply')}
+          </StyledLogin>
+        </FormContainer>
+      </RegisterContainer>
+    </>
   );
 };

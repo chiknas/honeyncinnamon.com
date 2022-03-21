@@ -5,6 +5,7 @@ import { Theme } from 'styles/Theme';
 import { useTranslation } from 'next-i18next';
 import useViewport from 'hooks/useViewport';
 import { ContactMessage } from 'pages/api/contact/types';
+import Head from 'next/head';
 
 const ContactUsContainer = styled.div<{ isMobile: boolean; minWidth: string }>`
   display: flex;
@@ -75,65 +76,70 @@ export const ContactUs: React.FunctionComponent = () => {
     [contactMessage]
   );
   return (
-    <ContactUsContainer isMobile={isMobile} minWidth={bodyMaxWidth}>
-      <Typography variant="h2">{t('contact-us.title')}</Typography>
-      <FormContainer isMobile={isMobile} onSubmit={handleSubmit}>
-        <StyledTextField
-          required
-          label={t('contact-us.full-name')}
-          variant="outlined"
-          value={contactMessage.fullName}
-          onChange={(e) =>
-            setContactMessage((currentMessage) => ({
-              ...currentMessage,
-              fullName: e.target.value,
-            }))
-          }
-        />
-        <StyledTextField
-          required
-          label={t('contact-us.subject')}
-          variant="outlined"
-          value={contactMessage.subject}
-          onChange={(e) =>
-            setContactMessage((currentMessage) => ({
-              ...currentMessage,
-              subject: e.target.value,
-            }))
-          }
-        />
-        <StyledTextField
-          required
-          label={t('contact-us.email')}
-          variant="outlined"
-          value={contactMessage.email}
-          type="email"
-          onChange={(e) =>
-            setContactMessage((currentMessage) => ({
-              ...currentMessage,
-              email: e.target.value,
-            }))
-          }
-        />
-        <StyledMultiLineTextField
-          required
-          minRows={5}
-          multiline={true}
-          label={t('contact-us.message')}
-          variant="outlined"
-          value={contactMessage.body}
-          onChange={(e) =>
-            setContactMessage((currentMessage) => ({
-              ...currentMessage,
-              body: e.target.value,
-            }))
-          }
-        />
-        <StyledLogin type="submit">{t('contact-us.send')}</StyledLogin>
-      </FormContainer>
-      <FooterMessage variant="h6">
-        {t('contact-us.footer-message')}
-      </FooterMessage>
-    </ContactUsContainer>
+    <>
+      <Head>
+        <title>{t('page-title.contact-us')}</title>
+      </Head>
+      <ContactUsContainer isMobile={isMobile} minWidth={bodyMaxWidth}>
+        <Typography variant="h2">{t('contact-us.title')}</Typography>
+        <FormContainer isMobile={isMobile} onSubmit={handleSubmit}>
+          <StyledTextField
+            required
+            label={t('contact-us.full-name')}
+            variant="outlined"
+            value={contactMessage.fullName}
+            onChange={(e) =>
+              setContactMessage((currentMessage) => ({
+                ...currentMessage,
+                fullName: e.target.value,
+              }))
+            }
+          />
+          <StyledTextField
+            required
+            label={t('contact-us.subject')}
+            variant="outlined"
+            value={contactMessage.subject}
+            onChange={(e) =>
+              setContactMessage((currentMessage) => ({
+                ...currentMessage,
+                subject: e.target.value,
+              }))
+            }
+          />
+          <StyledTextField
+            required
+            label={t('contact-us.email')}
+            variant="outlined"
+            value={contactMessage.email}
+            type="email"
+            onChange={(e) =>
+              setContactMessage((currentMessage) => ({
+                ...currentMessage,
+                email: e.target.value,
+              }))
+            }
+          />
+          <StyledMultiLineTextField
+            required
+            minRows={5}
+            multiline={true}
+            label={t('contact-us.message')}
+            variant="outlined"
+            value={contactMessage.body}
+            onChange={(e) =>
+              setContactMessage((currentMessage) => ({
+                ...currentMessage,
+                body: e.target.value,
+              }))
+            }
+          />
+          <StyledLogin type="submit">{t('contact-us.send')}</StyledLogin>
+        </FormContainer>
+        <FooterMessage variant="h6">
+          {t('contact-us.footer-message')}
+        </FooterMessage>
+      </ContactUsContainer>
+    </>
   );
 };

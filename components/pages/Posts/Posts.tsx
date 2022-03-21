@@ -4,6 +4,8 @@ import React, { useMemo } from 'react';
 import { routes } from 'services/routes';
 import { PageContainer } from '../page.style';
 import { PostDetails } from '../Post/type';
+import Head from 'next/head';
+import { useTranslation } from 'next-i18next';
 
 interface PostDetailsWithId extends PostDetails {
   // the post id is the folder name
@@ -17,6 +19,7 @@ interface PostsProps {
 export const Posts: React.FunctionComponent<PostsProps> = ({
   postsDetails,
 }) => {
+  const { t } = useTranslation();
   const router = useRouter();
   const postsGalleryData = useMemo(
     () => [
@@ -31,8 +34,13 @@ export const Posts: React.FunctionComponent<PostsProps> = ({
     [postsDetails, router]
   );
   return (
-    <PageContainer>
-      <Gallery data={postsGalleryData} />
-    </PageContainer>
+    <>
+      <Head>
+        <title>{t('page-title.posts')}</title>
+      </Head>
+      <PageContainer>
+        <Gallery data={postsGalleryData} />
+      </PageContainer>
+    </>
   );
 };

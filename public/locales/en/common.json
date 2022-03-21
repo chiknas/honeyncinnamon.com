@@ -6,6 +6,13 @@
     "accept-button": "I Understand",
     "decline-button": "I Decline"
   },
+  "page-title": {
+    "posts": "Posts",
+    "recipes": "Recipes",
+    "home": "Home",
+    "register": "Register",
+    "contact-us": "Contact Us"
+  },
   "donate": "Donate",
   "header": {
     "home": "HOME",

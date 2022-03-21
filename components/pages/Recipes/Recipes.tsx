@@ -6,6 +6,7 @@ import { useRouter } from 'next/dist/client/router';
 import { routes } from 'services/routes';
 import { groupBy } from 'utils/helperFunctions';
 import { useTranslation } from 'next-i18next';
+import Head from 'next/head';
 
 interface RecipesProps {
   recipes: RecipeDetails[];
@@ -32,9 +33,14 @@ const Recipes: React.FunctionComponent<RecipesProps> = ({ recipes }) => {
     [recipes, router, t]
   );
   return (
-    <PageContainer>
-      <Gallery data={galleryData} />
-    </PageContainer>
+    <>
+      <Head>
+        <title>{t('page-title.recipes')}</title>
+      </Head>
+      <PageContainer>
+        <Gallery data={galleryData} />
+      </PageContainer>
+    </>
   );
 };
 

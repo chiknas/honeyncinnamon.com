@@ -11,6 +11,7 @@ import { StepsTimeline } from 'components/StepsTimeline/StepsTimeline';
 import dynamic from 'next/dynamic';
 import { CommentEntityType } from 'services/EntityServices/CommentService/types';
 import { Divider } from '@material-ui/core';
+import Head from 'next/head';
 
 const RecipeContainer = styled.div`
   display: flex;
@@ -57,45 +58,50 @@ export const RecipePage: React.FunctionComponent<RecipePageProps> = ({
   );
 
   return (
-    <PageContainer>
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        src={recipe.photoTitlePath}
-        alt={`honey-cinnamon-recipe-${recipe.id}`}
-      />
-      <RecipeContainer>
-        <IngredientsListContainer>
-          <IngredientsHeader>
-            <Typography variant="h5">
-              {t('recipe.ingredients-title')}
-            </Typography>
-            <MeasureUnitSelect
-              measureUnit={measureUnit}
-              setMeasureUnit={setMeasureUnit}
-            />
-          </IngredientsHeader>
-          {recipe.parts.map((part) => (
-            <IngredientList
-              key={`${part.title}-ingredients`}
-              title={part.title}
-              measureUnit={measureUnit}
-              ingredients={part.ingredients}
-            />
-          ))}
-        </IngredientsListContainer>
-        <StepsListContainer>
-          <Typography variant="h5">{t('recipe.steps-title')}</Typography>
-          {recipe.parts.map((part) => (
-            <StepsTimeline
-              key={`${part.title}-steps`}
-              title={part.title}
-              steps={part.steps}
-            />
-          ))}
-        </StepsListContainer>
-      </RecipeContainer>
-      <Divider />
-      <CommentSection id={recipe.id} entityType={CommentEntityType.RECIPES} />
-    </PageContainer>
+    <>
+      <Head>
+        <title>{recipe.title}</title>
+      </Head>
+      <PageContainer>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={recipe.photoTitlePath}
+          alt={`honey-cinnamon-recipe-${recipe.id}`}
+        />
+        <RecipeContainer>
+          <IngredientsListContainer>
+            <IngredientsHeader>
+              <Typography variant="h5">
+                {t('recipe.ingredients-title')}
+              </Typography>
+              <MeasureUnitSelect
+                measureUnit={measureUnit}
+                setMeasureUnit={setMeasureUnit}
+              />
+            </IngredientsHeader>
+            {recipe.parts.map((part) => (
+              <IngredientList
+                key={`${part.title}-ingredients`}
+                title={part.title}
+                measureUnit={measureUnit}
+                ingredients={part.ingredients}
+              />
+            ))}
+          </IngredientsListContainer>
+          <StepsListContainer>
+            <Typography variant="h5">{t('recipe.steps-title')}</Typography>
+            {recipe.parts.map((part) => (
+              <StepsTimeline
+                key={`${part.title}-steps`}
+                title={part.title}
+                steps={part.steps}
+              />
+            ))}
+          </StepsListContainer>
+        </RecipeContainer>
+        <Divider />
+        <CommentSection id={recipe.id} entityType={CommentEntityType.RECIPES} />
+      </PageContainer>
+    </>
   );
 };
