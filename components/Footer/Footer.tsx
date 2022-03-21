@@ -11,6 +11,7 @@ import {
 import Link from 'next/link';
 import { routes } from 'services/routes';
 import { useTranslation } from 'next-i18next';
+import { useNewsletterService } from 'services/EntityServices/NewsletterService/NewsletterService';
 
 const FooterContainer = styled.div`
   padding: 1em;
@@ -63,25 +64,46 @@ const StyledTextField = styled(TextField)`
 
 const Footer: React.FunctionComponent = () => {
   const { t } = useTranslation();
+  const { register } = useNewsletterService();
+  const [email, setEmail] = useState<string | undefined>();
   const [consent, setConsent] = useState(false);
   return (
     <FooterContainer>
-      <NewsletterContainer>
-        <Typography noWrap>{t('footer.newsletter.title')}</Typography>
-        <StyledTextField
-          label={t('footer.newsletter.email')}
-          variant="outlined"
-        />
-        <BoxContainer horizontal={true}>
-          <Checkbox value={consent} onChange={() => setConsent((p) => !p)} />
-          <ConsentContainer noWrap>
-            {t('footer.newsletter.consent')}
-          </ConsentContainer>
-        </BoxContainer>
-        <RegisterButton disabled={!consent}>
-          {t('footer.newsletter.register')}
-        </RegisterButton>
-      </NewsletterContainer>
+      <form
+        onSubmit={(event) => {
+          event.preventDefault();
+          email &&
+            register(email).finally(() => {
+              setEmail('');
+              setConsent(false);
+              alert(t('footer.newsletter.success'));
+            });
+        }}
+      >
+        <NewsletterContainer>
+          <Typography noWrap>{t('footer.newsletter.title')}</Typography>
+          <StyledTextField
+            label={t('footer.newsletter.email')}
+            variant="outlined"
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.currentTarget.value)}
+          />
+          <BoxContainer horizontal={true}>
+            <Checkbox
+              checked={consent}
+              value={consent}
+              onChange={() => setConsent((p) => !p)}
+            />
+            <ConsentContainer noWrap>
+              {t('footer.newsletter.consent')}
+            </ConsentContainer>
+          </BoxContainer>
+          <RegisterButton disabled={!consent || !email} type="submit">
+            {t('footer.newsletter.register')}
+          </RegisterButton>
+        </NewsletterContainer>
+      </form>
       <Divider />
       <BoxContainer horizontal={true}>
         <Link href={routes.privacyPolicy}>
