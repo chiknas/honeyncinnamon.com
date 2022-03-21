@@ -73,7 +73,8 @@
   },
   "recipe": {
     "ingredients-title": "Ingredients",
-    "steps-title": "Execution"
+    "steps-title": "Execution",
+    "tip": "*click the highlighted ingredients to be navigated to the store"
   },
   "recipe-details": {
     "metadata": {

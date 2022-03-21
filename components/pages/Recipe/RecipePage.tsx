@@ -40,6 +40,10 @@ const StepsListContainer = styled.div`
   padding: 0.3rem;
 `;
 
+const Tip = styled(Typography)`
+  margin: 1rem 0 1rem 0;
+`;
+
 type RecipePageProps = {
   recipe: RecipeDetails;
 };
@@ -79,6 +83,7 @@ export const RecipePage: React.FunctionComponent<RecipePageProps> = ({
                 setMeasureUnit={setMeasureUnit}
               />
             </IngredientsHeader>
+            <Tip>{t('recipe.tip')}</Tip>
             {recipe.parts.map((part) => (
               <IngredientList
                 key={`${part.title}-ingredients`}
