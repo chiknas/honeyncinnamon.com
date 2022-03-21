@@ -2,6 +2,7 @@ import { Logo } from 'components/Logo/Logo';
 import { PageContainer } from 'components/pages/page.style';
 import { GetStaticProps } from 'next';
 import React from 'react';
+import { routes } from 'services/routes';
 import { withTranslateProps } from 'services/StaticPropsHelpers';
 
 export const getStaticProps: GetStaticProps = async (context) => {
@@ -108,8 +109,8 @@ const Policy: React.FunctionComponent = () => {
             <strong>Website</strong> refers to Honey&amp;Cinnamon, accessible
             from{' '}
             <a
-              href="www.honeyncinnamon.com"
-              rel="external nofollow noopener"
+              href={routes.home}
+              rel="external nofollow noreferrer"
               target="_blank"
             >
               www.honeyncinnamon.com
@@ -499,8 +500,8 @@ const Policy: React.FunctionComponent = () => {
         <li>
           By visiting this page on our website:{' '}
           <a
-            href="www.honeyncinnamon.com/contact"
-            rel="external nofollow noopener"
+            href={routes['contact-us']}
+            rel="external nofollow noreferrer"
             target="_blank"
           >
             www.honeyncinnamon.com/contact

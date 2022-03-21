@@ -7,4 +7,6 @@ export const routes = {
   post: (id: string) => `/post/${id}`,
   'contact-us': '/contact',
   register: '/register',
+  privacyPolicy: '/privacy-policy',
+  cookiePolicy: '/cookie-policy',
 };

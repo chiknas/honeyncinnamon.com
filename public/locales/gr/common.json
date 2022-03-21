@@ -23,6 +23,10 @@
     "subscribe": "EGGRAFI",
     "contact": "EPIKINONIA"
   },
+  "footer": {
+    "cookie-policy": "ΠΟΛΙΤΙΚΗ COOKIES",
+    "privacy-policy": "ΠΟΛΙΤΙΚΗ ΑΠΟΡΡΗΤΟΥ"
+  },
   "profile": {
     "title": "Eisodos",
     "error": "Re lathos kwdiko evales",

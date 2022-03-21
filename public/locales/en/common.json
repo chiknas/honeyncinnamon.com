@@ -23,6 +23,10 @@
     "subscribe": "SUBSCRIBE",
     "contact": "CONTACT"
   },
+  "footer": {
+    "cookie-policy": "COOKIES POLICY",
+    "privacy-policy": "PRIVACY POLICY"
+  },
   "profile": {
     "title": "Log In",
     "error": "These credentials do not match our records.",

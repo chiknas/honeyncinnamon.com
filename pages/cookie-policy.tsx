@@ -2,6 +2,7 @@ import { Logo } from 'components/Logo/Logo';
 import { PageContainer } from 'components/pages/page.style';
 import { GetStaticProps } from 'next';
 import React from 'react';
+import { routes } from 'services/routes';
 import { withTranslateProps } from 'services/StaticPropsHelpers';
 
 export const getStaticProps: GetStaticProps = async (context) => {
@@ -163,7 +164,13 @@ const Policy: React.FunctionComponent = () => {
       </p>
 
       <ul>
-        <li>By visiting this link: www.honeyncinnamon.com/contact</li>
+        <a
+          href={routes['contact-us']}
+          rel="external nofollow noreferrer"
+          target="_blank"
+        >
+          www.honeyncinnamon.com/contact
+        </a>
       </ul>
     </PageContainer>
   );

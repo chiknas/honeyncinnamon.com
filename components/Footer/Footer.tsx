@@ -1,7 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import { BsFacebook, BsInstagram, BsTwitter, BsGithub } from 'react-icons/bs';
 import { Theme } from 'styles/Theme';
+import { Typography } from '@material-ui/core';
+import Link from 'next/link';
+import { routes } from 'services/routes';
+import { useTranslation } from 'next-i18next';
 
 const FooterContainer = styled.div`
   padding: 1em;
@@ -10,20 +13,24 @@ const FooterContainer = styled.div`
   bottom: 0;
   display: flex;
   justify-content: center;
-  height: 5vh;
   width: 100%;
-  * + * {
-    margin-left: 1em;
-  }
+  gap: 1em;
 `;
 
 const Footer: React.FunctionComponent = () => {
+  const { t } = useTranslation();
   return (
     <FooterContainer>
-      <BsFacebook color="#3b5998" />
-      <BsInstagram color="purple" />
-      <BsTwitter color="blue" />
-      <BsGithub color="black" />
+      <Link href={routes.privacyPolicy}>
+        <a>
+          <Typography variant="h6">{t('footer.privacy-policy')}</Typography>
+        </a>
+      </Link>
+      <Link href={routes.cookiePolicy}>
+        <a>
+          <Typography variant="h6">{t('footer.cookie-policy')}</Typography>
+        </a>
+      </Link>
     </FooterContainer>
   );
 };
