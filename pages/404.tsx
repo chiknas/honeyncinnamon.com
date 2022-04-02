@@ -14,12 +14,7 @@ const NotFoundContainer = styled.div`
 `;
 
 const Custom404: React.FunctionComponent = () => {
-  return (
-    <NotFoundContainer>
-      Sorry this is not found. We will add a cool animation here later though.
-      Maybe a small game? Tetris or snake from your portfolio!
-    </NotFoundContainer>
-  );
+  return <NotFoundContainer>Sorry this is not found.</NotFoundContainer>;
 };
 
 export default Custom404;

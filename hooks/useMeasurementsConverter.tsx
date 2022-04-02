@@ -16,6 +16,8 @@ const GramsConverter: Converter = {
   }),
   [MeasureUnit.GRAMS]: (quantity: Quantity) => quantity,
   [MeasureUnit.TABLE_SPOON]: (quantity: Quantity) => quantity,
+  [MeasureUnit.LITRES]: (quantity: Quantity) => quantity,
+  [MeasureUnit.MILLI_LITRES]: (quantity: Quantity) => quantity,
   [MeasureUnit.NONE]: (quantity: Quantity) => quantity,
 };
 
@@ -26,6 +28,8 @@ const OuncesConverter: Converter = {
   }),
   [MeasureUnit.GRAMS]: (quantity: Quantity) => quantity,
   [MeasureUnit.TABLE_SPOON]: (quantity: Quantity) => quantity,
+  [MeasureUnit.LITRES]: (quantity: Quantity) => quantity,
+  [MeasureUnit.MILLI_LITRES]: (quantity: Quantity) => quantity,
   [MeasureUnit.NONE]: (quantity: Quantity) => quantity,
 };
 
@@ -33,6 +37,8 @@ const DefaultConverter: Converter = {
   [MeasureUnit.OUNCES]: (quantity: Quantity) => quantity,
   [MeasureUnit.GRAMS]: (quantity: Quantity) => quantity,
   [MeasureUnit.TABLE_SPOON]: (quantity: Quantity) => quantity,
+  [MeasureUnit.LITRES]: (quantity: Quantity) => quantity,
+  [MeasureUnit.MILLI_LITRES]: (quantity: Quantity) => quantity,
   [MeasureUnit.NONE]: (quantity: Quantity) => quantity,
 };
 

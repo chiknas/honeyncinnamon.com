@@ -40,9 +40,9 @@ const StepsListContainer = styled.div`
   padding: 0.3rem;
 `;
 
-const Tip = styled(Typography)`
-  margin: 1rem 0 1rem 0;
-`;
+// const Tip = styled(Typography)`
+//   margin: 1rem 0 1rem 0;
+// `;
 
 type RecipePageProps = {
   recipe: RecipeDetails;

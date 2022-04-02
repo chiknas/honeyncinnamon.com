@@ -86,7 +86,7 @@
                     },
                     "unit": {
                       "type": "string",
-                      "enum": ["grams", "oz", "tablespoon", ""]
+                      "enum": ["grams", "oz", "tablespoon", "litres", "ml", ""]
                     }
                   }
                 }

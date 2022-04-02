@@ -71,7 +71,11 @@
     "ounces": "Ounces",
     "ounces-short": "oz",
     "tablespoon": "tablespoon",
-    "tablespoon-short": "tablespoon"
+    "tablespoon-short": "tablespoon",
+    "litres": "litre(s)",
+    "litres-short": "litre(s)",
+    "ml": "milliliter(s)",
+    "ml-short": "ml(s)"
   },
   "recipe": {
     "ingredients-title": "Ingredients",

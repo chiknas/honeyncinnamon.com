@@ -20,6 +20,8 @@ export enum MeasureUnit {
   GRAMS = 'grams',
   OUNCES = 'ounces',
   TABLE_SPOON = 'tablespoon',
+  LITRES = 'litres',
+  MILLI_LITRES = 'ml',
   NONE = '',
 }
 
