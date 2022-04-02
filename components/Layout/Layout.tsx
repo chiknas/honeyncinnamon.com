@@ -4,6 +4,7 @@ import { Theme } from 'styles/Theme';
 import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
 import dynamic from 'next/dynamic';
+import { useTranslation } from 'next-i18next';
 
 export const MobileMaxWidth = '600px';
 export const MainMaxWidth = '960px';
@@ -49,6 +50,7 @@ const SkipNavigation = styled.a`
 `;
 
 const Layout: React.FunctionComponent = ({ children }) => {
+  const { t } = useTranslation();
   // Dynamically load the consent bar to increase performance since we do not need it right away.
   const CookieConsentBar = dynamic(
     () => import('components/CookieConsentBar/CookieConsentBar')
@@ -57,7 +59,9 @@ const Layout: React.FunctionComponent = ({ children }) => {
   return (
     <>
       <MainContainer>
-        <SkipNavigation href="#main-content">Skip navigation</SkipNavigation>
+        <SkipNavigation href="#main-content">
+          {t('skip-navigation')}
+        </SkipNavigation>
         <Header />
         <BodyContainer id="main-content">{children}</BodyContainer>
         <Footer />

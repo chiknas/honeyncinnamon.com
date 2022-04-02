@@ -1,100 +1,101 @@
 {
-  "error-with-status": "A {{statusCode}} provlima occurred on server",
-  "loading": "Fortwnei...",
+  "error-with-status": "Ο διακομιστής αντιμετώπισε πρόβλημα με αριθμό {{statusCode}}",
+  "skip-navigation": "Παράλειψη πλοήγησης",
+  "loading": "Φόρτωση...",
   "cookie-consent": {
-    "message": "This site uses third party cookies to improve user experience and more focused advertising.",
-    "accept-button": "I Understand",
-    "decline-button": "I Decline"
+    "message": "Αυτός ο ιστότοπος χρησιμοποιεί cookies τρίτων για τη βελτίωση της εμπειρίας χρήστη και την πιο εστιασμένη διαφήμιση.",
+    "accept-button": "Eντάξει",
+    "decline-button": "Διαφωνώ"
   },
   "page-title": {
-    "posts": "Posts",
-    "recipes": "Suntages",
-    "home": "Spiti",
-    "register": "Eggrafi",
-    "contact-us": "Epikoinonia"
+    "posts": "Αναρτήσεις",
+    "recipes": "Συνταγές",
+    "home": "Κεντρική",
+    "register": "Εγγραφή",
+    "contact-us": "Επικοινωνία"
   },
-  "donate": "Dwrea",
+  "donate": "Δωρεά",
   "header": {
-    "home": "KENTRIKI",
-    "about": "SXETIKA",
+    "home": "ΚΕΝΤΡΙΚΗ",
+    "about": "ΣΧΕΤΙΚΑ",
     "blog": "BLOG",
-    "recipes": "SYNTAGES",
-    "shop": "MAGAZI",
-    "subscribe": "EGGRAFI",
-    "contact": "EPIKINONIA"
+    "recipes": "ΣΥΝΤΑΓΕΣ",
+    "shop": "ΜΑΓΑΖΙ",
+    "subscribe": "ΕΓΓΡΑΦΗ",
+    "contact": "ΕΠΙΚΟΙΝΩΝΙΑ"
   },
   "footer": {
     "cookie-policy": "ΠΟΛΙΤΙΚΗ COOKIES",
     "privacy-policy": "ΠΟΛΙΤΙΚΗ ΑΠΟΡΡΗΤΟΥ",
     "newsletter": {
-      "title": "Eggrafi stin effimerida mas!",
-      "email": "Vale edw to mail sou",
-      "consent": "Thelw na lamvanw updates apo email",
-      "register": "Eggrafi",
+      "title": "Εγγραφή στις ενημερώσεις μας!",
+      "email": "Δώσε μας το email σου.",
+      "consent": "Θέλω να λαμβάνω να νέα με email!",
+      "register": "Εγγραφή",
       "success": "Thank you for registering with Honey and Cinnamon! We are looking forward to sending you delicious news!"
     }
   },
   "profile": {
-    "title": "Eisodos",
-    "error": "Re lathos kwdiko evales",
-    "email": "Hlektroniko Taxudromio",
-    "password": "Mustikos kwdikos",
-    "login": "Eisodos",
-    "signout": "Eksodos",
-    "register": "Eggrafi"
+    "title": "Είσοδος",
+    "error": "Λάθος κωδικός",
+    "email": "Email",
+    "password": "Κωδικός",
+    "login": "Είσοδος",
+    "signout": "Εξοδος",
+    "register": "Εγγραφή"
   },
   "register": {
-    "title": "Eggrafi",
-    "full-name": "Onomateponimo",
+    "title": "Εγγραφή",
+    "full-name": "Ονοματεπώνυμο",
     "email": "Email",
-    "password": "Password",
-    "confirm-password": "Epalitheusi Password",
-    "apply": "Eggrafi",
+    "password": "Κωδικός",
+    "confirm-password": "Επαλήθευση κωδικού",
+    "apply": "Εγγραφή",
     "error": {
-      "passwords-not-match": "Oi kwdikoi den tairiazoun"
+      "passwords-not-match": "Οι κωδικοί δεν ταιριάζουν"
     }
   },
   "comment-section": {
-    "show-comments": "Sxolia ({{count}})",
-    "login-action": "Sundethite gia na afisete ena sxolio",
-    "comment-placeholder": "Grapste sxolio",
-    "submit": "Apostoli",
-    "respond": "Apantisi",
-    "edit": "Epeksergasia",
-    "cancel": "Akurwsh"
+    "show-comments": "Σχόλια ({{count}})",
+    "login-action": "Πατήστε εδώ για να συνδεθήτε και να αφήσετε ένα σχόλιο",
+    "comment-placeholder": "Γράψτε σχόλιο",
+    "submit": "Αποστολή",
+    "respond": "Απάντηση",
+    "edit": "Επεξεργασία",
+    "cancel": "Ακύρωση"
   },
   "measurement-units": {
-    "title": "Mesoures",
-    "grams": "Grammaria",
-    "grams-short": "gr.",
-    "ounces": "Ouggies",
-    "ounces-short": "ouggies",
-    "tablespoon": "koutalaki ths soupas",
-    "tablespoon-short": "k.s."
+    "title": "Μεσούρες",
+    "grams": "Γραμμάρια",
+    "grams-short": "γρ.",
+    "ounces": "Ουγγιές",
+    "ounces-short": "ουγγιές",
+    "tablespoon": "κουταλάκι της σούπας",
+    "tablespoon-short": "κ.σ."
   },
   "recipe": {
-    "ingredients-title": "Sustatika",
-    "steps-title": "Methodos",
-    "tip": "*patiste ta anamena sustatika gia na metaferthite sto magazi"
+    "ingredients-title": "Συστατικά",
+    "steps-title": "Εκτέλεση",
+    "tip": "*πατήστε στα μπλέ συστατικά για να μεταφερθείτε στο μαγαζί"
   },
   "recipe-details": {
     "metadata": {
       "meal-type": {
-        "breakfast": "Prwino",
-        "branch": "Dekatiano",
-        "lunch": "Mesimeriano",
-        "supper": "Apogeumatino",
-        "dinner": "Vraduno"
+        "breakfast": "Πρωινό",
+        "branch": "Δεκατιανό",
+        "lunch": "Μεσημεριανό",
+        "supper": "Απογευματινό",
+        "dinner": "Βραδυνό"
       }
     }
   },
   "contact-us": {
-    "title": "Epoikinoniste mazi mas",
+    "title": "Επικοινωνήστε μαζί μας",
     "email": "Email",
-    "full-name": "Onomateponimo",
-    "subject": "Thema",
-    "message": "Minima",
-    "send": "Apostoli",
+    "full-name": "Ονοματεπώνυμο",
+    "subject": "Θέμα",
+    "message": "Μύνημα",
+    "send": "Αποστολή",
     "footer-message": "*Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
   }
 }

@@ -44,10 +44,10 @@ const StyledLogin = styled(Button)`
   }
 `;
 
-const FooterMessage = styled(Typography)`
-  text-align: left;
-  color: ${Theme.palette.text.hint};
-`;
+// const FooterMessage = styled(Typography)`
+//   text-align: left;
+//   color: ${Theme.palette.text.hint};
+// `;
 
 const emptyContactMessage = {
   fullName: '',
@@ -136,9 +136,9 @@ export const ContactUs: React.FunctionComponent = () => {
           />
           <StyledLogin type="submit">{t('contact-us.send')}</StyledLogin>
         </FormContainer>
-        <FooterMessage variant="h6">
+        {/* <FooterMessage variant="h6">
           {t('contact-us.footer-message')}
-        </FooterMessage>
+        </FooterMessage> */}
       </ContactUsContainer>
     </>
   );

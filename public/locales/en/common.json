@@ -1,5 +1,6 @@
 {
   "error-with-status": "A {{statusCode}} error occurred on server",
+  "skip-navigation": "Skip navigation",
   "loading": "Loading...",
   "cookie-consent": {
     "message": "This site uses third party cookies to improve user experience and more focused advertising.",
