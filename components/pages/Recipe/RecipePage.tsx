@@ -83,7 +83,8 @@ export const RecipePage: React.FunctionComponent<RecipePageProps> = ({
                 setMeasureUnit={setMeasureUnit}
               />
             </IngredientsHeader>
-            <Tip>{t('recipe.tip')}</Tip>
+            {/* Introduce affiliate link tip when links are added */}
+            {/* <Tip>{t('recipe.tip')}</Tip> */}
             {recipe.parts.map((part) => (
               <IngredientList
                 key={`${part.title}-ingredients`}

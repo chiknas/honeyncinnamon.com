@@ -1,0 +1,115 @@
+{
+  "photoTitlePath": "/images/recipes/MosxarakiKokkinisto/mosxaraki-kokkinisto.jpg",
+  "title": "Tomato beef stew with conchieglie",
+  "metadata": {
+    "mealType": "lunch"
+  },
+  "parts": [
+    {
+      "title": "For the beef stew",
+      "ingredients": [
+        {
+          "description": "large bay leaves",
+          "quantity": { "amount": 3, "unit": "" }
+        },
+        {
+          "description": "beef rump",
+          "quantity": { "amount": 750, "unit": "grams" }
+        },
+        {
+          "description": "tomato paste",
+          "quantity": { "amount": 4, "unit": "tablespoon" }
+        },
+        {
+          "description": "tomato passata",
+          "quantity": { "amount": 100, "unit": "grams" }
+        },
+        {
+          "description": "flour (all-purpose)",
+          "quantity": { "amount": 3, "unit": "tablespoon" }
+        },
+        {
+          "description": "cinnamon sticks",
+          "quantity": { "amount": 3, "unit": "" }
+        },
+        {
+          "description": "carrots",
+          "quantity": { "amount": 3, "unit": "" }
+        },
+        {
+          "description": "red wine",
+          "quantity": { "amount": 100, "unit": "grams" }
+        },
+        {
+          "description": "whole cloves",
+          "quantity": { "amount": 5, "unit": "" }
+        },
+        {
+          "description": "garlic granules",
+          "quantity": { "amount": 0.5, "unit": "tablespoon" }
+        },
+        {
+          "description": "virgin olive oil",
+          "quantity": { "amount": 5, "unit": "tablespoon" }
+        },
+        {
+          "description": "fresh thyme",
+          "quantity": { "amount": 1, "unit": "tablespoon" }
+        },
+        {
+          "description": "yellow onion",
+          "quantity": { "amount": 2, "unit": "" }
+        },
+        {
+          "description": "sugar",
+          "quantity": { "amount": 0.5, "unit": "tablespoon" }
+        },
+        {
+          "description": "water",
+          "quantity": { "amount": 1000, "unit": "grams" }
+        },
+        {
+          "description": "pepper"
+        },
+        {
+          "description": "salt"
+        }
+      ],
+      "steps": [
+        "Place a nonstick pan high heat.",
+        "Cut the beef into small pieces.",
+        "In a bowl add the beef, salt, pepper, garlic granules and flour. Add 3 tablespoons oil in the pan and saute the beef for 4-5 minutes.",
+        "At the same time chop the onions and carrots in large pieces.",
+        "Remove the beef from the pan. Add the rest of olive oil, carrots and onions in the pan. Saute until caramelised.",
+        "Add the tomato paste, thyme, sugar and the cinnamon sticks in the pan. Mix and saute for a minute.",
+        "Deglaze the pot with the wine.",
+        "Add the bay leaves, tomato passata, water, beef and cover with the lid, lower the heat to medium, and boil for 2 hours. After 1.5 hours check if more water is needed.",
+        "When ready remove from heat. Remove the cinnamon sticks, cloves and bay leaves."
+      ]
+    },
+    {
+      "title": "To serve",
+      "ingredients": [
+        {
+          "description": "conchieglie pasta",
+          "quantity": { "amount": 360, "unit": "grams" }
+        },
+        {
+          "description": "grated parmigiano reggiano",
+          "quantity": { "amount": 200, "unit": "grams" }
+        },
+        {
+          "description": "virgin olive oil",
+          "quantity": { "amount": 1, "unit": "tablespoon" }
+        },
+        {
+          "description": "salt"
+        }
+      ],
+      "steps": [
+        "Add salt and the pasta to boiling water for half the time instructed on the package.",
+        "Mix the pasta with the stew and serve with grated parmigiano reggiano and a tablespoon of olive oil on top."
+      ]
+    }
+  ]
+}
