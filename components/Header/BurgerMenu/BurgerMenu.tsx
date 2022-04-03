@@ -1,4 +1,5 @@
-import { Button, SwipeableDrawer } from '@material-ui/core';
+import { SwipeableDrawer } from '@material-ui/core';
+import { Button } from 'components/generic/Button/Button';
 import { useTranslation } from 'next-i18next';
 import React, { useState } from 'react';
 import { GiHamburgerMenu } from 'react-icons/gi';

@@ -1,4 +1,4 @@
-import { Button } from '@material-ui/core';
+import { Button } from 'components/generic/Button/Button';
 import { useTranslation } from 'next-i18next';
 import React from 'react';
 import { Comment } from 'services/EntityServices/CommentService/types';

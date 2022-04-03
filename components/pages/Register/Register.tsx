@@ -1,4 +1,4 @@
-import { TextField, Button, Typography } from '@material-ui/core';
+import { TextField, Typography } from '@material-ui/core';
 import useViewport from 'hooks/useViewport';
 import { useTranslation } from 'next-i18next';
 import React, { useCallback, useState } from 'react';
@@ -8,12 +8,14 @@ import { useRouter } from 'next/dist/client/router';
 import { routes } from 'services/routes';
 import { useUserService } from 'services/EntityServices/UserService/UserService';
 import Head from 'next/head';
+import { Button } from 'components/generic/Button/Button';
 
 const RegisterContainer = styled.div<{ isMobile: boolean; minWidth: string }>`
   display: flex;
   flex-direction: column;
   text-align: center;
   gap: 3em;
+  height: fit-content;
   padding: ${(props) => (props.isMobile ? '1em' : '3em')};
   ${(props) => !props.isMobile && `min-width: ${props.minWidth};`}
 `;

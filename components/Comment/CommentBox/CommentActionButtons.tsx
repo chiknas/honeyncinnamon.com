@@ -1,4 +1,5 @@
-import { Button, IconButton } from '@material-ui/core';
+import { IconButton } from '@material-ui/core';
+import { Button } from 'components/generic/Button/Button';
 import { useTranslation } from 'next-i18next';
 import React, { useMemo } from 'react';
 import { MdDeleteForever } from 'react-icons/md';

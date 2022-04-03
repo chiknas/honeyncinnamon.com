@@ -67,7 +67,7 @@ export const IngredientLine: React.FunctionComponent<IngredientLineProps> = ({
 
   return (
     <IngredientLineContainer>
-      <Checkbox />
+      <Checkbox color="primary" />
       <LinkText />
     </IngredientLineContainer>
   );

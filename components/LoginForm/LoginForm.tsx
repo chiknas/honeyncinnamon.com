@@ -1,4 +1,5 @@
-import { Button, TextField, Typography } from '@material-ui/core';
+import { TextField, Typography } from '@material-ui/core';
+import { Button } from 'components/generic/Button/Button';
 import { useTranslation } from 'next-i18next';
 import { useRouter } from 'next/dist/client/router';
 import React, { useState } from 'react';
@@ -21,16 +22,8 @@ const StyledTextField = styled(TextField)`
   background-color: ${() => Theme.palette.background.default};
 `;
 
-const StyledActionButton = styled(Button)<{ secondary?: boolean }>`
+const StyledActionButton = styled(Button)`
   flex: 1;
-  background-color: ${(p) =>
-    p.secondary ? Theme.palette.info.main : Theme.palette.primary.main};
-  &:hover {
-    background-color: ${(p) =>
-      p.secondary ? Theme.palette.info.dark : Theme.palette.primary.dark};
-    color: ${(p) =>
-      p.secondary ? Theme.palette.info.light : Theme.palette.primary.light};
-  }
 `;
 
 const Error = styled(Typography)`
@@ -84,7 +77,7 @@ export const LoginForm: React.FunctionComponent = () => {
           {t('profile.login')}
         </StyledActionButton>
         <StyledActionButton
-          secondary={true}
+          buttontype="info"
           disabled={logginIn}
           onClick={() => push(routes.register)}
         >

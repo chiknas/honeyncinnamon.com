@@ -1,6 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import styled from 'styled-components';
-import { Button, TextField, Typography } from '@material-ui/core';
+import { TextField, Typography } from '@material-ui/core';
+import { Button } from 'components/generic/Button/Button';
 import { Theme } from 'styles/Theme';
 import { useTranslation } from 'next-i18next';
 import useViewport from 'hooks/useViewport';

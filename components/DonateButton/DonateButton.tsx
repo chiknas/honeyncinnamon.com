@@ -1,4 +1,4 @@
-import { Button } from '@material-ui/core';
+import { Button } from 'components/generic/Button/Button';
 import { useRouter } from 'next/dist/client/router';
 import React from 'react';
 import { useTranslation } from 'react-i18next';

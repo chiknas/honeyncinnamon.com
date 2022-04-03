@@ -1,4 +1,5 @@
-import { Button, Typography } from '@material-ui/core';
+import { Typography } from '@material-ui/core';
+import { Button } from 'components/generic/Button/Button';
 import { useCookieConsent } from '@use-cookie-consent/core';
 import { useTranslation } from 'next-i18next';
 import React, { useCallback } from 'react';

@@ -1,4 +1,5 @@
-import { Button, MenuList, MenuItem, Typography } from '@material-ui/core';
+import { MenuList, MenuItem, Typography } from '@material-ui/core';
+import { Button } from 'components/generic/Button/Button';
 import { useRouter } from 'next/dist/client/router';
 import styled from 'styled-components';
 import Link from 'next/link';

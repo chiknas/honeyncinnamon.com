@@ -1,4 +1,5 @@
-import { Button, InputBase, Typography } from '@material-ui/core';
+import { InputBase, Typography } from '@material-ui/core';
+import { Button } from 'components/generic/Button/Button';
 import { LoginForm } from 'components/LoginForm/LoginForm';
 import { withPoperPanel } from 'components/PoperPanel/PoperPanel';
 import { UserProfilePic } from 'components/UserProfilePic/UserProfilePic';

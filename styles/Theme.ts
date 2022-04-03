@@ -18,5 +18,8 @@ export const Theme = createTheme({
     secondary: {
       main: '#fefbd8',
     },
+    action: {
+      disabled: '#A9A9A9',
+    },
   },
 });

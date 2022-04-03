@@ -1,13 +1,8 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Theme } from 'styles/Theme';
-import {
-  Checkbox,
-  TextField,
-  Typography,
-  Button,
-  Divider,
-} from '@material-ui/core';
+import { Checkbox, TextField, Typography, Divider } from '@material-ui/core';
+import { Button } from 'components/generic/Button/Button';
 import Link from 'next/link';
 import { routes } from 'services/routes';
 import { useTranslation } from 'next-i18next';
