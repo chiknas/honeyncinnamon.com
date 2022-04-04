@@ -29,11 +29,11 @@ test('AAU, I can click elements with an onclick function attached to them.', () 
       items: [
         {
           title: 'Non clickable item',
-          img: '',
+          img: '/path/test.jpg',
         },
         {
           title: 'Clickable item',
-          img: '',
+          img: '/path/test.jpg',
           onClick: () => {
             alert('I was clicked');
           },

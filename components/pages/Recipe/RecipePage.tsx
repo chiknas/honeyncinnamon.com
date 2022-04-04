@@ -12,6 +12,7 @@ import dynamic from 'next/dynamic';
 import { CommentEntityType } from 'services/EntityServices/CommentService/types';
 import { Divider } from '@material-ui/core';
 import Head from 'next/head';
+import { Image, ImageRatioType } from 'components/Image/Image';
 
 const RecipeContainer = styled.div`
   display: flex;
@@ -67,10 +68,15 @@ export const RecipePage: React.FunctionComponent<RecipePageProps> = ({
         <title>{recipe.title}</title>
       </Head>
       <PageContainer>
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
+        <Image
           src={recipe.photoTitlePath}
           alt={`honey-cinnamon-recipe-${recipe.id}`}
+          imageRatioType={ImageRatioType.LANDSCAPE}
+          placeholder="blur"
+          blurDataURL={`${recipe.photoTitlePath.replace(
+            '.jpg',
+            '-blurred.jpg'
+          )}`}
         />
         <RecipeContainer>
           <IngredientsListContainer>

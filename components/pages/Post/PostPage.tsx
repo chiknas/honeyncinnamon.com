@@ -6,6 +6,7 @@ import dynamic from 'next/dynamic';
 import { PostDetails } from './type';
 import styled from 'styled-components';
 import Head from 'next/head';
+import { Image, ImageRatioType } from 'components/Image/Image';
 
 const PostTitle = styled(Typography)`
   text-decoration: underline;
@@ -39,7 +40,13 @@ export const PostPage: React.FunctionComponent<PostProps> = ({
       </Head>
       <PageContainer>
         <PostTitle variant="h3">{postDetails.title}</PostTitle>
-        <img src={postDetails.img} />
+        <Image
+          src={postDetails.img}
+          alt={postDetails.img}
+          imageRatioType={ImageRatioType.LANDSCAPE}
+          placeholder="blur"
+          blurDataURL={`${postDetails.img.replace('.jpg', '-blurred.jpg')}`}
+        />
         <PostContainer dangerouslySetInnerHTML={{ __html: content }} />
         <Divider />
         <CommentSection id={id} entityType={CommentEntityType.POSTS} />

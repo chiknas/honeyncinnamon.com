@@ -2,6 +2,7 @@ import { Typography } from '@material-ui/core';
 import React, { useMemo } from 'react';
 import styled from 'styled-components';
 import { GalleryGroupData } from './types';
+import { Image, ImageRatioType } from 'components/Image/Image';
 
 const GalleryContainer = styled.div`
   display: flex;
@@ -57,7 +58,13 @@ export const Gallery: React.FunctionComponent<GalleryProps> = ({ data }) => {
                 onClick={item.onClick}
                 clickAble={item.onClick !== undefined}
               >
-                <img src={item.img} alt={item.title} />
+                <Image
+                  src={item.img}
+                  alt={item.title}
+                  imageRatioType={ImageRatioType.LANDSCAPE}
+                  placeholder="blur"
+                  blurDataURL={`${item.img.replace('.jpg', '-blurred.jpg')}`}
+                />
                 <Typography variant="h6">{item.title}</Typography>
               </GalleryItem>
             ))}
