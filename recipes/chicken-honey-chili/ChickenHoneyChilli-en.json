@@ -1,0 +1,96 @@
+{
+  "photoTitlePath": "/images/recipes/chicken-honey-chilli/chicken-honey-chilli.jpg",
+  "title": "Chicken with honey and chilli",
+  "metadata": {
+    "mealType": "lunch"
+  },
+  "parts": [
+    {
+      "title": "For the chicken",
+      "ingredients": [
+        {
+          "description": "chicken breast",
+          "quantity": { "amount": 1000, "unit": "grams" }
+        },
+        {
+          "description": "yellow onion",
+          "quantity": { "amount": 1, "unit": "" }
+        },
+        {
+          "description": "bell peppers",
+          "quantity": { "amount": 2, "unit": "" }
+        },
+        {
+          "description": "clear honey",
+          "quantity": { "amount": 200, "unit": "grams" }
+        },
+        {
+          "description": "garlic granules",
+          "quantity": { "amount": 1, "unit": "tablespoon" }
+        },
+        {
+          "description": "chilli flakes",
+          "quantity": { "amount": 0.5, "unit": "tablespoon" }
+        },
+        {
+          "description": "lemon",
+          "quantity": { "amount": 0.5 }
+        },
+        {
+          "description": "lemon zest from 1 lemon"
+        },
+        {
+          "description": "thyme",
+          "quantity": { "amount": 1, "unit": "tablespoon" }
+        },
+        {
+          "description": "olive oil",
+          "quantity": { "amount": 6, "unit": "tablespoon" }
+        },
+        {
+          "description": "water",
+          "quantity": { "amount": 1, "unit": "litres" }
+        },
+        {
+          "description": "salt"
+        },
+        {
+          "description": "pepper"
+        }
+      ],
+      "steps": [
+        "Cut the chicken into small chunks. Season well with salt, pepper, chilli flakes, lemon zest and garlic granules.",
+        "Put the pan on medium to high heat.",
+        "Small dice the onion and peppers.",
+        "Add the 3 tabslespoons oil, onion and the peppers in the hot pan and saute.",
+        "When ready remove from the pan, add the remaining olive oil and let it heat up.",
+        "Put the chicken in the pan and saute.",
+        "When the chicken has a golden color (no pink spots) add the lemon, peppers, onion the water in the pan.",
+        "Cook until the sauce is thickened and add the clear honey and thyme.",
+        "Cook for another 2-3 minutes and remove from heat.",
+        "Serve with rice."
+      ]
+    },
+    {
+      "title": "To serve",
+      "ingredients": [
+        {
+          "description": "basmati rice",
+          "quantity": { "amount": 360, "unit": "grams" }
+        },
+        {
+          "description": "fresh thyme",
+          "quantity": { "amount": 1, "unit": "tablespoon" }
+        },
+        {
+          "description": "water",
+          "quantity": { "amount": 1, "unit": "litres" }
+        }
+      ],
+      "steps": [
+        "Boil the rice as instructed on the package.",
+        "Mix the rice with the chicken and serve with fresh thyme on top."
+      ]
+    }
+  ]
+}
