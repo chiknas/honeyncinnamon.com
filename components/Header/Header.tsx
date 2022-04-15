@@ -29,15 +29,16 @@ const HeaderSettingsSection = styled.div<{ isMobile: boolean }>`
 `;
 
 const Header: React.FunctionComponent = () => {
-  const { isMobile } = useViewport();
+  const { isMobile, loading } = useViewport();
   // dynamic load expensive items to increase initial load performance
   const LanguageButton = dynamic(() => import('./LanguageButton'));
   const ProfileButton = dynamic(() => import('./ProfileButton/ProfileButton'));
 
-  const menu = React.useMemo(
-    () => (isMobile ? <BurgerMenu /> : <MainMenu />),
-    [isMobile]
-  );
+  const menu = React.useMemo(() => {
+    if (!loading) {
+      return isMobile ? <BurgerMenu /> : <MainMenu />;
+    }
+  }, [isMobile, loading]);
 
   return (
     <HeaderContainer isMobile={isMobile}>

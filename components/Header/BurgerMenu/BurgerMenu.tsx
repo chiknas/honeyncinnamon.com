@@ -35,7 +35,7 @@ export const BurgerMenu: React.FunctionComponent = () => {
 
   return (
     <>
-      <BurgerButton onClick={toggleDrawer}>
+      <BurgerButton buttontype="default" onClick={toggleDrawer}>
         <GiHamburgerMenu />
       </BurgerButton>
       <SwipeableDrawer open={open} onClose={toggleDrawer} onOpen={toggleDrawer}>

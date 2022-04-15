@@ -3,16 +3,20 @@ import React, { PropsWithChildren } from 'react';
 import styled from 'styled-components';
 import { Theme } from 'styles/Theme';
 
-export type ButtonType = 'primary' | 'secondary' | 'info';
+export type ButtonType = 'primary' | 'secondary' | 'info' | 'default';
 
 const StyledButton = styled(MuiButton)<{
   buttontype: ButtonType;
 }>`
-  color: ${(p) => Theme.palette[p.buttontype].contrastText};
-  background-color: ${(p) => Theme.palette[p.buttontype].main};
+  color: ${(p) =>
+    p.buttontype !== 'default' && Theme.palette[p.buttontype].contrastText};
+  background-color: ${(p) =>
+    p.buttontype !== 'default' && Theme.palette[p.buttontype].main};
   &:hover {
-    background-color: ${(p) => Theme.palette[p.buttontype].dark};
-    color: ${(p) => Theme.palette[p.buttontype].light};
+    background-color: ${(p) =>
+      p.buttontype !== 'default' && Theme.palette[p.buttontype].dark};
+    color: ${(p) =>
+      p.buttontype !== 'default' && Theme.palette[p.buttontype].light};
   }
 `;
 
